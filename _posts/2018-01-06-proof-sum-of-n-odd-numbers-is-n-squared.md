@@ -1,7 +1,11 @@
 ---
 layout: post
-title: Proof sum of n odd numbers equals n squared
+title: Proof – sum of first n odd numbers equals n squared
 ---
+We want to prove:
+
+$$\sum_{k=0}^{n-1}(2k+1)=n^2, k\in\mathbb{N}$$
+
 Sum of first $n$ numbers in a series is defined as
 
 $$s_n=\frac{n}{2}(2a_1+(n-1)d)$$
@@ -14,4 +18,4 @@ $$s_n=\frac{n}{2}(2+(n-1)2)\\
 s_n=\frac{n}{2}(2n)\\
 s_n=n^2$$
 
-Q.E.D.
+$\square$
