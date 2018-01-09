@@ -21,7 +21,7 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: barryclark/Sorashi
+  github: Sorashi
   instagram:
   linkedin:
   pinterest:
@@ -41,7 +41,7 @@ google_analytics: UA-112058345-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: https://barryclark.github.io
+url: https://sorashi.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
