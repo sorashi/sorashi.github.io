@@ -1,0 +1,44 @@
+---
+layout: post
+title: A comprehensive list of Rikai extensions
+---
+
+There are so many rikai extensions that I got lost when I was trying to find my choice.
+I want this to be the go-to article for people who seek not only the full list of rikai
+extensions, but also the truth behind their origin.
+
+We'll begin with what you're all here for:
+
+Name|Browser|Repository|Site
+----|-------|----|----
+nazeka|[Firefox](https://addons.mozilla.org/cs/firefox/addon/nazeka/), works on Android|[GitHub](https://github.com/wareya/nazeka)|None
+Rikaichamp|[Firefox](https://addons.mozilla.org/cs/firefox/addon/rikaichamp/)|[GitHub](https://github.com/birtles/rikaichamp)|[Twitter](https://twitter.com/rikaichamp)
+rikaichan|[Chrome](https://chrome.google.com/webstore/detail/rikaichan/clidkjbfdlffpbbhlalnkifiehenkjaj?hl=en) & [Firefox](https://addons.mozilla.org/firefox/addon/rikaichan/)|[GitHub](https://github.com/Kalamandea/Rikaichan)|None
+rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en)|[GitHub](https://github.com/melink14/rikaikun)|None
+RikaiRebuilt|[Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|None|None
+Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|Not Public|[Yes](https://foosoft.net/projects/yomichan/)
+rikaiXUL|N/A|N/A|[mozdev](http://rikaixul.mozdev.org/)
+
+Now some information about some of them:
+
+**rikaiXUL** is an old Firefox add-on on which most of the rikai family members were
+based.
+
+**rikaichan** is a fork of rikaiXUL, which took over the development. Originally only for Firefox, it was eventually published for Chrome too.
+
+**rikaikun** (Chrome) started as a port of rikaichan to Chrome, when rikaichan
+wasn't available for Chrome yet.
+
+**Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
+
+**Yomichan** is not a fork, but rather a whole different extension which focuses
+not only on dictionaries, but also the learning side of things. It has a built
+in integration for Anki, which makes the experience for Anki users a breeze.
+
+### How can I decide on my rikai extension?
+Rikaichamp is the latest fork (deepest in the fork tree) with many performance
+improvements and an active development community. But you should definitely
+check out all the other choices, explore their features and decide which one
+has the best feel to it for you.
+
+*Do you know something I don't? Do you want to make this even more comprehensible? Make a pull request into this GitHub pages [repo](https://github.com/sorashi/sorashi.github.io)!*
