@@ -15,7 +15,8 @@ nazeka|[Firefox](https://addons.mozilla.org/cs/firefox/addon/nazeka/), works on 
 Rikaichamp|[Firefox](https://addons.mozilla.org/cs/firefox/addon/rikaichamp/)|[GitHub](https://github.com/birtles/rikaichamp)|[Twitter](https://twitter.com/rikaichamp)
 rikaichan|[Chrome](https://chrome.google.com/webstore/detail/rikaichan/clidkjbfdlffpbbhlalnkifiehenkjaj?hl=en) & [Firefox](https://addons.mozilla.org/firefox/addon/rikaichan/)|[GitHub](https://github.com/Kalamandea/Rikaichan)|None
 rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en)|[GitHub](https://github.com/melink14/rikaikun)|None
-RikaiRebuilt|[Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|None|None
+RikaiRebuilt|[Chrome](https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj) & [Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|[GitHub](https://github.com/Garethp/RikaiRebuilt)|None
+Rikaisama|[Firefox](https://sourceforge.net/projects/rikaisama/files/) (XPI, not published on Firefox addon site)|None|[Yes](http://rikaisama.sourceforge.net/)
 Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|Not Public|[Yes](https://foosoft.net/projects/yomichan/)
 rikaiXUL|N/A|N/A|[mozdev](http://rikaixul.mozdev.org/)
 
@@ -28,6 +29,10 @@ based.
 
 **rikaikun** (Chrome) started as a port of rikaichan to Chrome, when rikaichan
 wasn't available for Chrome yet.
+
+**RikaiRebuilt** is a rewrite of Rikaisama for WebExtension API, which aims to keep the structure of the original extension.
+
+**Rikaisama** is a fork of rikachan with many new features and cutomization options, but it is no longer developed and not supported by Firefox anymore.
 
 **Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
 
