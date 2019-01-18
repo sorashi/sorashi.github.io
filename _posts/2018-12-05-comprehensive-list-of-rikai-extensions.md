@@ -17,13 +17,12 @@ rikaichan|[Chrome](https://chrome.google.com/webstore/detail/rikaichan/clidkjbfd
 rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en)|[GitHub](https://github.com/melink14/rikaikun)|None
 RikaiRebuilt|[Chrome](https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj) & [Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|[GitHub](https://github.com/Garethp/RikaiRebuilt)|None
 Rikaisama|[Firefox](https://sourceforge.net/projects/rikaisama/files/) (XPI, not published on Firefox addon site)|None|[Yes](http://rikaisama.sourceforge.net/)
-Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|Not Public|[Yes](https://foosoft.net/projects/yomichan/)
 rikaiXUL|N/A|N/A|[mozdev](http://rikaixul.mozdev.org/)
+Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|Not Public|[Yes](https://foosoft.net/projects/yomichan/)
 
 Now some information about some of them:
 
-**rikaiXUL** is an old Firefox add-on on which most of the rikai family members were
-based.
+**Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
 
 **rikaichan** is a fork of rikaiXUL, which took over the development. Originally only for Firefox, it was eventually published for Chrome too.
 
@@ -34,7 +33,8 @@ wasn't available for Chrome yet.
 
 **Rikaisama** is a fork of rikachan with many new features and cutomization options, but it is no longer developed and not supported by Firefox anymore.
 
-**Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
+**rikaiXUL** is an old Firefox add-on on which most of the rikai family members were
+based.
 
 **Yomichan** is not a fork, but rather a whole different extension which focuses
 not only on dictionaries, but also the learning side of things. It has a built
