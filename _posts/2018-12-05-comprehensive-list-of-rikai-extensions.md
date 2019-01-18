@@ -22,6 +22,8 @@ Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimem
 
 Now some information about some of them:
 
+**nazeka** is a rikai replacement with many interesting features and options, which are listed in the [readme](https://github.com/wareya/nazeka/blob/master/readme.md) of the repository. It also works in Firefox on Android.
+
 **Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
 
 **rikaichan** is a fork of rikaiXUL, which took over the development. Originally only for Firefox, it was eventually published for Chrome too.
