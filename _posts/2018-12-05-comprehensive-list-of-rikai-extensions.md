@@ -48,4 +48,4 @@ improvements and an active development community. But you should definitely
 check out all the other choices, explore their features and decide which one
 has the best feel to it for you.
 
-*Do you know something I don't? Do you want to make this even more comprehensible? Make a pull request into this GitHub pages [repo](https://github.com/sorashi/sorashi.github.io)!*
+*Do you know something I don't? Do you want to make this more comprehensible? Make a pull request into this GitHub pages [repo](https://github.com/sorashi/sorashi.github.io)!*
