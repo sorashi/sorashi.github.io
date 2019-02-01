@@ -4,9 +4,9 @@ title: (CZ) Lineární diofantické rovnice
 ---
 
 Diofantické rovnice jsou <span class="hint" title="mající více neznámých, než rovností">podurčené</span> polynomiální rovnice, u kterých se hledá
-řešení v $\mathbb{Z}$.
+řešení v množině $\mathbb{Z}$.
 
-Lineární diofantická rovnice je rovnice ve tvaru součtu dvou polynomů prvního řádu:
+Lineární diofantická rovnice je rovnice ve tvaru součtu dvou monomů prvního řádu:
 
 $$ax+by=c\,.$$
 
