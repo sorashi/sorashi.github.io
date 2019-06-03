@@ -6,8 +6,7 @@ permalink: /about/
 
 ### Contact me
 
-Tweet anything you like at me.
-If you need to PM me, ask in a tweet, or use my [public PGP key](https://keybase.io/sorashi/pgp_keys.asc) and a [text hosting service](https://pastebin.com/), then tweet me the link.
+[PGP key](https://keybase.io/sorashi/pgp_keys.asc)
 
 <style>
 .contact table {
@@ -21,18 +20,11 @@ If you need to PM me, ask in a tweet, or use my [public PGP key](https://keybase
 </style>
 <table class="contact">
 <tr>
-<td>
-	<a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false" style="vertical-align:middle">Tweet to @itsSorashi</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</td>
-<td>
-<a href="https://t.me/sorashi">Telegram me</a>
-</td>
-<td>
-Discord: sorashi#1829
-</td>
-<td>
-	<a href='https://ko-fi.com/C0C6Q4XR' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-</td>
+	<td><a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw">Tweet @itsSorashi</a></td>
+	<td><a href="https://niu.moe/@sorashi">Toot @sorashi@niu.moe</a></td>
+	<td><a href="https://t.me/sorashi">Telegram @sorashi</a></td>
+	<td><a href="https://discordapp.com/">Discord</a>: sorashi#1829</td>
+	<td><a href='https://ko-fi.com/C0C6Q4XR' target='_blank'>Buy Me a Coffee at ko-fi.com</a></td>
 </tr>
 </table>
 
