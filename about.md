@@ -6,8 +6,6 @@ permalink: /about/
 
 ### Contact me
 
-[PGP key](https://keybase.io/sorashi/pgp_keys.asc)
-
 <style>
 .contact table {
 	border: none;
@@ -20,11 +18,14 @@ permalink: /about/
 </style>
 <table class="contact">
 <tr>
-	<td><a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw">Tweet @itsSorashi</a></td>
-	<td><a href="https://niu.moe/@sorashi">Toot @sorashi@niu.moe</a></td>
-	<td><a href="https://t.me/sorashi">Telegram @sorashi</a></td>
-	<td><a href="https://discordapp.com/">Discord</a>: sorashi#1829</td>
-	<td><a href='https://ko-fi.com/C0C6Q4XR' target='_blank'>Buy Me a Coffee at ko-fi.com</a></td>
+	<td><a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw" target="_blank">Tweet @itsSorashi</a></td>
+	<td><a href="https://niu.moe/@sorashi" target="_blank">Toot @sorashi@niu.moe</a></td>
+	<td><a href="https://t.me/sorashi" target="_blank">Telegram @sorashi</a></td>
+</tr>
+<tr>
+	<td><a href="https://discordapp.com/" target="_blank">Discord</a>: sorashi#1829</td>
+	<td><a href="https://ko-fi.com/C0C6Q4XR" target="_blank">ko-fi (coffee donation ☕🤤)</a></td>
+	<td><a href="https://keybase.io/sorashi/pgp_keys.asc" target="_blank">PGP key</a></td>
 </tr>
 </table>
 
