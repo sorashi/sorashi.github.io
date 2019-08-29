@@ -14,6 +14,7 @@ blockquote#pain {
   quotes: "\201C""\201D""\2018""\2019";
   padding: 10px 20px;
   line-height: 1.4;
+  font-family: "MS PGothic", "ＭＳ 明朝";
 }
 blockquote#pain:before {
   content: open-quote;
@@ -29,12 +30,15 @@ blockquote#pain:before {
 #pain>p{
   margin: 0;
 }
-
 #pain>footer{
   margin:0;
   text-align: right;
   font-size: 1em;
-  font-style: italic;
+}
+#pain>.translation {
+  font-family: sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
 }
 </style>
 <blockquote id="pain">
@@ -42,6 +46,10 @@ blockquote#pain:before {
 俺たちは<ruby>正義<rt>せいぎ</rt></ruby>という名の<ruby>復讐<rt>ふくしゅう</rt></ruby>へと<ruby>駆<rt>か</rt></ruby>り<ruby>立<rt>た</rt></ruby>てられた<ruby>普通<rt>ふつう</rt></ruby>の人間だ｡ だが復讐を正義というならばその正義は<ruby>更<rt>さら</rt></ruby>なる復讐を<ruby>生<rt>う</rt></ruby>み<ruby>憎<rt>にく</rt></ruby>しみの<ruby>連鎖<rt>れんさ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まる｡
 </p>
 <footer>ペイン</footer>
+<p class="translation">
+We are but men, drawn to act in the name of revenge that we deem to be justice. But if there is justice in revenge then that same justice will breed only more revenge and trigger a cycle of hatred.
+</p>
+<footer class="translation">Pain</footer>
 </blockquote>
 
 ### Contact me
