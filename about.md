@@ -4,6 +4,10 @@ title: About
 permalink: /about/
 ---
 
+> 俺たちは<ruby>正義<rt>せいぎ</rt></ruby>という名の<ruby>復讐<rt>ふくしゅう</rt></ruby>へと<ruby>駆<rt>か</rt></ruby>り<ruby>立<rt>た</rt></ruby>てられた<ruby>普通<rt>ふつう</rt></ruby>の人間だ｡ だが復讐を正義というならばその正義は<ruby>更<rt>さら</rt></ruby>なる復讐を<ruby>生<rt>う</rt></ruby>み<ruby>憎<rt>にく</rt></ruby>しみの<ruby>連鎖<rt>れんさ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まる｡
+
+- ペイン
+
 ### Contact me
 
 <style>
