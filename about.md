@@ -4,9 +4,45 @@ title: About
 permalink: /about/
 ---
 
-> 俺たちは<ruby>正義<rt>せいぎ</rt></ruby>という名の<ruby>復讐<rt>ふくしゅう</rt></ruby>へと<ruby>駆<rt>か</rt></ruby>り<ruby>立<rt>た</rt></ruby>てられた<ruby>普通<rt>ふつう</rt></ruby>の人間だ｡ だが復讐を正義というならばその正義は<ruby>更<rt>さら</rt></ruby>なる復讐を<ruby>生<rt>う</rt></ruby>み<ruby>憎<rt>にく</rt></ruby>しみの<ruby>連鎖<rt>れんさ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まる｡
+<style>
+blockquote#pain {
+  font-size: 30px;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .5em 10px;
+  padding: 0 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  padding: 10px 20px;
+  line-height: 1.4;
+}
+blockquote#pain:before {
+  content: open-quote;
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 30px;
+  color: #ccc;
+  font-size: 3em;
+}
+#pain>p{
+  margin: 0;
+}
 
-- ペイン
+#pain>footer{
+  margin:0;
+  text-align: right;
+  font-size: 1em;
+  font-style: italic;
+}
+</style>
+<blockquote id="pain">
+<p class="quotation">
+俺たちは<ruby>正義<rt>せいぎ</rt></ruby>という名の<ruby>復讐<rt>ふくしゅう</rt></ruby>へと<ruby>駆<rt>か</rt></ruby>り<ruby>立<rt>た</rt></ruby>てられた<ruby>普通<rt>ふつう</rt></ruby>の人間だ｡ だが復讐を正義というならばその正義は<ruby>更<rt>さら</rt></ruby>なる復讐を<ruby>生<rt>う</rt></ruby>み<ruby>憎<rt>にく</rt></ruby>しみの<ruby>連鎖<rt>れんさ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まる｡
+</p>
+<footer>ペイン</footer>
+</blockquote>
 
 ### Contact me
 
