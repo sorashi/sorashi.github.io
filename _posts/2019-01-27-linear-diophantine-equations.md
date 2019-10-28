@@ -29,9 +29,11 @@ Pojďme si ale ukázat, jak by vypadalo obecné řešení, které lze aplikovat 
 podobné úlohy pro jakákoli čísla $a, b, c\in \mathbb{Z}$.
 
 [Bézoutova rovnost](https://cs.wikipedia.org/wiki/B%C3%A9zoutova_rovnost) říká,
-že
+že:
 
-$$ax+by=c; a,b,c\in\mathbb{Z}; x,y\in\mathbb{Z} \wedge |K|=\infty \iff gcd(a,b)\mid c\,.$$
+*Nechť $c:=gcd(x,y)$, potom:*
+
+$$\forall x,y\in\mathbb{Z}\exists a,b\in\mathbb{Z}: ax+by=c\,.$$
 
 Jelikož $gcd(5,6)=1$, naše rovnice má celočíselná řešení. Abychom je zjistili, musíme
 nejdříve nalézt řešení pro $5x+6y=gcd(5,6)=1$. K tomu lze využít [Euklidův algoritmus](https://cs.wikipedia.org/wiki/Eukleid%C5%AFv_algoritmus).
