@@ -67,13 +67,14 @@ We are but men, drawn to act in the name of revenge that we deem to be justice. 
 <table class="contact">
 <tr>
 	<td><a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw" target="_blank">Tweet @itsSorashi</a></td>
-	<td><a href="https://niu.moe/@sorashi" target="_blank">Toot @sorashi@niu.moe</a></td>
+	<td><a href="mailto:prazak.dennis@gmail.com">Email</a></td>
+<!-- 	<td><a href="https://niu.moe/@sorashi" target="_blank">Toot @sorashi@niu.moe</a></td> -->
 	<td><a href="https://t.me/sorashi" target="_blank">Telegram @sorashi</a></td>
 </tr>
 <tr>
 	<td><a href="https://discordapp.com/" target="_blank">Discord</a>: sorashi#1829</td>
 	<td><a href="https://ko-fi.com/C0C6Q4XR" target="_blank">ko-fi (coffee donation ☕🤤)</a></td>
-	<td><a href="https://keybase.io/sorashi/pgp_keys.asc" target="_blank">PGP key</a></td>
+	<td><a href="https://keybase.io/sorashi/pgp_keys.asc" target="_blank">PGP key (or</a></td>
 </tr>
 </table>
 
@@ -86,8 +87,8 @@ Project|Description|Status
 [osu! Chocolatey package](https://chocolatey.org/packages/osu)|[Chocolatey](https://chocolatey.org/) package for [osu!](http://osu.ppy.sh) which I manage|managing
 [git-changes](https://github.com/sorashi/git-changes)|[git](https://git-scm.com/) command which allows you to see total changes in a repository|finished
 [Cleverbot.Net](https://github.com/sorashi/Cleverbot.Net)|C# library wrapper around [cleverbot.io](https://cleverbot.io/) API|active
-[HerbRecon](https://github.com/sorashi/HerbRecon)|GUI application for learning herb names (I did it to help myself study for the test)|finished
-[A LaTeX template](https://github.com/sorashi/latex-maturitni-prace)|LaTeX template for a Czech senior thesis|finished
+[HerbRecon](https://github.com/sorashi/HerbRecon)|GUI application for learning herb names (I did it to help myself study for a test)|finished
+[A LaTeX template](https://github.com/sorashi/latex-maturitni-prace)|LaTeX template for a Czech high-school thesis|finished
 
 ### Contributions
 
