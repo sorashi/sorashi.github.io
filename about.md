@@ -74,9 +74,13 @@ We are but men, drawn to act in the name of revenge that we deem to be justice. 
 <tr>
 	<td><a href="https://discordapp.com/" target="_blank">Discord</a>: sorashi#1829</td>
 	<td><a href="https://ko-fi.com/C0C6Q4XR" target="_blank">ko-fi (coffee donation ☕🤤)</a></td>
-	<td><a href="https://keybase.io/sorashi/pgp_keys.asc" target="_blank">PGP key (or</a></td>
+	<td><a href="https://keybase.io/sorashi/" target="_blank">keybase</a></td>
 </tr>
 </table>
+
+My PGP fingerprint `0x1267B02C81C3B2689A1EF9AF2B6997C991199960`
+
+You can import it from a [public pool](http://pool.sks-keyservers.net/) or [keybase](https://keybase.io/sorashi/).
 
 ### Open-source projects
 
