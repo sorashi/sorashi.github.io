@@ -2,6 +2,8 @@ from PIL import Image
 import requests
 from io import BytesIO
 
+# requires packages: Pillow, requests
+
 # This whole script was done using Google and StackOverflow
 # How to generate ico files
 # https://stackoverflow.com/a/36168447/1697953
