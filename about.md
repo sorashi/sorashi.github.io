@@ -108,4 +108,9 @@ Base62.<span></span>Net|[#1](https://github.com/JoyMoe/Base62.Net/issues/1), [#2
 Citador|[#99](https://github.com/nirewen/Citador/pull/99), [#100](https://github.com/nirewen/Citador/pull/100)|translation, code|BetterDiscord plugin which allows you to quote messages
 ImageGlass|[#253](https://github.com/d2phap/ImageGlass/issues/253)|feature request|Light-weight image viewer for Windows
 regex-username|[#2](https://github.com/regexhq/regex-username/issues/2)|bug report|Node.js library which checks for valid usernames
-rikaichamp|[#69](https://github.com/birtles/rikaichamp)|feature request|Browser extension pop-up dictionary for Japanese
+rikaichamp|[#69](https://github.com/birtles/rikaichamp/issues/69)|feature request|Browser extension pop-up dictionary for Japanese
+Newton's method with Sturm sequence|[multiple contributions](https://github.com/mpicek/Newton-s-method-with-Sturm-sequence/commits?author=sorashi)|input parsing and CI|Command-line polynomial root finder
+EndlessCrafting|[#2](https://github.com/valkyrienyanko/EndlessCrafting/pull/2)|readme|Terraria mod that adds recipes
+EarlyWings|[#2](https://github.com/valkyrienyanko/EarlyWings/pull/2)|readme|Another Terraria mod
+ONI Duplicity|[#75](https://github.com/RoboPhred/oni-duplicity/pull/75)|translation|Oxygen Not Included save editor
+Little Ninja|[#39](https://github.com/funkyzooink/little-ninja/pull/39)|translation|An Android game
