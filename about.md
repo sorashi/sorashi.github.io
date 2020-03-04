@@ -66,7 +66,7 @@ We are but men, drawn to act in the name of revenge that we deem to be justice. 
 </style>
 <table class="contact">
 <tr>
-	<td><a href="https://twitter.com/intent/tweet?screen_name=itsSorashi&ref_src=twsrc%5Etfw" target="_blank">Tweet @itsSorashi</a></td>
+	<td><a href="https://twitter.com/intent/tweet?screen_name=iamsorashi&ref_src=twsrc%5Etfw" target="_blank">Tweet @iamsorashi</a></td>
 	<td><a href="mailto:prazak.dennis@gmail.com">Email</a></td>
 <!-- 	<td><a href="https://niu.moe/@sorashi" target="_blank">Toot @sorashi@niu.moe</a></td> -->
 	<td><a href="https://t.me/sorashi" target="_blank">Telegram @sorashi</a></td>
