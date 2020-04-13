@@ -18,7 +18,7 @@ rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhld
 RikaiRebuilt|[Chrome](https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj) & [Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|[GitHub](https://github.com/Garethp/RikaiRebuilt)|None
 Rikaisama|[Firefox](https://sourceforge.net/projects/rikaisama/files/) (XPI, not published on Firefox addon site)|None|[Yes](http://rikaisama.sourceforge.net/)
 rikaiXUL|N/A|N/A|[mozdev](http://rikaixul.mozdev.org/)
-Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|Not Public|[Yes](https://foosoft.net/projects/yomichan/)
+Yomichan|[Chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)|[GitHub](https://github.com/FooSoft/yomichan)|[Yes](https://foosoft.net/projects/yomichan/)
 
 Now some information about some of them:
 
