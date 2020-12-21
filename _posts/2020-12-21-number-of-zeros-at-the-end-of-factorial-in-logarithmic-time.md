@@ -72,3 +72,11 @@ The first division counts a single five in $5, 10, 15, 20$ and $25$. The second 
 
 Our original problem is the result of $g(n,5)$. This runs in $\mathcal O(\log
 n)$ time. Nice.
+
+Now what's interesting and is just my unproven funny informal small conjecture (which I plan to think about later)
+
+$$\sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a_i}\rfloor=\lfloor \frac{n}{a-1}\rfloor -\xi(n)\,,$$
+
+where $\xi$ is an unknown function, with an average value of around 5, which is
+not a lot (*TODO add plot*). That means we have a good approximation for
+$g(n,a)$. That one is for the engineers. Bye~
