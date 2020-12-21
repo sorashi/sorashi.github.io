@@ -40,7 +40,7 @@ to pair with 5s, that we can just count the 5s. 5 can be paired with 2. 10 can b
 
 More formally, let's define
 
-$$g(n, a)\coloneqq \sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{mod } a^k)\right\}\cup \{0\}\right)\,,$$
+$$g(n, a):= \sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{mod } a^k)\right\}\cup \{0\}\right)\,,$$
 
 then for a given large $n$, it holds $g(n, 5)\leq g(n, 2)$, which can be easily
 seen. Generally $a>b \iff g(n,a)\leq g(n,b)$.
