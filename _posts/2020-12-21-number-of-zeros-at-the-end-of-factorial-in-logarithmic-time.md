@@ -6,7 +6,7 @@ title: Number of zeros at the end of a factorial in logarithmic time
 You might think that knowing the number of zeros that suffix the value of $n!$
 is useless. And you might be right. At least I haven't thought of any use.
 
-Even though, I want to leave this here, because I found this out while sovling
+Even though, I want to leave this here, because I found this out while solving
 something else.
 
 So the problem is:
