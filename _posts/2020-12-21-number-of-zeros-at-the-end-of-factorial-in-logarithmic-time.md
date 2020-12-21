@@ -15,7 +15,8 @@ So the problem is:
 for $n=5$, $n! = 15511210043330985984000000$, so the answer would be $6$.*
 
 We could compute the value of the factorial and count the number of zeros. We'd
-get the result this way in $\mathcal O(n!)$ time.
+get the result this way in $\mathcal O(n + \log (n!))$ time (compute $n!$ plus
+count the zeros), [which is](https://math.stackexchange.com/questions/2152256/big-o-notation-on-the-log-factorial) $\mathcal O(n\log (n))$.
 
 Let's use the following fact
 
