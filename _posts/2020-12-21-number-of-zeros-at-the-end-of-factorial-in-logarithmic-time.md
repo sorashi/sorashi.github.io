@@ -36,7 +36,7 @@ times we can divide $x$ by 5, and that's our result.
 $$\sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{mod } 5^k)\right\}\cup \{0\}\right)$$
 
 Why is that? Well, a ten is made from 2 and 5. Informally, there is so many 2s
-to pair with 5s, that we can just count the 5s. 5 can be paired with 2. 10 can be paired with the two in 4. The five in 15 can be paired with the second two in 4. 20 can be paired with a two in 8. And so on.
+to pair with 5s, that **we can just count the 5s**. 5 can be paired with 2. 10 can be paired with the two in 4. The five in 15 can be paired with the second two in 4. 20 can be paired with a two in 8. And so on.
 
 More formally, let's define
 
@@ -45,7 +45,7 @@ $$g(n, a):= \sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{
 then for a given large $n$, it holds $g(n, 5)\leq g(n, 2)$, which can be easily
 seen. Generally $a>b \iff g(n,a)\leq g(n,b)$.
 
-Now how do we compute $g(n, 5)$ efficiently? A straight-forward way is to go thorugh each number and try each $k$, that would be $\mathcal O(n^2)$. With a more clever approach, I'm sure this can be made $\mathcal O(n)$.
+Now how do we compute $g(n, 5)$ efficiently? A straight-forward way is to go through each number and try each $k$, that would be $\mathcal O(n^2)$. With a more clever approach, I'm sure this can be made $\mathcal O(n)$.
 
 But let's think even smaller.
 
