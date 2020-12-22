@@ -76,7 +76,7 @@ n)$ time. Nice.
 
 Now what's interesting and is just my unproven funny informal small conjecture (which I plan to think about later)
 
-$$\sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a_i}\rfloor=\lfloor \frac{n}{a-1}\rfloor -\xi(n, a)\,,$$
+$$\sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a^i}\rfloor=\lfloor \frac{n}{a-1}\rfloor -\xi(n, a)\,,$$
 
 where $\xi\colon (\mathbb N\times \mathbb N)\to \mathbb N$ is an unknown function, with an average
 value of around 5, which is not a lot. That means we have a
