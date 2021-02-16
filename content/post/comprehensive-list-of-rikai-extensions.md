@@ -2,6 +2,7 @@
 title: A comprehensive list of Rikai extensions
 date: 2018-12-05
 description: List of Rikai extensions – Japanese pop-up dictionary for your web browser
+slug: comprehensive-list-of-rikai-extensions
 categories: [Japanese]
 tags: [software]
 ---

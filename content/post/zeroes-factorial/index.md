@@ -3,6 +3,7 @@ title: Number of zeros at the end of a factorial in logarithmic time
 date: 2020-12-21
 tags:
     - math
+slug: number-of-zeros-at-the-end-of-factorial-in-logarithmic-time
 ---
 You might think that knowing the number of zeros that suffix the value of $n!$
 is useless. And you might be right. At least I haven't thought of any use.

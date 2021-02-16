@@ -2,6 +2,7 @@
 layout: post
 title: Asus E200HA Arch Linux Installation Guide
 description: How to install Arch Linux on Asus E200HA
+slug: asus-e200ha-arch
 date: 2020-02-01
 ---
 

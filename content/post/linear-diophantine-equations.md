@@ -3,6 +3,7 @@ layout: post
 title: (CZ) Lineární diofantické rovnice
 date: 2019-01-27
 tags: [math, czech]
+slug: linear-diophantine-equations
 ---
 
 Diofantické rovnice jsou <span class="hint" title="mající více neznámých, než rovností">podurčené</span> polynomiální rovnice, u kterých se hledá
