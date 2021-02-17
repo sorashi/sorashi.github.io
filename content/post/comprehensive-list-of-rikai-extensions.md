@@ -47,6 +47,7 @@ not only on dictionaries, but also the learning side of things. It has a built
 in integration for Anki, which makes the experience for Anki users a breeze.
 
 ### How can I decide on my rikai extension?
+
 Rikaichamp is the latest fork (deepest in the fork tree) with many performance
 improvements and an active development community. But you should definitely
 check out all the other choices, explore their features and decide which one

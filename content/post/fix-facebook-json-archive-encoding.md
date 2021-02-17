@@ -3,7 +3,7 @@ layout: post
 title: How to fix Facebook archive JSON encoding
 date: 2019-09-13
 lastmod: 2021-02-16T17:20:00+01:00
-disqus_url: https://sorashi.github.io/fix-facebook-json-archive-encoding/
+slug: fix-facebook-json-archive-encoding
 ---
 
 Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.
@@ -12,9 +12,9 @@ This allows you to display interesting statistics if you can work with JSON in a
 
 To request an archive of your messages follow these image clues (from Facebook settings):
 
-![](https://i.imgur.com/36BOBKr.png)
+![Image clue 1](https://i.imgur.com/36BOBKr.png)
 
-![](https://i.imgur.com/Uun4uJe.png)
+![Image clue 2](https://i.imgur.com/Uun4uJe.png)
 
 You might see a problem after you download your archive and load it in your script/program though. If you have any Unicode characters in your data Facebook's JSON strings will get corrupted when you parse them. It took me longer than it should to find out what's going on. And that's why I write this article - in hope to help others who find themselves in this situation.
 
