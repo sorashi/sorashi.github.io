@@ -30,7 +30,13 @@ So when Facebook says `\u00c5\u0099` they actually mean two separate bytes - `c5
 
 ## How to fix that
 
-Simple. I made a Ruby script which fixes all JSON files in your message inbox. It finds all `\u` sequences and replaces them with the respective byte. Then outputs the result. Enjoy.
+Use Regex to find all `\u00hh` sequences and replace them with the byte with the value of `hh`. The regex:
+
+```regex
+\\u00([a-f0-9]{2})
+```
+
+Here is a **Ruby** script which fixes all JSON files in your message inbox. Then outputs the result.
 
 ```ruby
 path = '../messages/inbox'
@@ -44,4 +50,13 @@ each{|file|
     )
     puts "Done #{file}"
 }
+```
+
+Snippet for **PHP**, which fixes all occurrences in `$your_input_text` and `echo`es the result.
+
+```php
+function replace_with_byte($match) {
+    return chr(hexdec($match[1]));
+}
+echo preg_replace_callback('/\\\\u00([a-f0-9]{2})/', 'replace_with_byte', $your_input_text);
 ```
