@@ -2,7 +2,7 @@
 layout: post
 title: How to fix Facebook archive JSON encoding
 date: 2019-09-13
-lastmod: 2021-02-16T17:20:00+01:00
+lastmod: 2021-03-01T13:07:00+01:00
 slug: fix-facebook-json-archive-encoding
 ---
 
