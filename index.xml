@@ -171,7 +171,9 @@ yay rxvt-unicode-pixbuf
 &lt;p>In other words Facebook meant to output two single bytes, but ended up outputting the Unicode characters with their respective Unicode numbers being the bytes' values in hexadecimal, which is actually four bytes in total. That is totally wrong and doesn&amp;rsquo;t make any sense at all! I hope Facebook realizes this soon and fixes it so others don&amp;rsquo;t have to enjoy this great experience of additional trouble.&lt;/p>
 &lt;p>So when Facebook says &lt;code>\u00c5\u0099&lt;/code> they actually mean two separate bytes - &lt;code>c5 99&lt;/code>. That is the byte sequence for the Unicode character &lt;code>\u0159&lt;/code> - &lt;code>ř&lt;/code>.&lt;/p>
 &lt;h2 id="how-to-fix-that">How to fix that&lt;/h2>
-&lt;p>Simple. I made a Ruby script which fixes all JSON files in your message inbox. It finds all &lt;code>\u&lt;/code> sequences and replaces them with the respective byte. Then outputs the result. Enjoy.&lt;/p>
+&lt;p>Use Regex to find all &lt;code>\u00hh&lt;/code> sequences and replace them with the byte with the value of &lt;code>hh&lt;/code>. The regex:&lt;/p>
+&lt;pre>&lt;code class="language-regex" data-lang="regex">\\u00([a-f0-9]{2})
+&lt;/code>&lt;/pre>&lt;p>Here is a &lt;strong>Ruby&lt;/strong> script which fixes all JSON files in your message inbox. Then outputs the result.&lt;/p>
 &lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;../messages/inbox&amp;#39;&lt;/span>
 &lt;span class="no">Dir&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;[\\/]$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/**/message_1.json&amp;#34;&lt;/span>&lt;span class="o">].&lt;/span>
 &lt;span class="n">each&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="o">|&lt;/span>
@@ -183,6 +185,11 @@ yay rxvt-unicode-pixbuf
 &lt;span class="p">)&lt;/span>
 &lt;span class="nb">puts&lt;/span> &lt;span class="s2">&amp;#34;Done &lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
 &lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Snippet for &lt;strong>PHP&lt;/strong>, which fixes all occurrences in &lt;code>$your_input_text&lt;/code> and &lt;code>echo&lt;/code>es the result.&lt;/p>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="k">function&lt;/span> &lt;span class="nf">replace_with_byte&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="nx">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">hexdec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]));&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">echo&lt;/span> &lt;span class="nx">preg_replace_callback&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;/\\\\u00([a-f0-9]{2})/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;replace_with_byte&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">$your_input_text&lt;/span>&lt;span class="p">);&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div></description></item><item><title>(CZ) Lineární diofantické rovnice</title><link>https://sorashi.github.io/linear-diophantine-equations/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/linear-diophantine-equations/</guid><description>&lt;p>Diofantické rovnice jsou &lt;span class="hint" title="mající více neznámých, než rovností">podurčené&lt;/span> polynomiální rovnice, u kterých se hledá
 řešení v množině $\mathbb{Z}$.&lt;/p>
 &lt;p>Lineární diofantická rovnice je rovnice ve tvaru součtu dvou monomů prvního řádu:&lt;/p>
