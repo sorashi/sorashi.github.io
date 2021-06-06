@@ -4,6 +4,7 @@ title: Asus E200HA Arch Linux Installation Guide
 description: How to install Arch Linux on Asus E200HA
 slug: asus-e200ha-arch
 date: 2020-02-01
+lsatmod: 2021-06-06
 ---
 
 ## Foreword
@@ -36,6 +37,8 @@ And so I decided to install Arch. Because Arch lets you install just what you wa
 Good luck and have fun!
 
 *Warning: As of late February 2020 there seem to be screen freezing issues.*
+
+Looks like **Linux Mint latest edition 20 Ulyana - Cinnamon 64** works out of the box for this device! Thank you Badd Pitt for your [comment](http://disq.us/p/2d7jp8j).
 
 ## Booting
 
