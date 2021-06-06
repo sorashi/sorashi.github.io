@@ -76,6 +76,8 @@ that the system isn&amp;rsquo;t configured to use (or recognize?) the audio card
 &lt;p>And so I decided to install Arch. Because Arch lets you install just what you want and because Arch usually has bleeding-edge kernel. And since installing Arch is not completely user-friendly I decided to make a small guide (or rather a log) specifically for this device. I don&amp;rsquo;t guarantee it will work and I&amp;rsquo;m not responsible for any damages you may cause to your device. It&amp;rsquo;s actually just a record of what I did for a successful install at the time.&lt;/p>
 &lt;p>Good luck and have fun!&lt;/p>
 &lt;p>&lt;em>Warning: As of late February 2020 there seem to be screen freezing issues.&lt;/em>&lt;/p>
+&lt;p>Looks like &lt;strong>Linux Mint latest edition 20 Ulyana - Cinnamon 64&lt;/strong> works out of the box for this device! Thank you Badd Pitt for your &lt;a class="link" href="http://disq.us/p/2d7jp8j" target="_blank" rel="noopener"
+>comment&lt;/a>.&lt;/p>
 &lt;h2 id="booting">Booting&lt;/h2>
 &lt;p>I used Rufus on Windows to burn &lt;code>archlinux-2019.12.01-x86_64.iso&lt;/code> to a drive in ISO mode.&lt;/p>
 &lt;p>Start E200HA and press F1 or F2 repeatedly until you&amp;rsquo;re shown the BIOS menu. Move to boot options and specify the USB drive as the first option. Then save and exit.&lt;/p>
