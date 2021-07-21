@@ -5,6 +5,7 @@ description: List of Rikai extensions – Japanese pop-up dictionary for your we
 slug: comprehensive-list-of-rikai-extensions
 categories: [Japanese]
 tags: [software]
+lastmod: 2021-07-21T16:29:40+02:00
 ---
 
 There are so many rikai extensions that I got lost when I was trying to find my choice.
@@ -16,7 +17,7 @@ We'll begin with what you're all here for:
 Name|Browser|Repository|Site
 ----|-------|----|----
 nazeka|[Firefox](https://addons.mozilla.org/cs/firefox/addon/nazeka/), works on Android|[GitHub](https://github.com/wareya/nazeka)|None
-Rikaichamp|[Firefox](https://addons.mozilla.org/cs/firefox/addon/rikaichamp/)|[GitHub](https://github.com/birtles/rikaichamp)|[Twitter](https://twitter.com/rikaichamp)
+10ten Japanese Reader (formerly Rikaichamp)|[Firefox](https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/)|[GitHub](https://github.com/birchill/10ten-ja-reader)|[Twitter](https://twitter.com/10tenstudy)
 rikaichan|[Chrome](https://chrome.google.com/webstore/detail/rikaichan/clidkjbfdlffpbbhlalnkifiehenkjaj?hl=en) & [Firefox](https://addons.mozilla.org/firefox/addon/rikaichan/)|[GitHub](https://github.com/Kalamandea/Rikaichan)|None
 rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en)|[GitHub](https://github.com/melink14/rikaikun)|None
 RikaiRebuilt|[Chrome](https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj) & [Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|[GitHub](https://github.com/Garethp/RikaiRebuilt)|None
@@ -28,7 +29,7 @@ Now some information about some of them:
 
 **nazeka** is a rikai replacement with many interesting features and options, which are listed in the [readme](https://github.com/wareya/nazeka/blob/master/readme.md) of the repository. It also works in Firefox on Android.
 
-**Rikaichamp** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
+**10ten Japanese Reader** is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It's very fast.
 
 **rikaichan** is a fork of rikaiXUL, which took over the development. Originally only for Firefox, it was eventually published for Chrome too.
 
@@ -48,7 +49,7 @@ in integration for Anki, which makes the experience for Anki users a breeze.
 
 ### How can I decide on my rikai extension?
 
-Rikaichamp is the latest fork (deepest in the fork tree) with many performance
+10ten Japanese Reader is the latest fork (deepest in the fork tree) with many performance
 improvements and an active development community. But you should definitely
 check out all the other choices, explore their features and decide which one
 has the best feel to it for you.
