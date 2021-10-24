@@ -1,14 +1,14 @@
 <!doctype html><html lang=en-us>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the ."><title>The .NET Drama of PR 22217</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (releasing on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the ."><title>The .NET Drama of PR 22217</title>
 <link rel=canonical href=https://sorashi.github.io/net-drama/>
 <link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="The .NET Drama of PR 22217">
-<meta property="og:description" content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
+<meta property="og:description" content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (releasing on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
 <meta property="og:url" content="https://sorashi.github.io/net-drama/">
 <meta property="og:site_name" content="Sorashi">
 <meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2021-10-24T00:00:00+00:00"><meta property="article:modified_time" content="2021-10-24T00:00:00+00:00">
 <meta name=twitter:site content="@iamSorashi"><meta name=twitter:title content="The .NET Drama of PR 22217">
-<meta name=twitter:description content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
+<meta name=twitter:description content="On October 20th, the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (releasing on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-112058345-1','auto'),ga('send','pageview'))</script>
 <script async src=https://www.google-analytics.com/analytics.js></script>
 </head>
@@ -76,7 +76,7 @@ created (and later merged) in the <a class=link href=https://github.com/dotnet/s
 repository. This change, named <em>Remove Hot Reload support from dotnet watch</em>,
 removed this awaited feature from the dotnet CLI and left it available only in
 Visual Studio 2022. Note that this change was done a few days before .NET 6
-release (realising on 2021-11-08), removing it from this version. The PR removed
+release (releasing on 2021-11-08), removing it from this version. The PR removed
 around 2,500 lines of code from the .NET SDK.</p>
 <p>Microsoft explained their reasoning in a blog post called <a class=link href=https://devblogs.microsoft.com/dotnet/update-on-net-hot-reload-progress-and-visual-studio-2022-highlights/ target=_blank rel=noopener>Update on .NET Hot
 Reload progress and Visual Studio 2022
