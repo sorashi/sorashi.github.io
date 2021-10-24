@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sorashi</title><link>https://sorashi.github.io/</link><description>Recent content on Sorashi</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://sorashi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Number of zeros at the end of a factorial in logarithmic time</title><link>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</link><pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</guid><description>&lt;p>You might think that knowing the number of zeros that suffix the value of $n!$
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sorashi</title><link>https://sorashi.github.io/</link><description>Recent content on Sorashi</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sorashi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>The .NET Drama of PR \#22217</title><link>https://sorashi.github.io/net-drama/</link><pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/net-drama/</guid><description>&lt;p>On October 20th, a the PR &lt;a class="link" href="https://github.com/dotnet/sdk/pull/22217" target="_blank" rel="noopener"
+>#22217&lt;/a> was
+created (and later merged) in the &lt;a class="link" href="https://github.com/dotnet/sdk" target="_blank" rel="noopener"
+>dotnet/sdk&lt;/a>
+repository. This change, named &lt;em>Remove Hot Reload support from dotnet watch&lt;/em>,
+removed this awaited feature from the dotnet CLI and left it available only in
+Visual Studio 2022. Note that this change was done a few days before .NET 6
+release (realising on 2021-11-08), removing it from this version. The PR removed
+around 2,500 lines of code from the .NET SDK.&lt;/p>
+&lt;p>Microsoft explained their reasoning in a blog post called &lt;a class="link" href="https://devblogs.microsoft.com/dotnet/update-on-net-hot-reload-progress-and-visual-studio-2022-highlights/" target="_blank" rel="noopener"
+>Update on .NET Hot
+Reload progress and Visual Studio 2022
+Highlights&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>With these considerations, we&amp;rsquo;ve decided that starting with the upcoming .NET
+6 GA release, we will enable Hot Reload functionality only through Visual
+Studio 2022 so we can focus on providing the best experiences to the most
+users. [&amp;hellip;] To clarify, we are not releasing Hot Reload as a feature of the
+&lt;code>dotnet watch&lt;/code> tool.&lt;/p>
+&lt;/blockquote>
+&lt;p>This statement and removal resulted in a large backlash and discussion from the
+open-source .NET community. The Verge covers this story with information from
+the inside of Microsoft in their article called &lt;a class="link" href="https://www.theverge.com/2021/10/22/22740701/microsoft-dotnet-hot-reload-removal-decision-open-source" target="_blank" rel="noopener"
+>Microsoft angers the .NET open
+source community with a controversial
+decision&lt;/a>.
+The main complains were that the feature should keep cross-platform support and
+not limit it to Windows (and later Mac through VS for Mac).&lt;/p>
+&lt;p>One of the protesting developer created the PR
+&lt;a class="link" href="https://github.com/dotnet/sdk/pull/22262/" target="_blank" rel="noopener"
+>#22262&lt;/a> reverting the changes. This
+PR is one of the most (if not &lt;em>the&lt;/em> most) approved PR in the history of GitHub,
+accumulating 417 unique approving reviews with a total of 523 PR participants at
+the time of writing.&lt;/p>
+&lt;p>This PR was merged in around 29 hours&lt;/p>
+&lt;p>&lt;img src="net-drama-merge.png" alt="" />&lt;/p>
+&lt;p>with a follow-up blog post (&lt;a class="link" href="https://devblogs.microsoft.com/dotnet/net-hot-reload-support-via-cli/" target="_blank" rel="noopener"
+>.NET Hot Reload Support via
+CLI&lt;/a>)
+from Microsoft apologizing about the change.&lt;/p>
+&lt;p>This decision was followed by another story from The Verge called &lt;a class="link" href="https://www.theverge.com/2021/10/23/22742282/microsoft-dotnet-hot-reload-u-turn-response" target="_blank" rel="noopener"
+>Microsoft
+reverses controversial .NET change after open source community
+outcry&lt;/a>.&lt;/p></description></item><item><title>Number of zeros at the end of a factorial in logarithmic time</title><link>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</link><pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</guid><description>&lt;p>You might think that knowing the number of zeros that suffix the value of $n!$
 is useless. And you might be right. At least I haven&amp;rsquo;t thought of any use.&lt;/p>
 &lt;p>Even though, I want to leave this here, because I found this out while solving
 something else.&lt;/p>
@@ -174,7 +217,7 @@ yay rxvt-unicode-pixbuf
 &lt;p>So when Facebook says &lt;code>\u00c5\u0099&lt;/code> they actually mean two separate bytes - &lt;code>c5 99&lt;/code>. That is the byte sequence for the Unicode character &lt;code>\u0159&lt;/code> - &lt;code>ř&lt;/code>.&lt;/p>
 &lt;h2 id="how-to-fix-that">How to fix that&lt;/h2>
 &lt;p>Use Regex to find all &lt;code>\u00hh&lt;/code> sequences and replace them with the byte with the value of &lt;code>hh&lt;/code>. The regex:&lt;/p>
-&lt;pre>&lt;code class="language-regex" data-lang="regex">\\u00([a-f0-9]{2})
+&lt;pre tabindex="0">&lt;code class="language-regex" data-lang="regex">\\u00([a-f0-9]{2})
 &lt;/code>&lt;/pre>&lt;p>Here is a &lt;strong>Ruby&lt;/strong> script which fixes all JSON files in your message inbox. Then outputs the result.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;../messages/inbox&amp;#39;&lt;/span>
 &lt;span class="no">Dir&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;[\\/]$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/**/message_1.json&amp;#34;&lt;/span>&lt;span class="o">].&lt;/span>

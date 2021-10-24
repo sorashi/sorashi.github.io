@@ -1,17 +1,14 @@
 <!doctype html><html lang=en-us>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.
-This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit."><title>How to fix Facebook archive JSON encoding</title>
-<link rel=canonical href=https://sorashi.github.io/fix-facebook-json-archive-encoding/>
-<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="How to fix Facebook archive JSON encoding">
-<meta property="og:description" content="Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.
-This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit.">
-<meta property="og:url" content="https://sorashi.github.io/fix-facebook-json-archive-encoding/">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="On October 20th, a the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the ."><title>The .NET Drama of PR \#22217</title>
+<link rel=canonical href=https://sorashi.github.io/net-drama/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="The .NET Drama of PR \#22217">
+<meta property="og:description" content="On October 20th, a the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
+<meta property="og:url" content="https://sorashi.github.io/net-drama/">
 <meta property="og:site_name" content="Sorashi">
-<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2019-09-13T00:00:00+00:00"><meta property="article:modified_time" content="2021-03-01T13:07:00+01:00">
-<meta name=twitter:site content="@iamSorashi"><meta name=twitter:title content="How to fix Facebook archive JSON encoding">
-<meta name=twitter:description content="Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.
-This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit.">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2021-10-24T00:00:00+00:00"><meta property="article:modified_time" content="2021-10-24T00:00:00+00:00">
+<meta name=twitter:site content="@iamSorashi"><meta name=twitter:title content="The .NET Drama of PR \#22217">
+<meta name=twitter:description content="On October 20th, a the PR #22217 was created (and later merged) in the dotnet/sdk repository. This change, named Remove Hot Reload support from dotnet watch, removed this awaited feature from the dotnet CLI and left it available only in Visual Studio 2022. Note that this change was done a few days before .NET 6 release (realising on 2021-11-08), removing it from this version. The PR removed around 2,500 lines of code from the .">
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-112058345-1','auto'),ga('send','pageview'))</script>
 <script async src=https://www.google-analytics.com/analytics.js></script>
 </head>
@@ -67,52 +64,53 @@ This allows you to display interesting statistics if you can work with JSON in a
 <header class=article-header>
 <div class=article-details>
 <h2 class=article-title>
-<a href=/fix-facebook-json-archive-encoding/>How to fix Facebook archive JSON encoding</a>
+<a href=/net-drama/>The .NET Drama of PR \#22217</a>
 </h2>
 <footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--published>2019-09-13</time>
+<time class=article-time--published>2021-10-24</time>
 </footer></div>
 </header>
 <section class=article-content>
-<p>Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.</p>
-<p>This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit.</p>
-<p>To request an archive of your messages follow these image clues (from Facebook settings):</p>
-<p><img src=https://i.imgur.com/36BOBKr.png alt="Image clue 1"></p>
-<p><img src=https://i.imgur.com/Uun4uJe.png alt="Image clue 2"></p>
-<p>You might see a problem after you download your archive and load it in your script/program though. If you have any Unicode characters in your data Facebook&rsquo;s JSON strings will get corrupted when you parse them. It took me longer than it should to find out what&rsquo;s going on. And that&rsquo;s why I write this article - in hope to help others who find themselves in this situation.</p>
-<h2 id=whats-going-on>What&rsquo;s going on</h2>
-<p>Facebook apparently represents UTF-8 characters in a broken way. Instead of outputting one <code>\u</code> escape sequence for each Unicode character, Facebook actually outputs two or more in their JSON strings. An example of a Unicode character in a Facebook JSON file is <code>\u00c5\u0099</code>. This is supposed to be a single character <code>\u0159</code> or Latin Small Letter R with Caron - <code>ř</code>. So what&rsquo;s going on? It&rsquo;s simple - Facebook doesn&rsquo;t understand Unicode as a single character, but rather as separate bytes. In our case the bytes <code>c5 99</code> in hexadecimal.</p>
-<p>The problem is that when Facebook puts <code>\u00c5\u0099</code> in a JSON string, most JSON prasers understand that as two Unicode characters. That&rsquo;s because the escape sequence <code>\u00c5</code> is actually the Unicode code for <code>Å</code> and <code>\u0099</code> is a Unicode control character. <code>Å</code> is represented as two bytes in a proper UTF-8 file - <code>c3 85</code> in hexadecimal. Same for <code>\u0099</code> - two bytes - <code>c2 99</code>.</p>
-<p>In other words Facebook meant to output two single bytes, but ended up outputting the Unicode characters with their respective Unicode numbers being the bytes' values in hexadecimal, which is actually four bytes in total. That is totally wrong and doesn&rsquo;t make any sense at all! I hope Facebook realizes this soon and fixes it so others don&rsquo;t have to enjoy this great experience of additional trouble.</p>
-<p>So when Facebook says <code>\u00c5\u0099</code> they actually mean two separate bytes - <code>c5 99</code>. That is the byte sequence for the Unicode character <code>\u0159</code> - <code>ř</code>.</p>
-<h2 id=how-to-fix-that>How to fix that</h2>
-<p>Use Regex to find all <code>\u00hh</code> sequences and replace them with the byte with the value of <code>hh</code>. The regex:</p>
-<pre tabindex=0><code class=language-regex data-lang=regex>\\u00([a-f0-9]{2})
-</code></pre><p>Here is a <strong>Ruby</strong> script which fixes all JSON files in your message inbox. Then outputs the result.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-ruby data-lang=ruby><span class=n>path</span> <span class=o>=</span> <span class=s1>&#39;../messages/inbox&#39;</span>
-<span class=no>Dir</span><span class=o>[</span><span class=s2>&#34;</span><span class=si>#{</span><span class=n>path</span><span class=o>.</span><span class=n>sub</span><span class=p>(</span><span class=s1>&#39;[\\/]$&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>)</span><span class=si>}</span><span class=s2>/**/message_1.json&#34;</span><span class=o>].</span>
-<span class=n>each</span><span class=p>{</span><span class=o>|</span><span class=n>file</span><span class=o>|</span>
-    <span class=no>File</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>file</span><span class=p>,</span>
-        <span class=no>File</span><span class=o>.</span><span class=n>read</span><span class=p>(</span><span class=n>file</span><span class=p>)</span>
-        <span class=o>.</span><span class=n>gsub</span><span class=p>(</span><span class=sr>/\\u00([a-f0-9]{2})/</span><span class=p>)</span> <span class=p>{</span><span class=o>|</span><span class=n>m</span><span class=o>|</span>
-            <span class=vg>$1</span><span class=o>.</span><span class=n>to_i</span><span class=p>(</span><span class=mi>16</span><span class=p>)</span><span class=o>.</span><span class=n>chr</span>
-        <span class=p>}</span>
-    <span class=p>)</span>
-    <span class=nb>puts</span> <span class=s2>&#34;Done </span><span class=si>#{</span><span class=n>file</span><span class=si>}</span><span class=s2>&#34;</span>
-<span class=p>}</span>
-</code></pre></div><p>Snippet for <strong>PHP</strong>, which fixes all occurrences in <code>$your_input_text</code> and <code>echo</code>es the result.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>function</span> <span class=nf>replace_with_byte</span><span class=p>(</span><span class=nv>$match</span><span class=p>)</span> <span class=p>{</span>
-    <span class=k>return</span> <span class=nx>chr</span><span class=p>(</span><span class=nx>hexdec</span><span class=p>(</span><span class=nv>$match</span><span class=p>[</span><span class=mi>1</span><span class=p>]));</span>
-<span class=p>}</span>
-<span class=k>echo</span> <span class=nx>preg_replace_callback</span><span class=p>(</span><span class=s1>&#39;/\\\\u00([a-f0-9]{2})/&#39;</span><span class=p>,</span> <span class=s1>&#39;replace_with_byte&#39;</span><span class=p>,</span> <span class=nv>$your_input_text</span><span class=p>);</span>
-</code></pre></div>
+<p>On October 20th, a the PR <a class=link href=https://github.com/dotnet/sdk/pull/22217 target=_blank rel=noopener>#22217</a> was
+created (and later merged) in the <a class=link href=https://github.com/dotnet/sdk target=_blank rel=noopener>dotnet/sdk</a>
+repository. This change, named <em>Remove Hot Reload support from dotnet watch</em>,
+removed this awaited feature from the dotnet CLI and left it available only in
+Visual Studio 2022. Note that this change was done a few days before .NET 6
+release (realising on 2021-11-08), removing it from this version. The PR removed
+around 2,500 lines of code from the .NET SDK.</p>
+<p>Microsoft explained their reasoning in a blog post called <a class=link href=https://devblogs.microsoft.com/dotnet/update-on-net-hot-reload-progress-and-visual-studio-2022-highlights/ target=_blank rel=noopener>Update on .NET Hot
+Reload progress and Visual Studio 2022
+Highlights</a>.</p>
+<blockquote>
+<p>With these considerations, we&rsquo;ve decided that starting with the upcoming .NET
+6 GA release, we will enable Hot Reload functionality only through Visual
+Studio 2022 so we can focus on providing the best experiences to the most
+users. [&mldr;] To clarify, we are not releasing Hot Reload as a feature of the
+<code>dotnet watch</code> tool.</p>
+</blockquote>
+<p>This statement and removal resulted in a large backlash and discussion from the
+open-source .NET community. The Verge covers this story with information from
+the inside of Microsoft in their article called <a class=link href=https://www.theverge.com/2021/10/22/22740701/microsoft-dotnet-hot-reload-removal-decision-open-source target=_blank rel=noopener>Microsoft angers the .NET open
+source community with a controversial
+decision</a>.
+The main complains were that the feature should keep cross-platform support and
+not limit it to Windows (and later Mac through VS for Mac).</p>
+<p>One of the protesting developer created the PR
+<a class=link href=https://github.com/dotnet/sdk/pull/22262/ target=_blank rel=noopener>#22262</a> reverting the changes. This
+PR is one of the most (if not <em>the</em> most) approved PR in the history of GitHub,
+accumulating 417 unique approving reviews with a total of 523 PR participants at
+the time of writing.</p>
+<p>This PR was merged in around 29 hours</p>
+<p><img src=net-drama-merge.png alt></p>
+<p>with a follow-up blog post (<a class=link href=https://devblogs.microsoft.com/dotnet/net-hot-reload-support-via-cli/ target=_blank rel=noopener>.NET Hot Reload Support via
+CLI</a>)
+from Microsoft apologizing about the change.</p>
+<p>This decision was followed by another story from The Verge called <a class=link href=https://www.theverge.com/2021/10/23/22742282/microsoft-dotnet-hot-reload-u-turn-response target=_blank rel=noopener>Microsoft
+reverses controversial .NET change after open source community
+outcry</a>.</p>
 </section>
 <footer class=article-footer>
-<section class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<span class=article-time--modified>
-Last updated on 2021-03-01 13:07 +0100
-</span>
-</section></footer>
+</footer>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})})</script>
 </article>
 <aside class=related-contents--wrapper>
