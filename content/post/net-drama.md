@@ -11,7 +11,7 @@ created (and later merged) in the [dotnet/sdk](https://github.com/dotnet/sdk)
 repository. This change, named *Remove Hot Reload support from dotnet watch*,
 removed this awaited feature from the dotnet CLI and left it available only in
 Visual Studio 2022. Note that this change was done a few days before .NET 6
-release (realising on 2021-11-08), removing it from this version. The PR removed
+release (releasing on 2021-11-08), removing it from this version. The PR removed
 around 2,500 lines of code from the .NET SDK.
 
 Microsoft explained their reasoning in a blog post called [Update on .NET Hot
