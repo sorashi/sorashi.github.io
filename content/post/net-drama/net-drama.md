@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The .NET Drama of PR \#22217
+title: The .NET Drama of PR 22217
 date: 2021-10-24
 lastmod: 2021-10-24
 slug: net-drama
