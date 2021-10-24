@@ -6,7 +6,7 @@ lastmod: 2021-10-24
 slug: net-drama
 ---
 
-On October 20th, a the PR [#22217](https://github.com/dotnet/sdk/pull/22217) was
+On October 20th, the PR [#22217](https://github.com/dotnet/sdk/pull/22217) was
 created (and later merged) in the [dotnet/sdk](https://github.com/dotnet/sdk)
 repository. This change, named *Remove Hot Reload support from dotnet watch*,
 removed this awaited feature from the dotnet CLI and left it available only in
