@@ -61,7 +61,7 @@ function replace_with_byte($match) {
 echo preg_replace_callback('/\\\\u00([a-f0-9]{2})/', 'replace_with_byte', $your_input_text);
 ```
 
-Python version
+**Python** version (might need some performance improvements):
 
 ```python
 import re
