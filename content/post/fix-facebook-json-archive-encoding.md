@@ -2,7 +2,7 @@
 layout: post
 title: How to fix Facebook archive JSON encoding
 date: 2019-09-13
-lastmod: 2021-03-01T13:07:00+01:00
+lastmod: 2022-01-04T00:35:00+01:00
 slug: fix-facebook-json-archive-encoding
 ---
 
@@ -59,4 +59,19 @@ function replace_with_byte($match) {
     return chr(hexdec($match[1]));
 }
 echo preg_replace_callback('/\\\\u00([a-f0-9]{2})/', 'replace_with_byte', $your_input_text);
+```
+
+Python version
+
+```python
+import re
+
+text = "This is some text with the letter \\u00c5\\u0099 inside"
+replaced = re.sub(r'\\u00([a-f0-9]{2})', lambda x: chr(int(x.group(1), 16)), text)
+
+print(repr(replaced)) # 'This is some text with the letter Å\x99 inside'
+
+buffer = [ord(c) for c in replaced]
+result = bytes(buffer).decode('utf-8')
+print(result) # This is some text with the letter ř inside
 ```
