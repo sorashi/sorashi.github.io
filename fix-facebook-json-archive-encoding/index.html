@@ -105,7 +105,7 @@ This allows you to display interesting statistics if you can work with JSON in a
     <span class=k>return</span> <span class=nx>chr</span><span class=p>(</span><span class=nx>hexdec</span><span class=p>(</span><span class=nv>$match</span><span class=p>[</span><span class=mi>1</span><span class=p>]));</span>
 <span class=p>}</span>
 <span class=k>echo</span> <span class=nx>preg_replace_callback</span><span class=p>(</span><span class=s1>&#39;/\\\\u00([a-f0-9]{2})/&#39;</span><span class=p>,</span> <span class=s1>&#39;replace_with_byte&#39;</span><span class=p>,</span> <span class=nv>$your_input_text</span><span class=p>);</span>
-</code></pre></div><p>Python version</p>
+</code></pre></div><p><strong>Python</strong> version (might need some performance improvements):</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>re</span>
 
 <span class=n>text</span> <span class=o>=</span> <span class=s2>&#34;This is some text with the letter </span><span class=se>\\</span><span class=s2>u00c5</span><span class=se>\\</span><span class=s2>u0099 inside&#34;</span>
