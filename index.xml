@@ -129,18 +129,18 @@ that the system isn&amp;rsquo;t configured to use (or recognize?) the audio card
 &lt;ul>
 &lt;li>To connect to eduroam, create &lt;code>wpa_supplicant&lt;/code> config file: &lt;code>vi wpa_supplicant.conf&lt;/code>&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">ctrl_interface=/run/wpa_supplicant
-update_config=1
-# ^ these two lines may not be needed
-network={
-ssid=&amp;#34;eduroam&amp;#34;
-key_mgmt=WPA-EAP
-eap=PEAP
-phase2=&amp;#34;none&amp;#34;
-identity=&amp;#34;*username*&amp;#34;
-password=&amp;#34;*password*&amp;#34;
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">ctrl_interface=/run/wpa_supplicant
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">update_config=1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># ^ these two lines may not be needed
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">network={
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssid=&amp;#34;eduroam&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> key_mgmt=WPA-EAP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eap=PEAP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> phase2=&amp;#34;none&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> identity=&amp;#34;*username*&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> password=&amp;#34;*password*&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>check if &lt;code>wlan0&lt;/code> interface exists: &lt;code>ip link&lt;/code>&lt;/li>
 &lt;li>see if you can connect to eduroam: &lt;code>wpa_supplicant -i wlan0 -c wpa_supplicant.conf&lt;/code>&lt;/li>
 &lt;li>cancel the process if the connection was successful; run it in background as a daemon: &lt;code>wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf&lt;/code>&lt;/li>
@@ -149,62 +149,62 @@ password=&amp;#34;*password*&amp;#34;
 &lt;/ul>
 &lt;h2 id="installation">Installation&lt;/h2>
 &lt;p>Use &lt;code>cfdisk /dev/mmcblk0&lt;/code> to create (in this order)&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">300M EFI Filesystem
-1G Linux swap
-rest Linux filesystem
-&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">mkfs.fat -F32 /dev/mmcblk0p1
-mkswap /dev/mmcblk0p2
-mkfs.ext4 /dev/mmcblk0p3
-mount /dev/mmcblk0p3 /mnt
-swapon /dev/mmcblk0p2
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Edit mirrorlist to have your preferred mirrors at the top
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">300M EFI Filesystem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1G Linux swap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rest Linux filesystem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkfs.fat -F32 /dev/mmcblk0p1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkswap /dev/mmcblk0p2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkfs.ext4 /dev/mmcblk0p3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/mmcblk0p3 /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">swapon /dev/mmcblk0p2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Edit mirrorlist to have your preferred mirrors at the top
 &lt;code>vi /etc/pacman.d/mirrorlist&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel linux linux-firmware
-genfstab -U -p /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
-arch-chroot /mnt
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Choose a hostname&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="nb">echo&lt;/span> your_hostname &amp;gt; /etc/hostname
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Uncomment &lt;code>en_US.UTF-8 UTF-8&lt;/code> and &lt;code>en_US ISO-8859-1&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">pacman -S vim
-vim /etc/locale.gen
-locale_gen
-&lt;span class="nb">echo&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8 &amp;gt; /etc/locale.conf
-&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Find your zone in &lt;code>/usr/share/zoneinfo/&lt;/code> using &lt;code>ls&lt;/code> and then&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
-hwclock --systohc --utc
-passwd
-useradd -mg users -G wheel -s /bin/bash your_username
-passwd your_username
-pacman -S dhcp dhcpcd wpa_supplicant dialog netctl sudo
-vim /etc/sudoers &lt;span class="c1"># uncomment %wheel ALL=(ALL) ALL&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now to the bootloader!&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">pacman -S grub efibootmgr dosfstools os-prober mtools
-mkdir /boot/EFI
-mount /dev/mmcblk0p1 /boot/EFI
-grub-install --target&lt;span class="o">=&lt;/span>x86_64-efi --bootloader-id&lt;span class="o">=&lt;/span>grub_uefi --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
-&lt;span class="nb">exit&lt;/span>
-umount -a
-telinit &lt;span class="m">6&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>After reboot:
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacstrap /mnt base base-devel linux linux-firmware
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">genfstab -U -p /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">arch-chroot /mnt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Choose a hostname&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> your_hostname &amp;gt; /etc/hostname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Uncomment &lt;code>en_US.UTF-8 UTF-8&lt;/code> and &lt;code>en_US ISO-8859-1&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim /etc/locale.gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">locale_gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Find your zone in &lt;code>/usr/share/zoneinfo/&lt;/code> using &lt;code>ls&lt;/code> and then&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hwclock --systohc --utc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">useradd -mg users -G wheel -s /bin/bash your_username
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd your_username
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pacman -S dhcp dhcpcd wpa_supplicant dialog netctl sudo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim /etc/sudoers &lt;span class="c1"># uncomment %wheel ALL=(ALL) ALL&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now to the bootloader!&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S grub efibootmgr dosfstools os-prober mtools
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir /boot/EFI
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/mmcblk0p1 /boot/EFI
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-install --target&lt;span class="o">=&lt;/span>x86_64-efi --bootloader-id&lt;span class="o">=&lt;/span>grub_uefi --recheck
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">umount -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">telinit &lt;span class="m">6&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After reboot:
 Connect to wifi either using wifi-menu or create a profile in /etc/netctl then&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">sudo ip link _ down &lt;span class="c1"># _ is your interface, find it using ip&lt;/span>
-sudo netctl start profile_name
-sudo dhcpcd
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Install xorg server&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">sudo pacman -S xf86-video-intel xorg-server-xephyr
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now install your desired display manager, desktop environment and terminal, for example&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">pacman -S lightdm i3-gaps dmenu i3-status rxvt-unicode
-sudo systemctl &lt;span class="nb">enable&lt;/span> lightdm
-reboot
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Congratulations! Now go have fun and make your system comfortable. Be sure to comment if you found a mistake, have problems or just want to add something.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo ip link _ down &lt;span class="c1"># _ is your interface, find it using ip&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo netctl start profile_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo dhcpcd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Install xorg server&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo pacman -S xf86-video-intel xorg-server-xephyr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now install your desired display manager, desktop environment and terminal, for example&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S lightdm i3-gaps dmenu i3-status rxvt-unicode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl &lt;span class="nb">enable&lt;/span> lightdm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reboot
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Congratulations! Now go have fun and make your system comfortable. Be sure to comment if you found a mistake, have problems or just want to add something.&lt;/p>
 &lt;hr>
 &lt;p>What I personally installed after that:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">pacman -S yay git ranger
-yay powerline-fonts-git &lt;span class="c1"># then use &amp;#34;DejaVu Sans Mono for Powerline&amp;#34; font in your terminal&lt;/span>
-yay rxvt-unicode-pixbuf
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>I might add other things later 🙂&lt;/p></description></item><item><title>How to fix Facebook archive JSON encoding</title><link>https://sorashi.github.io/fix-facebook-json-archive-encoding/</link><pubDate>Fri, 13 Sep 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/fix-facebook-json-archive-encoding/</guid><description>&lt;p>Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S yay git ranger
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yay powerline-fonts-git &lt;span class="c1"># then use &amp;#34;DejaVu Sans Mono for Powerline&amp;#34; font in your terminal&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yay rxvt-unicode-pixbuf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I might add other things later 🙂&lt;/p></description></item><item><title>How to fix Facebook archive JSON encoding</title><link>https://sorashi.github.io/fix-facebook-json-archive-encoding/</link><pubDate>Fri, 13 Sep 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/fix-facebook-json-archive-encoding/</guid><description>&lt;p>Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.&lt;/p>
 &lt;p>This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit.&lt;/p>
 &lt;p>To request an archive of your messages follow these image clues (from Facebook settings):&lt;/p>
 &lt;p>&lt;img src="https://i.imgur.com/36BOBKr.png" alt="Image clue 1" />&lt;/p>
@@ -213,37 +213,40 @@ yay rxvt-unicode-pixbuf
 &lt;h2 id="whats-going-on">What&amp;rsquo;s going on&lt;/h2>
 &lt;p>Facebook apparently represents UTF-8 characters in a broken way. Instead of outputting one &lt;code>\u&lt;/code> escape sequence for each Unicode character, Facebook actually outputs two or more in their JSON strings. An example of a Unicode character in a Facebook JSON file is &lt;code>\u00c5\u0099&lt;/code>. This is supposed to be a single character &lt;code>\u0159&lt;/code> or Latin Small Letter R with Caron - &lt;code>ř&lt;/code>. So what&amp;rsquo;s going on? It&amp;rsquo;s simple - Facebook doesn&amp;rsquo;t understand Unicode as a single character, but rather as separate bytes. In our case the bytes &lt;code>c5 99&lt;/code> in hexadecimal.&lt;/p>
 &lt;p>The problem is that when Facebook puts &lt;code>\u00c5\u0099&lt;/code> in a JSON string, most JSON prasers understand that as two Unicode characters. That&amp;rsquo;s because the escape sequence &lt;code>\u00c5&lt;/code> is actually the Unicode code for &lt;code>Å&lt;/code> and &lt;code>\u0099&lt;/code> is a Unicode control character. &lt;code>Å&lt;/code> is represented as two bytes in a proper UTF-8 file - &lt;code>c3 85&lt;/code> in hexadecimal. Same for &lt;code>\u0099&lt;/code> - two bytes - &lt;code>c2 99&lt;/code>.&lt;/p>
-&lt;p>In other words Facebook meant to output two single bytes, but ended up outputting the Unicode characters with their respective Unicode numbers being the bytes' values in hexadecimal, which is actually four bytes in total. That is totally wrong and doesn&amp;rsquo;t make any sense at all! I hope Facebook realizes this soon and fixes it so others don&amp;rsquo;t have to enjoy this great experience of additional trouble.&lt;/p>
+&lt;p>In other words Facebook meant to output two single bytes, but ended up outputting the Unicode characters with their respective Unicode numbers being the bytes&amp;rsquo; values in hexadecimal, which is actually four bytes in total. That is totally wrong and doesn&amp;rsquo;t make any sense at all! I hope Facebook realizes this soon and fixes it so others don&amp;rsquo;t have to enjoy this great experience of additional trouble.&lt;/p>
 &lt;p>So when Facebook says &lt;code>\u00c5\u0099&lt;/code> they actually mean two separate bytes - &lt;code>c5 99&lt;/code>. That is the byte sequence for the Unicode character &lt;code>\u0159&lt;/code> - &lt;code>ř&lt;/code>.&lt;/p>
 &lt;h2 id="how-to-fix-that">How to fix that&lt;/h2>
 &lt;p>Use Regex to find all &lt;code>\u00hh&lt;/code> sequences and replace them with the byte with the value of &lt;code>hh&lt;/code>. The regex:&lt;/p>
 &lt;pre tabindex="0">&lt;code class="language-regex" data-lang="regex">\\u00([a-f0-9]{2})
 &lt;/code>&lt;/pre>&lt;p>Here is a &lt;strong>Ruby&lt;/strong> script which fixes all JSON files in your message inbox. Then outputs the result.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;../messages/inbox&amp;#39;&lt;/span>
-&lt;span class="no">Dir&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;[\\/]$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/**/message_1.json&amp;#34;&lt;/span>&lt;span class="o">].&lt;/span>
-&lt;span class="n">each&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="o">|&lt;/span>
-&lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="o">.&lt;/span>&lt;span class="n">gsub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sr">/\\u00([a-f0-9]{2})/&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="o">|&lt;/span>
-&lt;span class="vg">$1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">to_i&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chr&lt;/span>
-&lt;span class="p">}&lt;/span>
-&lt;span class="p">)&lt;/span>
-&lt;span class="nb">puts&lt;/span> &lt;span class="s2">&amp;#34;Done &lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
-&lt;span class="p">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Snippet for &lt;strong>PHP&lt;/strong>, which fixes all occurrences in &lt;code>$your_input_text&lt;/code> and &lt;code>echo&lt;/code>es the result.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="k">function&lt;/span> &lt;span class="nf">replace_with_byte&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;span class="k">return&lt;/span> &lt;span class="nx">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">hexdec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]));&lt;/span>
-&lt;span class="p">}&lt;/span>
-&lt;span class="k">echo&lt;/span> &lt;span class="nx">preg_replace_callback&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;/\\\\u00([a-f0-9]{2})/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;replace_with_byte&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">$your_input_text&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Python&lt;/strong> version (might need some performance improvements):&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
-&lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;This is some text with the letter &lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u00c5&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u0099 inside&amp;#34;&lt;/span>
-&lt;span class="n">replaced&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s1">u00([a-f0-9]&lt;/span>&lt;span class="si">{2}&lt;/span>&lt;span class="s1">)&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="mi">16&lt;/span>&lt;span class="p">)),&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">repr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">replaced&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># &amp;#39;This is some text with the letter Å\x99 inside&amp;#39;&lt;/span>
-&lt;span class="n">buffer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">ord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">replaced&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">bytes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">buffer&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># This is some text with the letter ř inside&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>(CZ) Lineární diofantické rovnice</title><link>https://sorashi.github.io/linear-diophantine-equations/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/linear-diophantine-equations/</guid><description>&lt;p>Diofantické rovnice jsou &lt;span class="hint" title="mající více neznámých, než rovností">podurčené&lt;/span> polynomiální rovnice, u kterých se hledá
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;../messages/inbox&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="no">Dir&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;[\\/]$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/**/message_1.json&amp;#34;&lt;/span>&lt;span class="o">].&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">each&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="n">gsub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sr">/\\u00([a-f0-9]{2})/&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="vg">$1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">to_i&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">puts&lt;/span> &lt;span class="s2">&amp;#34;Done &lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Snippet for &lt;strong>PHP&lt;/strong>, which fixes all occurrences in &lt;code>$your_input_text&lt;/code> and &lt;code>echo&lt;/code>es the result.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">replace_with_byte&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nx">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">hexdec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">echo&lt;/span> &lt;span class="nx">preg_replace_callback&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;/\\\\u00([a-f0-9]{2})/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;replace_with_byte&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">$your_input_text&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Python&lt;/strong> version (might need some performance improvements):&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;This is some text with the letter &lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u00c5&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u0099 inside&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">replaced&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s1">u00([a-f0-9]&lt;/span>&lt;span class="si">{2}&lt;/span>&lt;span class="s1">)&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="mi">16&lt;/span>&lt;span class="p">)),&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">repr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">replaced&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># &amp;#39;This is some text with the letter Å\x99 inside&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">buffer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">ord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">replaced&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">bytes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">buffer&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># This is some text with the letter ř inside&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>(CZ) Lineární diofantické rovnice</title><link>https://sorashi.github.io/linear-diophantine-equations/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/linear-diophantine-equations/</guid><description>&lt;p>Diofantické rovnice jsou &lt;span class="hint" title="mající více neznámých, než rovností">podurčené&lt;/span> polynomiální rovnice, u kterých se hledá
 řešení v množině $\mathbb{Z}$.&lt;/p>
 &lt;p>Lineární diofantická rovnice je rovnice ve tvaru součtu dvou monomů prvního řádu:&lt;/p>
 &lt;p>$$ax+by=c\,.$$&lt;/p>
@@ -325,34 +328,37 @@ navštívit &lt;a class="link" href="https://github.com/sorashi/linear-diophanti
 &lt;/span>&lt;span class="lnt">30
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;span class="k">return&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">def&lt;/span> &lt;span class="nf">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>
-&lt;span class="k">while&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="n">q&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">//&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">a&lt;/span>
-&lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">y1&lt;/span>
-&lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">x1&lt;/span>
-&lt;span class="k">return&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>
-&lt;span class="k">def&lt;/span> &lt;span class="nf">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y1&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">24&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Linear diophantine equation input form ax+by=c&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="s2">&amp;#34;=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="s2">&amp;#34;abc&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">if&lt;/span> &lt;span class="n">g&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;There are no solutions&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="n">k&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">g&lt;/span>
-&lt;span class="n">x&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
-&lt;span class="n">y&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=0:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;span class="k">while&lt;/span> &lt;span class="kc">True&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="n">r&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;r=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=&amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">q&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">//&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">y1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">x1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y1&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">24&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Linear diophantine equation input form ax+by=c&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="s2">&amp;#34;=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="s2">&amp;#34;abc&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">g&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;There are no solutions&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">k&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">g&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=0:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="kc">True&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">r&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;r=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=&amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>A comprehensive list of Rikai extensions</title><link>https://sorashi.github.io/comprehensive-list-of-rikai-extensions/</link><pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/comprehensive-list-of-rikai-extensions/</guid><description>&lt;p>There are so many rikai extensions that I got lost when I was trying to find my choice.
 I want this to be the go-to article for people who seek not only the full list of rikai
@@ -379,7 +385,9 @@ extensions, but also the truth behind their origin.&lt;/p>
 &lt;tr>
 &lt;td>10ten Japanese Reader (formerly Rikaichamp)&lt;/td>
 &lt;td>&lt;a class="link" href="https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/" target="_blank" rel="noopener"
->Firefox&lt;/a>&lt;/td>
+>Firefox&lt;/a>, &lt;a class="link" href="https://chrome.google.com/webstore/detail/10ten-japanese-reader-rik/pnmaklegiibbioifkmfkgpfnmdehdfan" target="_blank" rel="noopener"
+>Chrome&lt;/a>, &lt;a class="link" href="https://apps.apple.com/app/10ten-japanese-reader/id1573540634" target="_blank" rel="noopener"
+>Safari, iOS, macOS&lt;/a>&lt;/td>
 &lt;td>&lt;a class="link" href="https://github.com/birchill/10ten-ja-reader" target="_blank" rel="noopener"
 >GitHub&lt;/a>&lt;/td>
 &lt;td>&lt;a class="link" href="https://twitter.com/10tenstudy" target="_blank" rel="noopener"

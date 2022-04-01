@@ -1,81 +1,6 @@
-<!doctype html><html lang=en-us>
-<head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="How to install Arch Linux on Asus E200HA"><title>Asus E200HA Arch Linux Installation Guide</title>
-<link rel=canonical href=https://sorashi.github.io/asus-e200ha-arch/>
-<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Asus E200HA Arch Linux Installation Guide">
-<meta property="og:description" content="How to install Arch Linux on Asus E200HA">
-<meta property="og:url" content="https://sorashi.github.io/asus-e200ha-arch/">
-<meta property="og:site_name" content="Sorashi">
-<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2020-02-01T00:00:00+00:00"><meta property="article:modified_time" content="2021-06-06T00:00:00+00:00">
-<meta name=twitter:site content="@iamSorashi"><meta name=twitter:title content="Asus E200HA Arch Linux Installation Guide">
-<meta name=twitter:description content="How to install Arch Linux on Asus E200HA">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-112058345-1','auto'),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-</head>
-<body>
-<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
-<aside class="sidebar left-sidebar sticky">
-<button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
-<span class=hamburger-box>
-<span class=hamburger-inner></span>
-</span>
-</button>
-<header class=site-info>
-<figure class=site-avatar>
-<img src="https://avatars1.githubusercontent.com/u/6270283?s=460&v=4" width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-<span class=emoji>😳</span>
-</figure>
-<h1 class=site-name><a href=https://sorashi.github.io>Sorashi</a></h1>
-<h2 class=site-description>a-are you checking me out?</h2>
-</header>
-<ol class=menu id=main-menu>
-<li>
-<a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span>
-</a>
-</li>
-<li>
-<a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>About</span>
-</a>
-</li>
-<li>
-<a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>Archives</span>
-</a>
-</li>
-<li>
-<a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>Search</span>
-</a>
-</li>
-<li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>Dark Mode</span>
-</li>
-</ol>
-</aside>
-<main class="main full-width">
-<div id=article-toolbar>
-<a href=https://sorashi.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
-<span>Back</span>
-</a>
-</div>
-<article class=main-article>
-<header class=article-header>
-<div class=article-details>
-<h2 class=article-title>
-<a href=/asus-e200ha-arch/>Asus E200HA Arch Linux Installation Guide</a>
-</h2>
-<h3 class=article-subtitle>
-How to install Arch Linux on Asus E200HA
-</h3>
-<footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--published>2020-02-01</time>
-</footer></div>
-</header>
-<section class=article-content>
-<h2 id=foreword>Foreword</h2>
-<p>Oh, the Asus E200HA! A small Intel Cherry Trail netbook with 32GB of internal memory and
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="How to install Arch Linux on Asus E200HA"><title>Asus E200HA Arch Linux Installation Guide</title><link rel=canonical href=https://sorashi.github.io/asus-e200ha-arch/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Asus E200HA Arch Linux Installation Guide"><meta property="og:description" content="How to install Arch Linux on Asus E200HA"><meta property="og:url" content="https://sorashi.github.io/asus-e200ha-arch/"><meta property="og:site_name" content="Sorashi"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2020-02-01T00:00:00+00:00"><meta property="article:modified_time" content="2021-06-06T00:00:00+00:00"><meta name=twitter:site content="@iamSorashi"><meta name=twitter:title content="Asus E200HA Arch Linux Installation Guide"><meta name=twitter:description content="How to install Arch Linux on Asus E200HA"><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-112058345-1","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script></head><body><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.body.dataset.scheme="dark":document.body.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src="https://avatars1.githubusercontent.com/u/6270283?s=460&v=4" width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>😳</span></figure><h1 class=site-name><a href=https://sorashi.github.io>Sorashi</a></h1><h2 class=site-description>a-are you checking me out?</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://sorashi.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/asus-e200ha-arch/>Asus E200HA Arch Linux Installation Guide</a></h2><h3 class=article-subtitle>How to install Arch Linux on Asus E200HA</h3><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2020-02-01</time></footer></div></header><section class=article-content><h2 id=foreword>Foreword</h2><p>Oh, the Asus E200HA! A small Intel Cherry Trail netbook with 32GB of internal memory and
 2 gigs of RAM. I bought one for its compact size and small weight. Boy, was
 it a mistake. It comes with Windows 10 pre-installed and Windows 10 sure likes
 huge updates and general littering of your drive. The device is literally unusable after a small while. That is not a huge
@@ -84,170 +9,74 @@ bought the device, Linux kernel hadn&rsquo;t integrated drivers for its network 
 audio card and SD card reader. Some people even reported they couldn&rsquo;t get their touch-pad
 to work, or that the backlight control didn&rsquo;t work. Intel Cherry Trail CPU series
 support was also stuttering, because of problems with power saving - the purpose
-of Cherry Trail processors.</p>
-<p>Hopeless as it may seem, there are incredible people working on the Linux kernel
+of Cherry Trail processors.</p><p>Hopeless as it may seem, there are incredible people working on the Linux kernel
 every day and fighting against the powerful wave of proprietary devices that receive drivers only for Windows (some people suggest Windows may have contracts and does this intentionally so that people don&rsquo;t use other systems, but that&rsquo;s a conspiration-sounding statement). And they eventually managed to fix these problems (by version 5.3). But user-friendly
 Linux distributions do not update their kernel until it&rsquo;s thoroughly tested. So
 there have been
 <a class=link href=https://github.com/Grippy98/Asus-E200HA-Linux-Post-Install-Script target=_blank rel=noopener>attempts</a> at
 creating a script that would update the kernel and force some new drivers to be
-used, but I never managed to make audio work using the script.</p>
-<p>When Ubuntu 19.04 came around, the required kernel version was built in and
+used, but I never managed to make audio work using the script.</p><p>When Ubuntu 19.04 came around, the required kernel version was built in and
 supported. So I tried again. Audio still didn&rsquo;t work, but I <a class=link href=https://github.com/heikomat/linux/tree/cx2072x/cx2072x_fixes_and_manual target=_blank rel=noopener>found out</a>
-that the system isn&rsquo;t configured to use (or recognize?) the audio card. And so I finally managed to get audio working. Eventually I realized that Ubuntu is still too big of a system for this timid device. Furthermore, kernel 5.3 had some problems with the graphics chip that ships with Cherry Trail devices, making your screen freeze and forcing you to hard-reset.</p>
-<p>And so I decided to install Arch. Because Arch lets you install just what you want and because Arch usually has bleeding-edge kernel. And since installing Arch is not completely user-friendly I decided to make a small guide (or rather a log) specifically for this device. I don&rsquo;t guarantee it will work and I&rsquo;m not responsible for any damages you may cause to your device. It&rsquo;s actually just a record of what I did for a successful install at the time.</p>
-<p>Good luck and have fun!</p>
-<p><em>Warning: As of late February 2020 there seem to be screen freezing issues.</em></p>
-<p>Looks like <strong>Linux Mint latest edition 20 Ulyana - Cinnamon 64</strong> works out of the box for this device! Thank you Badd Pitt for your <a class=link href=http://disq.us/p/2d7jp8j target=_blank rel=noopener>comment</a>.</p>
-<h2 id=booting>Booting</h2>
-<p>I used Rufus on Windows to burn <code>archlinux-2019.12.01-x86_64.iso</code> to a drive in ISO mode.</p>
-<p>Start E200HA and press F1 or F2 repeatedly until you&rsquo;re shown the BIOS menu. Move to boot options and specify the USB drive as the first option. Then save and exit.</p>
-<h2 id=first-wi-fi-connection>First Wi-Fi connection</h2>
-<p>I needed to connect to eduroam (a global Wi-Fi network for educational institutions), which uses WPA-EAP. If you have access to a classic Wi-Fi, use <code>wifi-menu</code> to connect.</p>
-<ul>
-<li>To connect to eduroam, create <code>wpa_supplicant</code> config file: <code>vi wpa_supplicant.conf</code></li>
-</ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text>ctrl_interface=/run/wpa_supplicant
-update_config=1
-# ^ these two lines may not be needed
-network={
-  ssid=&#34;eduroam&#34;
-  key_mgmt=WPA-EAP
-  eap=PEAP
-  phase2=&#34;none&#34;
-  identity=&#34;*username*&#34;
-  password=&#34;*password*&#34;
-}
-</code></pre></div><ul>
-<li>check if <code>wlan0</code> interface exists: <code>ip link</code></li>
-<li>see if you can connect to eduroam: <code>wpa_supplicant -i wlan0 -c wpa_supplicant.conf</code></li>
-<li>cancel the process if the connection was successful; run it in background as a daemon: <code>wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf</code></li>
-<li><code>dhcpcd</code> to get your ip</li>
-<li><code>ping google.com</code> to check connection</li>
-</ul>
-<h2 id=installation>Installation</h2>
-<p>Use <code>cfdisk /dev/mmcblk0</code> to create (in this order)</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text>300M EFI Filesystem
-  1G Linux swap
-rest Linux filesystem
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mkfs.fat -F32 /dev/mmcblk0p1
-mkswap /dev/mmcblk0p2
-mkfs.ext4 /dev/mmcblk0p3
-mount /dev/mmcblk0p3 /mnt
-swapon /dev/mmcblk0p2
-</code></pre></div><p>Edit mirrorlist to have your preferred mirrors at the top
-<code>vi /etc/pacman.d/mirrorlist</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>pacstrap /mnt base base-devel linux linux-firmware
-genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
-arch-chroot /mnt
-</code></pre></div><p>Choose a hostname</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>echo</span> your_hostname &gt; /etc/hostname
-</code></pre></div><p>Uncomment <code>en_US.UTF-8 UTF-8</code> and <code>en_US ISO-8859-1</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>pacman -S vim
-vim /etc/locale.gen
-locale_gen
-<span class=nb>echo</span> <span class=nv>LANG</span><span class=o>=</span>en_US.UTF-8 &gt; /etc/locale.conf
-<span class=nb>export</span> <span class=nv>LANG</span><span class=o>=</span>en_US.UTF-8
-</code></pre></div><p>Find your zone in <code>/usr/share/zoneinfo/</code> using <code>ls</code> and then</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
-hwclock --systohc --utc
-passwd
-useradd -mg users -G wheel -s /bin/bash your_username
-passwd your_username
-pacman -S dhcp dhcpcd wpa_supplicant dialog netctl sudo
-vim /etc/sudoers <span class=c1># uncomment %wheel ALL=(ALL) ALL</span>
-</code></pre></div><p>Now to the bootloader!</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>pacman -S grub efibootmgr dosfstools os-prober mtools
-mkdir /boot/EFI
-mount /dev/mmcblk0p1 /boot/EFI
-grub-install --target<span class=o>=</span>x86_64-efi --bootloader-id<span class=o>=</span>grub_uefi --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
-<span class=nb>exit</span>
-umount -a
-telinit <span class=m>6</span>
-</code></pre></div><p>After reboot:
-Connect to wifi either using wifi-menu or create a profile in /etc/netctl then</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo ip link _ down <span class=c1># _ is your interface, find it using ip</span>
-sudo netctl start profile_name
-sudo dhcpcd
-</code></pre></div><p>Install xorg server</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo pacman -S xf86-video-intel xorg-server-xephyr
-</code></pre></div><p>Now install your desired display manager, desktop environment and terminal, for example</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>pacman -S lightdm i3-gaps dmenu i3-status rxvt-unicode
-sudo systemctl <span class=nb>enable</span> lightdm
-reboot
-</code></pre></div><p>Congratulations! Now go have fun and make your system comfortable. Be sure to comment if you found a mistake, have problems or just want to add something.</p>
-<hr>
-<p>What I personally installed after that:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>pacman -S yay git ranger
-yay powerline-fonts-git <span class=c1># then use &#34;DejaVu Sans Mono for Powerline&#34; font in your terminal</span>
-yay rxvt-unicode-pixbuf
-</code></pre></div><p>I might add other things later 🙂</p>
-</section>
-<footer class=article-footer>
-<section class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<span class=article-time--modified>
-Last updated on 2021-06-06 00:00 UTC
-</span>
-</section></footer>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})})</script>
-</article>
-<aside class=related-contents--wrapper>
-</aside>
-<div class=disqus-container>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//Sorashi.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</div>
-<style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style>
-<script>window.addEventListener('onColorSchemeChange',a=>{DISQUS&&DISQUS.reset({reload:!0})})</script>
-<footer class=site-footer>
-<section class=copyright>
-&copy;
+that the system isn&rsquo;t configured to use (or recognize?) the audio card. And so I finally managed to get audio working. Eventually I realized that Ubuntu is still too big of a system for this timid device. Furthermore, kernel 5.3 had some problems with the graphics chip that ships with Cherry Trail devices, making your screen freeze and forcing you to hard-reset.</p><p>And so I decided to install Arch. Because Arch lets you install just what you want and because Arch usually has bleeding-edge kernel. And since installing Arch is not completely user-friendly I decided to make a small guide (or rather a log) specifically for this device. I don&rsquo;t guarantee it will work and I&rsquo;m not responsible for any damages you may cause to your device. It&rsquo;s actually just a record of what I did for a successful install at the time.</p><p>Good luck and have fun!</p><p><em>Warning: As of late February 2020 there seem to be screen freezing issues.</em></p><p>Looks like <strong>Linux Mint latest edition 20 Ulyana - Cinnamon 64</strong> works out of the box for this device! Thank you Badd Pitt for your <a class=link href=http://disq.us/p/2d7jp8j target=_blank rel=noopener>comment</a>.</p><h2 id=booting>Booting</h2><p>I used Rufus on Windows to burn <code>archlinux-2019.12.01-x86_64.iso</code> to a drive in ISO mode.</p><p>Start E200HA and press F1 or F2 repeatedly until you&rsquo;re shown the BIOS menu. Move to boot options and specify the USB drive as the first option. Then save and exit.</p><h2 id=first-wi-fi-connection>First Wi-Fi connection</h2><p>I needed to connect to eduroam (a global Wi-Fi network for educational institutions), which uses WPA-EAP. If you have access to a classic Wi-Fi, use <code>wifi-menu</code> to connect.</p><ul><li>To connect to eduroam, create <code>wpa_supplicant</code> config file: <code>vi wpa_supplicant.conf</code></li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>ctrl_interface=/run/wpa_supplicant
+</span></span><span class=line><span class=cl>update_config=1
+</span></span><span class=line><span class=cl># ^ these two lines may not be needed
+</span></span><span class=line><span class=cl>network={
+</span></span><span class=line><span class=cl>  ssid=&#34;eduroam&#34;
+</span></span><span class=line><span class=cl>  key_mgmt=WPA-EAP
+</span></span><span class=line><span class=cl>  eap=PEAP
+</span></span><span class=line><span class=cl>  phase2=&#34;none&#34;
+</span></span><span class=line><span class=cl>  identity=&#34;*username*&#34;
+</span></span><span class=line><span class=cl>  password=&#34;*password*&#34;
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></div><ul><li>check if <code>wlan0</code> interface exists: <code>ip link</code></li><li>see if you can connect to eduroam: <code>wpa_supplicant -i wlan0 -c wpa_supplicant.conf</code></li><li>cancel the process if the connection was successful; run it in background as a daemon: <code>wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf</code></li><li><code>dhcpcd</code> to get your ip</li><li><code>ping google.com</code> to check connection</li></ul><h2 id=installation>Installation</h2><p>Use <code>cfdisk /dev/mmcblk0</code> to create (in this order)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>300M EFI Filesystem
+</span></span><span class=line><span class=cl>  1G Linux swap
+</span></span><span class=line><span class=cl>rest Linux filesystem
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkfs.fat -F32 /dev/mmcblk0p1
+</span></span><span class=line><span class=cl>mkswap /dev/mmcblk0p2
+</span></span><span class=line><span class=cl>mkfs.ext4 /dev/mmcblk0p3
+</span></span><span class=line><span class=cl>mount /dev/mmcblk0p3 /mnt
+</span></span><span class=line><span class=cl>swapon /dev/mmcblk0p2
+</span></span></code></pre></div><p>Edit mirrorlist to have your preferred mirrors at the top
+<code>vi /etc/pacman.d/mirrorlist</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacstrap /mnt base base-devel linux linux-firmware
+</span></span><span class=line><span class=cl>genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+</span></span><span class=line><span class=cl>arch-chroot /mnt
+</span></span></code></pre></div><p>Choose a hostname</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>echo</span> your_hostname &gt; /etc/hostname
+</span></span></code></pre></div><p>Uncomment <code>en_US.UTF-8 UTF-8</code> and <code>en_US ISO-8859-1</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S vim
+</span></span><span class=line><span class=cl>vim /etc/locale.gen
+</span></span><span class=line><span class=cl>locale_gen
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=nv>LANG</span><span class=o>=</span>en_US.UTF-8 &gt; /etc/locale.conf
+</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>LANG</span><span class=o>=</span>en_US.UTF-8
+</span></span></code></pre></div><p>Find your zone in <code>/usr/share/zoneinfo/</code> using <code>ls</code> and then</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
+</span></span><span class=line><span class=cl>hwclock --systohc --utc
+</span></span><span class=line><span class=cl>passwd
+</span></span><span class=line><span class=cl>useradd -mg users -G wheel -s /bin/bash your_username
+</span></span><span class=line><span class=cl>passwd your_username
+</span></span><span class=line><span class=cl>pacman -S dhcp dhcpcd wpa_supplicant dialog netctl sudo
+</span></span><span class=line><span class=cl>vim /etc/sudoers <span class=c1># uncomment %wheel ALL=(ALL) ALL</span>
+</span></span></code></pre></div><p>Now to the bootloader!</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S grub efibootmgr dosfstools os-prober mtools
+</span></span><span class=line><span class=cl>mkdir /boot/EFI
+</span></span><span class=line><span class=cl>mount /dev/mmcblk0p1 /boot/EFI
+</span></span><span class=line><span class=cl>grub-install --target<span class=o>=</span>x86_64-efi --bootloader-id<span class=o>=</span>grub_uefi --recheck
+</span></span><span class=line><span class=cl>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span><span class=line><span class=cl><span class=nb>exit</span>
+</span></span><span class=line><span class=cl>umount -a
+</span></span><span class=line><span class=cl>telinit <span class=m>6</span>
+</span></span></code></pre></div><p>After reboot:
+Connect to wifi either using wifi-menu or create a profile in /etc/netctl then</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo ip link _ down <span class=c1># _ is your interface, find it using ip</span>
+</span></span><span class=line><span class=cl>sudo netctl start profile_name
+</span></span><span class=line><span class=cl>sudo dhcpcd
+</span></span></code></pre></div><p>Install xorg server</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo pacman -S xf86-video-intel xorg-server-xephyr
+</span></span></code></pre></div><p>Now install your desired display manager, desktop environment and terminal, for example</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S lightdm i3-gaps dmenu i3-status rxvt-unicode
+</span></span><span class=line><span class=cl>sudo systemctl <span class=nb>enable</span> lightdm
+</span></span><span class=line><span class=cl>reboot
+</span></span></code></pre></div><p>Congratulations! Now go have fun and make your system comfortable. Be sure to comment if you found a mistake, have problems or just want to add something.</p><hr><p>What I personally installed after that:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S yay git ranger
+</span></span><span class=line><span class=cl>yay powerline-fonts-git <span class=c1># then use &#34;DejaVu Sans Mono for Powerline&#34; font in your terminal</span>
+</span></span><span class=line><span class=cl>yay rxvt-unicode-pixbuf
+</span></span></code></pre></div><p>I might add other things later 🙂</p></section><footer class=article-footer><section class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><span class=article-time--modified>Last updated on 2021-06-06 00:00 UTC</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})})</script></article><aside class=related-contents--wrapper></aside><div class=disqus-container><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//Sorashi.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{DISQUS&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2018 -
-2022 Sorashi
-</section>
-</footer>
-<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
-<div class=pswp__bg></div>
-<div class=pswp__scroll-wrap>
-<div class=pswp__container>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-</div>
-<div class="pswp__ui pswp__ui--hidden">
-<div class=pswp__top-bar>
-<div class=pswp__counter></div>
-<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2022 Sorashi</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-<div class=pswp__preloader>
-<div class=pswp__preloader__icn>
-<div class=pswp__preloader__cut>
-<div class=pswp__preloader__donut></div>
-</div>
-</div>
-</div>
-</div>
-<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-<div class=pswp__share-tooltip></div>
-</div>
-<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-</button>
-<div class=pswp__caption>
-<div class=pswp__caption__center></div>
-</div>
-</div>
-</div>
-</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
-</main>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
-<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
-</body>
-</html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
