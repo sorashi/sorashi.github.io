@@ -17,7 +17,7 @@ We'll begin with what you're all here for:
 Name|Browser|Repository|Site
 ----|-------|----|----
 nazeka|[Firefox](https://addons.mozilla.org/cs/firefox/addon/nazeka/), works on Android|[GitHub](https://github.com/wareya/nazeka)|None
-10ten Japanese Reader (formerly Rikaichamp)|[Firefox](https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/)|[GitHub](https://github.com/birchill/10ten-ja-reader)|[Twitter](https://twitter.com/10tenstudy)
+10ten Japanese Reader (formerly Rikaichamp)|[Firefox](https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/), [Chrome](https://chrome.google.com/webstore/detail/10ten-japanese-reader-rik/pnmaklegiibbioifkmfkgpfnmdehdfan), [Safari, iOS, macOS](https://apps.apple.com/app/10ten-japanese-reader/id1573540634)|[GitHub](https://github.com/birchill/10ten-ja-reader)|[Twitter](https://twitter.com/10tenstudy)
 rikaichan|[Chrome](https://chrome.google.com/webstore/detail/rikaichan/clidkjbfdlffpbbhlalnkifiehenkjaj?hl=en) & [Firefox](https://addons.mozilla.org/firefox/addon/rikaichan/)|[GitHub](https://github.com/Kalamandea/Rikaichan)|None
 rikaikun|[Chrome](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en)|[GitHub](https://github.com/melink14/rikaikun)|None
 RikaiRebuilt|[Chrome](https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj) & [Firefox](https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/)|[GitHub](https://github.com/Garethp/RikaiRebuilt)|None
