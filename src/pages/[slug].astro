@@ -1,0 +1,108 @@
+---
+import path from "node:path";
+import Octicon from "../components/Octicon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+export async function getStaticPaths() {
+    const posts = await Astro.glob("../posts/**/*.{md,mdx}");
+    return posts.map((post) => {
+        const slug = path.parse(post.file).name;
+        return {
+            params: {
+                slug: post.frontmatter.slug || slug,
+            },
+            props: {
+                post,
+            },
+        };
+    });
+}
+const { Content, frontmatter } = Astro.props.post;
+const headings = [
+    { text: frontmatter.title, slug: "", depth: 1 },
+    ...Astro.props.post.getHeadings(),
+];
+---
+
+<BaseLayout title={frontmatter.title || ""}>
+    <article slot="main">
+        <header class="mb-2">
+            {frontmatter.title && <h1>{frontmatter.title}</h1>}
+            {
+                frontmatter.date && (
+                    <div class="inline-block mr-5">
+                        <Octicon
+                            icon="clock"
+                            className="fill-ctp-overlay1 inline-block mr-2 align-middle"
+                            label="Date published"
+                        />
+                        <time
+                            class="dark:ctp-mocha text-ctp-overlay1 align-middle"
+                            datetime={frontmatter.date}
+                        >
+                            {frontmatter.date.slice(0, 10)}
+                        </time>
+                    </div>
+                )
+            }
+            {
+                frontmatter.minutesRead && (
+                    <div class="dark:ctp-mocha text-ctp-overlay1 align-middle inline-block">
+                        <Octicon
+                            icon="hourglass"
+                            className="fill-ctp-overlay1 inline-block mr-2 align-middle"
+                            label="Minutes to read"
+                        />
+                        {frontmatter.minutesRead}
+                    </div>
+                )
+            }
+        </header>
+        <section>
+            <Content />
+        </section>
+        <footer class="mt-3">
+            {
+                frontmatter.lastmod && (
+                    <p class="dark:ctp-mocha text-ctp-overlay1">
+                        <Octicon
+                            icon="clock"
+                            className="fill-ctp-overlay1 inline-block mr-5 align-middle"
+                            label="Last modified"
+                        />
+                        Last modified:
+                        <time
+                            class="dark:ctp-mocha text-ctp-overlay1"
+                            datetime={frontmatter.lastmod}
+                        >
+                            {frontmatter.lastmod}
+                        </time>
+                    </p>
+                )
+            }
+        </footer>
+    </article>
+    <aside
+        slot="right-side"
+        class="hidden md:block fixed left-1/2 ml-[calc(48rem/2+2rem)] mt-3 top-0 mr-3 min-w-[15rem]"
+    >
+        <ul class="border border-ctp-overlay1 rounded-md p-3">
+            {
+                headings
+                    .filter(
+                        (heading) => heading.depth >= 1 && heading.depth <= 4
+                    )
+                    .map((heading) => (
+                        <li class={`ml-${(heading.depth - 1) * 2}`}>
+                            <a
+                                href={`#${heading.slug}`}
+                                class="dark:ctp-mocha text-ctp-overlay1"
+                            >
+                                <span class="text-sm">#</span>
+                                {heading.text}
+                            </a>
+                        </li>
+                    ))
+            }
+        </ul>
+    </aside>
+</BaseLayout>

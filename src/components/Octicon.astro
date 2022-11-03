@@ -1,0 +1,16 @@
+---
+import octicons from "@primer/octicons";
+interface Props {
+    icon: keyof typeof octicons;
+    size?: number;
+    label?: string;
+    className?: string;
+}
+const { icon, size = 16, label, className} = Astro.props;
+---
+<Fragment
+    set:html={octicons[icon].toSVG({
+        width: size,
+        "aria-label": label,
+        class: `dark:ctp-mocha fill-ctp-text ${className || ""}`,
+    })} />

@@ -1,0 +1,14 @@
+---
+import Octicon from "./Octicon.astro"
+interface Props {
+    icon: string;
+    label: string;
+    width: number;
+    link: string;
+}
+const { icon, label, width, link } = Astro.props;
+---
+
+<a href={link}>
+    <Octicon size={width} label={label} icon={icon} />
+</a>

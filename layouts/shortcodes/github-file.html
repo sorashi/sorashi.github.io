@@ -1,8 +1,0 @@
-{{/* nope */}}
-{{ $repo := .Get 0 }}
-{{ $path := .Get 1 }}
-{{ $json := getJSON "https://api.github.com/repos/" $repo "/contents/" $path }}
-{{ $code := $json.content | base64Decode }}
-{{ $lang := .Get 2 }}
-
-{{ highlight $code $lang "linenos=table" }}

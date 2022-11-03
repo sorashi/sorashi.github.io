@@ -1,0 +1,74 @@
+---
+import "../styles/style.scss";
+import { Picture } from "@astrojs/image/components";
+interface Props {
+    title: string;
+}
+const { title } = Astro.props;
+
+import Social from "../components/Social.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" href="./avatar.png" type="image/png" />
+        <title>{title}</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+            integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <div class="">
+            <aside
+                class="hidden md:block fixed right-1/2 mr-[calc(48rem/2+2rem)] mt-3"
+            >
+                <Picture
+                    src="/avatar.png"
+                    alt="sorashi"
+                    widths={[150]}
+                    sizes="150px"
+                    formats={["avif", "webp", "jpeg"]}
+                    aspectRatio="1:1"
+                    class="rounded-xl dark:mocha shadow-ctp-overlay1"
+                />
+                <p class="my-2 text-xl text-center">
+                    <b>sorashi</b>
+                </p>
+                <div
+                    class="flex flex-row gap-3 h-auto my-2 mx-auto justify-center"
+                >
+                    <Social
+                        icon="mark-github"
+                        label="github"
+                        link="https://github.com/sorashi"
+                        width={24}
+                    />
+                    <Social
+                        icon="mail"
+                        label="email"
+                        link="mailto:jsz5yn4zq@mozmail.com"
+                        width={24}
+                    />
+                </div>
+                <ul class="text-center">
+                    <li><a href="/">Writing</a></li>
+                    <li><a href="/">Projects</a></li>
+                    <li><a href="/">Tags</a></li>
+                    <li><a href="/">About me</a></li>
+                </ul>
+            </aside>
+            <main class="max-w-3xl w-full mx-auto">
+                <slot name="main" />
+            </main>
+            <slot name="right-side" />
+        </div>
+    </body>
+</html>

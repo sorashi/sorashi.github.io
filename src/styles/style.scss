@@ -1,0 +1,193 @@
+@use "latte" as latte;
+@use "mocha" as mocha;
+
+// this is only for editor color preview
+// @import "latte";
+@import "@fontsource/iosevka";
+
+// Style guide: https://github.com/catppuccin/catppuccin/blob/dev/docs/style-guide.md
+// tailwind config probably not needed https://github.com/catppuccin/website/blob/main/tailwind.config.cjs
+
+@mixin colored($base, $mantle, $crust, $surface0, $surface1, $surface2, $overlay0, $overlay1, $overlay2,
+    $subtext0, $subtext1, $text, $lavender, $blue, $sapphire, $sky, $teal, $green, $yellow, $peach,
+    $maroon, $red, $mauve, $pink, $flamingo, $rosewater) {
+
+    // if shiki theme is 'css-variables' then this allows to dark/light theme
+    // but the theme is much less specific!
+    // :root {
+    //         --astro-code-color-text: #{$text};
+    //         --astro-code-color-background: #{$crust};
+    //         --astro-code-token-constant: #{$yellow};
+    //         --astro-code-token-string: #{$teal};
+    //         --astro-code-token-comment: #{$overlay0};
+    //         --astro-code-token-keyword: #{$red};
+    //         --astro-code-token-parameter: #{$pink};
+    //         --astro-code-token-function: #{$blue};
+    //         --astro-code-token-string-expression: #{$green};
+    //         --astro-code-token-punctuation: #{$overlay1};
+    //         --astro-code-token-link: #{$blue};
+    //     }
+
+    body {
+        color: $text;
+        background-color: $base;
+        // transition all properties
+        transition: all 0.3s ease-in-out;
+
+        article {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &::before {
+                    @apply text-sm ml-1;
+                    color: $overlay1;
+                }
+            }
+
+            h1::before {
+                content: "# ";
+            }
+
+            h2::before {
+                content: "## ";
+            }
+
+            h3::before {
+                content: "### ";
+            }
+
+            h4::before {
+                content: "#### ";
+            }
+
+            h5::before {
+                content: "##### ";
+            }
+
+            h6::before {
+                content: "###### ";
+            }
+        }
+
+        main {
+            hr {
+                border-color: $mantle;
+            }
+
+            ul {
+                list-style-type: disc;
+                list-style-position: outside;
+                @apply pl-8 my-1 mx-0;
+            }
+
+            ol {
+                list-style-type: decimal;
+                @apply pl-8 my-1 mx-0;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                @apply font-bold leading-tight my-3;
+                color: $subtext0;
+            }
+
+            h1 {
+                @apply text-3xl;
+            }
+
+            h2 {
+                @apply text-2xl;
+            }
+
+            h3 {
+                @apply text-xl;
+            }
+
+            h4 {
+                @apply text-lg;
+            }
+
+            h5 {
+                @apply text-base;
+            }
+
+            h6 {
+                @apply text-sm;
+            }
+
+            p {
+                @apply mb-3;
+            }
+
+            a {
+                color: $rosewater;
+                @apply transition-all duration-100 ease-in-out;
+
+                &:hover {
+                    color: transparentize($color: $rosewater, $amount: 0.3);
+                }
+            }
+
+            blockquote {
+                background-color: $crust;
+                border-left: 3px solid $surface0;
+                @apply ml-5 p-3 mb-3;
+
+                p {
+                    @apply ml-3 mb-0;
+                }
+            }
+
+            // inline code
+            :not(pre)>code {
+                background-color: $crust !important;
+                @apply font-mono px-1 rounded-md;
+            }
+
+            // block code
+            pre {
+                background-color: mocha.$crust !important;
+                @apply p-3;
+            }
+
+            table {
+                border-collapse: collapse;
+
+                width: auto;
+
+                th,
+                td {
+                    padding: 5px;
+                    text-align: left;
+                    border-bottom: 1px solid $surface0;
+                }
+
+                th {
+                    background-color: $crust;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: $mantle;
+                }
+            }
+        }
+    }
+}
+
+@include colored(latte.$base, latte.$mantle, latte.$crust, latte.$surface0, latte.$surface1, latte.$surface2, latte.$overlay0, latte.$overlay1, latte.$overlay2,
+    latte.$subtext0, latte.$subtext1, latte.$text, latte.$lavender, latte.$blue, latte.$sapphire, latte.$sky, latte.$teal, latte.$green, latte.$yellow, latte.$peach,
+    latte.$maroon, latte.$red, latte.$mauve, latte.$pink, latte.$flamingo, latte.$rosewater);
+
+@media (prefers-color-scheme: dark) {
+    @include colored(mocha.$base, mocha.$mantle, mocha.$crust, mocha.$surface0, mocha.$surface1, mocha.$surface2, mocha.$overlay0, mocha.$overlay1, mocha.$overlay2,
+        mocha.$subtext0, mocha.$subtext1, mocha.$text, mocha.$lavender, mocha.$blue, mocha.$sapphire, mocha.$sky, mocha.$teal, mocha.$green, mocha.$yellow, mocha.$peach,
+        mocha.$maroon, mocha.$red, mocha.$mauve, mocha.$pink, mocha.$flamingo, mocha.$rosewater);
+}
