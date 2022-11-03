@@ -12,3 +12,5 @@ Made with Astro.
 - [ ] ogp
 - [ ] 404 (maybe impossible on github pages)
 - [ ] remark clickable heading anchors in markdown
+- [ ] light/dark theme switching
+    - [ ] fix theme switching animation on page load
