@@ -5,7 +5,7 @@ Made with Astro.
 ## TODO
 
 - [x] disqus
-- [ ] google analytics
+- [x] google analytics
 - [ ] sitemap
 - [ ] rss
 - [ ] robots.txt
