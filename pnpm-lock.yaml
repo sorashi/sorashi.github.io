@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/image': ^0.11.4
   '@astrojs/mdx': ^0.11.6
   '@astrojs/preact': ^1.2.0
+  '@astrojs/rss': ^1.0.3
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^2.1.2
   '@catppuccin/tailwindcss': ^0.1.1
@@ -25,6 +26,7 @@ dependencies:
   '@astrojs/image': 0.11.4_sharp@0.31.2
   '@astrojs/mdx': 0.11.6_rollup@3.3.0
   '@astrojs/preact': 1.2.0_preact@10.11.2
+  '@astrojs/rss': 1.0.3
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.4
   '@catppuccin/tailwindcss': 0.1.1_postcss@8.4.19
@@ -190,6 +192,12 @@ packages:
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       prismjs: 1.29.0
+    dev: false
+
+  /@astrojs/rss/1.0.3:
+    resolution: {integrity: sha512-SkAUMnp/LpryOR5B69rlF69AjKE3YlIPRmWad5WoRVeAH1CEEvSh8sC8/qhtG9haPFYa9JoX6zp5V5MkUOop3A==}
+    dependencies:
+      fast-xml-parser: 4.0.11
     dev: false
 
   /@astrojs/sitemap/1.0.0:
@@ -2009,6 +2017,13 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: false
+
+  /fast-xml-parser/4.0.11:
+    resolution: {integrity: sha512-4aUg3aNRR/WjQAcpceODG1C3x3lFANXRo8+1biqfieHmg9pyMt7qB4lQV/Ta6sJCTbA5vfD8fnA8S54JATiFUA==}
+    hasBin: true
+    dependencies:
+      strnum: 1.0.5
     dev: false
 
   /fastq/1.13.0:
@@ -4605,6 +4620,10 @@ packages:
   /strip-json-comments/2.0.1:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /strnum/1.0.5:
+    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: false
 
   /style-to-object/0.3.0:

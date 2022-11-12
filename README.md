@@ -6,8 +6,8 @@ Made with Astro.
 
 - [x] disqus
 - [x] google analytics
-- [ ] sitemap
-- [ ] rss
+- [x] sitemap
+- [x] rss
 - [ ] robots.txt
 - [ ] ogp
 - [ ] 404 (maybe impossible on github pages)
