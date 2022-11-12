@@ -8,7 +8,7 @@ Made with Astro.
 - [x] google analytics
 - [x] sitemap
 - [x] rss
-- [ ] robots.txt
+- [x] robots.txt
 - [ ] ogp
 - [ ] 404 (maybe impossible on github pages)
 - [x] remark clickable heading anchors in markdown
