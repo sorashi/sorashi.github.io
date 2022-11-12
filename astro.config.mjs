@@ -19,10 +19,14 @@ import rehypeKatex from 'rehype-katex';
 import preact from "@astrojs/preact";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
+  site: 'https://sorashi.github.io',
   integrations: [tailwind(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), preact()],
+  }), mdx(), preact(), sitemap()],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkMath],
     rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {
@@ -37,5 +41,5 @@ export default defineConfig({
       // themes: [mocha, latte],
       wrap: false
     }
-  },
+  }
 });

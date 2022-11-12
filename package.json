@@ -14,6 +14,7 @@
     "@astrojs/image": "^0.11.4",
     "@astrojs/mdx": "^0.11.6",
     "@astrojs/preact": "^1.2.0",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
     "@catppuccin/tailwindcss": "^0.1.1",
     "@fontsource/iosevka": "^4.5.4",
