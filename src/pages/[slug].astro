@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import Disqus from "../components/Disqus";
 import Octicon from "../components/Octicon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 export async function getStaticPaths() {
@@ -80,6 +81,13 @@ const headings = [
                 )
             }
         </footer>
+        <section>
+            <Disqus
+                canonicalUrl={`https://sorashi.github.io/${Astro.params.slug}`}
+                pageIdentifier={String(Astro.params.slug)}
+                client:load
+            />
+        </section>
     </article>
     <aside
         slot="right-side"

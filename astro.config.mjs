@@ -11,24 +11,23 @@ import mdx from "@astrojs/mdx";
 import rehypePresetMinify from 'rehype-preset-minify';
 import { remarkReadingTime } from './src/remark-plugins/remark-reading-time.mjs';
 import remarkMath from 'remark-math';
-import mocha from './src/shiki-themes/mocha.json'
+import mocha from './src/shiki-themes/mocha.json';
 // import latte from './src/shiki-themes/latte.json'
 import rehypeKatex from 'rehype-katex';
 
+// https://astro.build/config
+import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx()],
+  }), mdx(), preact()],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkMath],
-    rehypePlugins: [
-      ...rehypePresetMinify.plugins,
-      [rehypeKatex, {
-        // katex options
-      }]
-    ],
+    rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {
+      // katex options
+    }]],
     // preserve GFmd and Smartypants
     extendDefaultPlugins: true,
     shikiConfig: {
@@ -36,7 +35,7 @@ export default defineConfig({
       theme: mocha,
       // multiple themes are not supported in astro, although they are in shiki
       // themes: [mocha, latte],
-      wrap: false,
+      wrap: false
     }
-  }
+  },
 });
