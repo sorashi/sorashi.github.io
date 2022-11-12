@@ -4,13 +4,13 @@ Made with Astro.
 
 ## TODO
 
-- [ ] disqus
+- [x] disqus
 - [ ] google analytics
 - [ ] sitemap
 - [ ] rss
 - [ ] robots.txt
 - [ ] ogp
 - [ ] 404 (maybe impossible on github pages)
-- [ ] remark clickable heading anchors in markdown
+- [x] remark clickable heading anchors in markdown
 - [ ] light/dark theme switching
     - [ ] fix theme switching animation on page load
