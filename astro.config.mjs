@@ -20,15 +20,17 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 import sitemap from "@astrojs/sitemap";
+import robotsTxt from 'astro-robots-txt';
 
-import robotsTxt from 'astro-robots-txt'
+// https://astro.build/config
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sorashi.github.io',
   integrations: [tailwind(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), preact(), sitemap(), robotsTxt()],
+  }), mdx(), preact(), sitemap(), robotsTxt(), compress()],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkMath],
     rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {
