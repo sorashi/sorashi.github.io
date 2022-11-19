@@ -28,6 +28,7 @@
     "reading-time": "^1.5.0",
     "rehype-katex": "^6.0.2",
     "rehype-preset-minify": "^6.0.0",
+    "remark-emoji": "^3.0.2",
     "remark-math": "^5.1.1",
     "sass": "^1.56.1",
     "sharp": "^0.31.2",

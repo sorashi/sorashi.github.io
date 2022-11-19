@@ -11,6 +11,7 @@ import mdx from "@astrojs/mdx";
 import rehypePresetMinify from 'rehype-preset-minify';
 import { remarkReadingTime } from './src/remark-plugins/remark-reading-time.mjs';
 import remarkMath from 'remark-math';
+import remarkEmoji from 'remark-emoji';
 import mocha from './src/shiki-themes/mocha.json';
 // import latte from './src/shiki-themes/latte.json'
 import rehypeKatex from 'rehype-katex';
@@ -32,7 +33,7 @@ export default defineConfig({
     serviceEntryPoint: '@astrojs/image/sharp'
   }), mdx(), preact(), sitemap(), robotsTxt(), compress()],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkMath],
+    remarkPlugins: [remarkReadingTime, remarkMath, remarkEmoji],
     rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {
       // katex options
     }]],
