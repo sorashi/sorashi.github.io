@@ -1,0 +1,18 @@
+---
+import Octicon from './Octicon.astro';
+
+interface Props {
+    repo: string
+    showDescription?: boolean
+}
+
+const { repo, showDescription = false } = Astro.props
+const repoInfoResponse = await fetch(`https://api.github.com/repos/${repo}`, {
+    headers: { 'Authorization': `Bearer ${import.meta.env.GH_TOKEN}` }
+})
+const repoInfo = await repoInfoResponse.json()
+---
+
+<Octicon icon="mark-github" className="inline" /> <a href={`https://github.com/${repo}`} target="_blank">{repo}</a>
+{'('}<Octicon icon="star" className="inline" />
+{repoInfo.stargazers_count >= 1000 ? `${Math.floor(repoInfo.stargazers_count / 1000)}k` : String(repoInfo.stargazers_count)}{` | ${repoInfo.language}`}{')'}{showDescription && `: ${repoInfo.description}` }
