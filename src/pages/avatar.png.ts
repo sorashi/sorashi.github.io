@@ -2,7 +2,6 @@ import os from "node:os"
 import fs from "node:fs"
 import { pipeline } from "node:stream/promises"
 import path from "node:path"
-import { APIRoute } from "astro"
 
 const githubUsername = "sorashi"
 const cachedAvatarPath = path.join(os.tmpdir(), "sorashi-site-cache", `${githubUsername}.png`)
