@@ -6,6 +6,8 @@ slug: linear-diophantine-equations
 lang: cs
 ---
 
+import Ldes from "../components/LinearDiophantineEquationSolver.tsx";
+
 Diofantické rovnice jsou <span class="hint" title="mající více neznámých, než rovností">podurčené</span> polynomiální rovnice, u kterých se hledá
 řešení v množině $\mathbb{Z}$.
 
@@ -38,7 +40,7 @@ podobné úlohy pro jakákoli čísla $a, b, c\in \mathbb{Z}$.
 [Bézoutova rovnost](https://cs.wikipedia.org/wiki/B%C3%A9zoutova_rovnost) říká,
 že:
 
-*Nechť $c:=gcd(x,y)$, potom:*
+_Nechť $c:=gcd(x,y)$, potom:_
 
 $$
 \forall x,y\in\mathbb{Z}\ \exists a,b\in\mathbb{Z}\colon ax+by=c\,.
@@ -52,7 +54,7 @@ nejdříve nalézt řešení pro $5x+6y=gcd(5,6)=1$. K tomu lze využít [Euklid
 
 Zpětným dosazením zjistíme, že
 $5(-1)+6(1)=1$. U tohoto triviálního příkladu je to zřejmé, ale u složitějších verzí
-je zpětné dosazování delší. Toto dosazování je právě *rozšířením* Euklidova algoritmu.
+je zpětné dosazování delší. Toto dosazování je právě _rozšířením_ Euklidova algoritmu.
 
 Nyní, když jsme nalezli řešení pro $5x+6y=1$, jednoduše vynásobíme celou rovnici tak,
 abychom na pravé straně dostali požadované $c$. V našem případě 39.
@@ -66,8 +68,8 @@ následující tvar:
 
 $$
 \begin{align*}
-[x_1-r\frac{b}{gcd(a,b)}; y_1+r\frac{a}{gcd(a,b)}]\in K; r\in \mathbb{Z}\,,\\
-[-39-6r;39+5r]\in K; r\in \mathbb{Z}\,.
+[x_1 &- r\frac{b}{gcd(a,b)}; & y_1 &+ r\frac{a}{gcd(a,b)}] &&\in K; r\in \mathbb{Z}\,,\\
+[-39 &- 6r; & 39 &+ 5r] &&\in K; r\in \mathbb{Z}\,.
 \end{align*}
 $$
 
@@ -75,19 +77,21 @@ Pro vyřešení původní úlohy musíme nalézt uspořádanou dvojici $[x;y]$ t
 
 $$
 \begin{align*}
--39-6r>0 &\land 39+5r>0\,,\\
-r<-\frac{13}{2} &\land r>-\frac{39}{5}\,,\\
-r<-6,5 &\land r>-7,8\,.
+-39-6r &> 0 & &\land  & 39+5r &>0\,,\\
+r &< -\frac{13}{2} & &\land & r &> -\frac{39}{5}\,,\\
+r &< -6.5 & &\land & r &> -7.8\,.
 \end{align*}
 $$
-
 
 Jediné celé číslo vyhovující této nerovnici je $r=-7$. Po dosazení $r$ do vzorce dostáváme
 $[x;y]=[3;4]$.
 
 ---
 
-Protože se jedná o algoritmus, jeho manuální exekuce je náchylná na chyby a často také fádní. Mnohem výhodnější je implementovat pro tento účel skript. Níže můžete vidět mé řešení v Pythonu. Pokud máte nějaké nápady na jeho vylepšení, můžete
-navštívit [tento repozitář](https://github.com/sorashi/linear-diophantine-equation-solver) na GitHubu.
+Kalkulačka pro řešení Bézoutovy rovnosti:
 
-{{< github-file "sorashi/linear-diophantine-equation-solver" "diophantine.py" "python" >}}
+<Ldes client:load />
+
+Protože se jedná o algoritmus, jeho manuální exekuce je náchylná na chyby a často také fádní.
+Mnohem výhodnější je implementovat pro tento účel skript.
+Můžete například využít ten můj výše.

@@ -40,7 +40,7 @@ Here is a **Ruby** script that fixes all JSON files in your message inbox. Then 
 ```ruby
 path = '../messages/inbox'
 Dir["#{path.sub('[\\/]$', '')}/**/message_1.json"].
-each{|file|
+each{ |file|
     File.write(file,
         File.read(file)
         .gsub(/\\u00([a-f0-9]{2})/) { |m| $1.to_i(16).chr }

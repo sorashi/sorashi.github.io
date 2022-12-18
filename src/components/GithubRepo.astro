@@ -1,18 +1,31 @@
 ---
-import Octicon from './Octicon.astro';
+import Octicon from "./Octicon.astro";
 
 interface Props {
-    repo: string
-    showDescription?: boolean
+  repo: string;
+  showDescription?: boolean;
 }
 
-const { repo, showDescription = false } = Astro.props
+const { repo, showDescription = false } = Astro.props;
 const repoInfoResponse = await fetch(`https://api.github.com/repos/${repo}`, {
-    headers: { 'Authorization': `Bearer ${import.meta.env.GH_TOKEN}` }
-})
-const repoInfo = await repoInfoResponse.json()
+  headers: { Authorization: `Bearer ${import.meta.env.GH_TOKEN}` },
+});
+const repoInfo = await repoInfoResponse.json();
+const repoStargazersCount =
+  repoInfo.stargazers_count >= 1000
+    ? `${Math.floor(repoInfo.stargazers_count / 1000)}k`
+    : String(repoInfo.stargazers_count);
+const repoLanguage = repoInfo.language;
+const repoDescription = repoInfo.description;
 ---
 
-<Octicon icon="mark-github" className="inline" /> <a href={`https://github.com/${repo}`} target="_blank">{repo}</a>
-{'('}<Octicon icon="star" className="inline" />
-{repoInfo.stargazers_count >= 1000 ? `${Math.floor(repoInfo.stargazers_count / 1000)}k` : String(repoInfo.stargazers_count)}{` | ${repoInfo.language}`}{')'}{showDescription && `: ${repoInfo.description}` }
+<!-- <Octicon icon="mark-github" className="inline" /> -->
+<a href={`https://github.com/${repo}`} target="_blank">{repo}</a>
+
+<span class="align-super text-xs">
+  <Octicon icon="star" className="inline align-middle" size={10} />
+  {repoStargazersCount}
+  <Octicon icon="pencil" className="inline align-middle" size={10} />
+  {repoLanguage}
+</span>
+{showDescription && repoDescription}
