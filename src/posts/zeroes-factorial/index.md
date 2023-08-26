@@ -2,9 +2,10 @@
 title: Number of zeros at the end of factorial in logarithmic time
 date: 2020-12-21
 tags:
-    - math
+  - math
 slug: number-of-zeros-at-the-end-of-factorial-in-logarithmic-time
 ---
+
 You might think that knowing the number of zeros that suffix the value of $n!$
 is useless. And you might be right. At least I haven't thought of any use.
 
@@ -13,8 +14,8 @@ something else.
 
 So the problem is:
 
-*Given $n$, return the maximum number of zeros, that suffix $n!$. For example
-for $n=5$, $n! = 15511210043330985984000000$, so the answer would be $6$.*
+_Given $n$, return the maximum number of zeros, that suffix $n!$. For example
+for $n=25$, $n! = 15511210043330985984000000$, so the answer would be $6$._
 
 We could compute the value of the factorial and count the number of zeros. We'd
 get the result this way in $\mathcal O(n + \log (n!))$ time (compute $n!$ plus
@@ -22,8 +23,8 @@ count the zeros), [which is](https://math.stackexchange.com/questions/2152256/bi
 
 Let's use the following fact
 
-*The number of zeros at the end of a number $n$ is equivalent to the number of
-times $n$ can be evenly divided by ten.*
+_The number of zeros at the end of a number $n$ is equivalent to the number of
+times $n$ can be evenly divided by ten._
 
 So an equivalent problem to the one given above is: How many 10s can you factor
 out of $n!$.
@@ -59,7 +60,7 @@ But let's think even smaller.
 I propose
 
 $$
-g(n, a) = \sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a^i}\rfloor\,.
+g(n, a) = \sum_{i=1}^{\left\lfloor \log_a n \right\rfloor}\left\lfloor \frac{n}{a^i}\right\rfloor\,.
 $$
 
 Why does this count the number of times we find the factor $a$ in the numbers
@@ -75,7 +76,7 @@ Which is correct -- we already added one for the second $a$ that appears in $a\c
 This continues while $a^i\leq n$. Let's see an example. For $g(25, 5)$, we get
 
 $$
-\lfloor\frac{25}{5}\rfloor+\lfloor\frac{25}{25}\rfloor=5+1=6\,.
+\left\lfloor\frac{25}{5}\right\rfloor+\left\lfloor\frac{25}{25}\right\rfloor=5+1=6\,.
 $$
 
 The first division counts a single five in $5, 10, 15, 20$ and $25$. The second division counts the second five in $25$.
@@ -86,7 +87,7 @@ n)$ time. Nice.
 Now what's interesting, and is just my unproven funny informal small conjecture (which I plan to think about later)
 
 $$
-\sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a^i}\rfloor=\lfloor \frac{n}{a-1}\rfloor -\xi(n, a)\,,
+\sum_{i=1}^{\left\lfloor \log_a n \right\rfloor}\left\lfloor \frac{n}{a^i}\right\rfloor=\left\lfloor \frac{n}{a-1}\right\rfloor -\xi(n, a)\,,
 $$
 
 where $\xi\colon (\mathbb N\times \mathbb N)\to \mathbb N$ is an unknown function, with an average
