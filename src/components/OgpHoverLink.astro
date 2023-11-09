@@ -1,0 +1,21 @@
+---
+import {unfurl} from "unfurl.js";
+
+interface Props {
+  url: string;
+  text: string;
+}
+
+const { url, text } = Astro.props;
+
+const result = await unfurl(url)
+console.log(result)
+---
+
+<span class="group">
+    <a href={url} class="">{text}</p>
+    <div class="invisible transition-all group-hover:visible absolute left-0 right-0 z-50 block bg-ctp-overlay0">
+            <p>{result.title}</p>
+            <img src={result.open_graph.images[0].url} class="max-h-[300px]"></img>
+    </div>
+</span>
