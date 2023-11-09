@@ -1,6 +1,6 @@
 ---
 import "../styles/style.scss";
-import { Picture } from "@astrojs/image/components";
+import { Picture } from "astro:assets";
 interface Props {
     title: string;
 }
@@ -46,10 +46,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
                 <Picture
                     src="/avatar.png"
                     alt="sorashi"
-                    widths={[150]}
+                    width={150}
+                    height={150}
                     sizes="150px"
                     formats={["avif", "webp", "jpeg"]}
-                    aspectRatio="1:1"
                     class="rounded-xl dark:mocha shadow-ctp-overlay1"
                 />
                 <p class="my-2 text-xl text-center">

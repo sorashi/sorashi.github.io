@@ -96,9 +96,7 @@ const headings = [
         <ul class="border border-ctp-overlay1 rounded-md p-3">
             {
                 headings
-                    .filter(
-                        (heading) => heading.depth >= 1 && heading.depth <= 4
-                    )
+                    .filter((heading) => heading.depth >= 1 && heading.depth < 5)
                     .map((heading) => (
                         <li class={`ml-${(heading.depth - 1) * 2}`}>
                             <a

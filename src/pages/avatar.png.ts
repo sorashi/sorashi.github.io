@@ -45,11 +45,16 @@ export async function getAvatarPath(): Promise<string> {
     return cachedAvatarPath
 }
 
-export async function get({ params, request }) {
+export async function GET({ params, request }) {
     // fetching from github `avatarUrl` is very slow, so we cache it in a tmp
     // directory for faster hot reload
-    return {
-        body: await getAvatarBuffer(),
-        encoding: 'binary',
-    }
+    return new Response(
+        await getAvatarBuffer(),
+        {
+            status: 200,
+            headers: {
+                "Content-Type": "image/png",
+            }
+        }
+    )
 }

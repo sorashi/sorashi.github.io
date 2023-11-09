@@ -4,9 +4,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
-import image from "@astrojs/image";
-
-// https://astro.build/config
 import mdx from "@astrojs/mdx";
 import rehypePresetMinify from 'rehype-preset-minify';
 import { remarkReadingTime } from './src/remark-plugins/remark-reading-time.mjs';
@@ -29,9 +26,7 @@ import compress from "astro-compress";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sorashi.github.io',
-  integrations: [tailwind(), image({
-    serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), preact(), sitemap(), robotsTxt(), compress()],
+  integrations: [tailwind(), mdx(), preact(), sitemap(), robotsTxt(), compress()],
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkMath, remarkEmoji],
     rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {

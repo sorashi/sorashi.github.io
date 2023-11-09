@@ -3,7 +3,6 @@
   "compilerOptions": {
     "types": [
       "astro/client",
-      "@astrojs/image/client"
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
