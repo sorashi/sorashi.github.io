@@ -28,10 +28,10 @@ const dateTimeFormat = Intl.DateTimeFormat("en-US", {
                     const slug =
                         post.frontmatter.slug || path.parse(post.file).name;
                     return (
-                        <div class="flex flex-col border-b dark:mocha border-ctp-crust mb-5">
+                        <div class="flex flex-col border-b dark:mocha border-ctp-crust border-opacity-10 mb-5">
                             {post.frontmatter.date && (
                                 <time datetime={post.frontmatter.date}>
-                                    <code class="p-1">
+                                    <code class="p-1 text-xs">
                                         {dateTimeFormat.format(
                                             new Date(post.frontmatter.date)
                                         )}
