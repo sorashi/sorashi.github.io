@@ -39,7 +39,7 @@ the time of writing.
 
 This PR was merged in around 29 hours
 
-![PR merge](../net-drama-merge.png)
+![PR merge](../../assets/net-drama-merge.png)
 
 with a follow-up blog post ([.NET Hot Reload Support via
 CLI](https://devblogs.microsoft.com/dotnet/net-hot-reload-support-via-cli/))
