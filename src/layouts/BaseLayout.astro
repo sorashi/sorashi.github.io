@@ -73,12 +73,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
                 </div>
                 <ul class="text-center">
                     <li><a href="/">Writing</a></li>
-                    <li><a href="/">Projects</a></li>
+                    <li><a href="/projects">Projects</a></li>
                     <li><a href="/">Tags</a></li>
-                    <li><a href="/">About me</a></li>
+                    <li><a href="/about">About me</a></li>
                 </ul>
             </aside>
-            <main class="max-w-3xl w-full mx-auto">
+            <main class="max-w-3xl w-full mx-auto my-10">
                 <slot name="main" />
             </main>
             <slot name="right-side" />
