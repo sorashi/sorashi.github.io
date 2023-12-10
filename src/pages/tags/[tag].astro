@@ -1,0 +1,26 @@
+---
+import path from "node:path";
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import Tag from "../../components/Tag.astro";
+export async function getStaticPaths() {
+    const allPosts = await Astro.glob("../../posts/**/*.{md,mdx}")
+    const tags = [...new Set(allPosts.map(post => post.frontmatter.tags).flat().filter(x=>x))]
+    console.log(tags)
+    return tags.map(tag =>  {
+        return {params: {tag: tag},props: {posts: allPosts.filter(p => p.frontmatter.tags && p.frontmatter.tags.includes(tag))}}
+    })
+}
+
+const {tag} = Astro.params
+const {posts} = Astro.props
+import PostsListing from "../../components/PostsListing.astro";
+---
+
+<BaseLayout title="Posts tagged {tag}">
+    <article slot="main">
+        <h1>Posts tagged <Tag name={tag}></Tag></h1>
+        <section>
+            <PostsListing posts={posts}></PostsListing>
+        </section>
+    </article>
+</BaseLayout>

@@ -4,6 +4,7 @@ description: How to install Arch Linux on Asus E200HA
 slug: asus-e200ha-arch
 date: 2020-02-01
 lastmod: 2021-06-06
+tags: ["linux", "arch"]
 ---
 
 ## Foreword

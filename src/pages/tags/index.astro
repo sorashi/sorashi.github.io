@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Tag from "../../components/Tag.astro"
+
+const allPosts = await Astro.glob("../../posts/**/*.{md,mdx}")
+const tags = [...new Set(allPosts.map(post => post.frontmatter.tags).flat().filter(x=>x))]
+const tagCounts = {}
+tags.forEach(tag => tagCounts[tag] = allPosts.filter(p => p.frontmatter.tags && p.frontmatter.tags.includes(tag)).length)
+tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+---
+
+<BaseLayout title="Tag Index">
+    <article slot="main">
+        <h1>Tag Index</h1>
+        {tags.map(tag => {
+            const count = allPosts.filter(p => p.frontmatter.tags && p.frontmatter.tags.includes(tag)).length
+            return <Tag name={tag} after={": " + count}></Tag>
+        })}
+    </article>
+</BaseLayout>

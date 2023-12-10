@@ -1,58 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import path from "node:path";
+import PostsListing from "../components/PostsListing.astro"
 
 const posts = await Astro.glob("../posts/**/*.{md,mdx}");
-const dateTimeFormat = Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-});
 ---
 
 <BaseLayout title="sorashi">
     <Fragment slot="main">
         <h1 class="text-center">Writing</h1>
-        {
-            posts
-                .sort((a, b) => {
-                    if (!a.frontmatter.date && !b.frontmatter.date) return 0;
-                    if (!a.frontmatter.date) return 1;
-                    if (!b.frontmatter.date) return -1;
-                    return (
-                        Date.parse(b.frontmatter.date) -
-                        Date.parse(a.frontmatter.date)
-                    );
-                })
-                .map((post) => {
-                    const slug =
-                        post.frontmatter.slug || path.parse(post.file).name;
-                    return (
-                        <div class="flex flex-col border-b dark:mocha border-ctp-crust border-opacity-10 mb-5">
-                            {post.frontmatter.date && (
-                                <time datetime={post.frontmatter.date}>
-                                    <code class="p-1 text-xs">
-                                        {dateTimeFormat.format(
-                                            new Date(post.frontmatter.date)
-                                        )}
-                                    </code>
-                                </time>
-                            )}
-                            <h2 class="text-2xl">
-                                <a href={slug}>
-                                    {post.frontmatter.lang &&
-                                    post.frontmatter.lang === "cs"
-                                        ? "🇨🇿 "
-                                        : ""}
-                                    {post.frontmatter.title}
-                                </a>
-                            </h2>
-                            {post.frontmatter.description && (
-                                <p class="">{post.frontmatter.description}</p>
-                            )}
-                        </div>
-                    );
-                })
-        }
+        <PostsListing posts={posts}></PostsListing>
     </Fragment>
 </BaseLayout>

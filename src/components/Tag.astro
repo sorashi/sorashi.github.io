@@ -1,0 +1,10 @@
+---
+interface Props {
+    name: String
+    after?: String
+}
+const {name, after} = Astro.props
+---
+<span class="dark:ctp-mocha bg-ctp-crust m-1 p-1 rounded inline-block text-xs">
+    <span class="font-mono"><a href={"/tags/" + name}>#{name}</a></span>{after}
+</span>

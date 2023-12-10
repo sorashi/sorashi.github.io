@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import Tag from "../components/Tag.astro";
 import Disqus from "../components/Disqus";
 import Octicon from "../components/Octicon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -28,9 +29,10 @@ const headings = [
     <article slot="main">
         <header class="mb-2">
             {frontmatter.title && <h1>{frontmatter.title}</h1>}
+            <div class="flex flex-1 gap-3 items-baseline">
             {
                 frontmatter.date && (
-                    <div class="inline-block mr-5">
+                    <div class="inline-block align-middle">
                         <Octicon
                             icon="clock"
                             className="fill-ctp-overlay1 inline-block mr-2 align-middle"
@@ -53,10 +55,14 @@ const headings = [
                             className="fill-ctp-overlay1 inline-block mr-2 align-middle"
                             label="Minutes to read"
                         />
-                        {frontmatter.minutesRead}
+                        <span class="align-middle">{frontmatter.minutesRead}</span>
                     </div>
                 )
             }
+            {
+            frontmatter.tags && <div class="align-middle inline-block">{frontmatter.tags.map(tag => <Tag name={tag}></Tag>)}</div>
+            }
+            </div>
         </header>
         <section>
             <Content />

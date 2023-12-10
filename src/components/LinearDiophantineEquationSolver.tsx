@@ -32,7 +32,7 @@ function diophantineValues(r, g, a, b, x1, y1): { x: number; y: number; } {
 const inputStyle = {
     pattern: '\-?\d+',
     step: 1,
-    className: 'inline w-10 border rounded invalid:border-red-500',
+    className: 'inline w-12 px-1 border rounded invalid:border-red-500 bg-ctp-base text-[--ctp-text] placeholder-[--ctp-subtext1] bg-[--ctp-base]',
 }
 
 type SolutionType = { x: number; y: number; } | undefined
