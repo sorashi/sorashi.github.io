@@ -6,6 +6,9 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 import mdx from "@astrojs/mdx";
 import rehypePresetMinify from 'rehype-preset-minify';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import {rehypeHeadingIds} from '@astrojs/markdown-remark'
+import {h} from 'hastscript'
 import { remarkReadingTime } from './src/remark-plugins/remark-reading-time.mjs';
 import remarkMath from 'remark-math';
 import remarkEmoji from 'remark-emoji';
@@ -31,7 +34,13 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime, remarkMath, remarkEmoji],
     rehypePlugins: [...rehypePresetMinify.plugins, [rehypeKatex, {
       // katex options
-    }]],
+    }], rehypeHeadingIds,
+        [rehypeAutolinkHeadings,
+                {behavior:'prepend', content(node) {
+                        return h('span.heading-anchor', '#'.repeat(node.tagName.substr(1)))
+                    }
+                }]
+        ],
     // preserve GFmd and Smartypants
     extendDefaultPlugins: true,
     shikiConfig: {

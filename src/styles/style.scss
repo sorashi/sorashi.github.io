@@ -35,41 +35,9 @@
         transition: all 0.3s ease-in-out;
 
         article {
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                &::before {
-                    @apply text-sm ml-1;
-                    color: $overlay1;
-                }
-            }
-
-            h1::before {
-                content: "# ";
-            }
-
-            h2::before {
-                content: "## ";
-            }
-
-            h3::before {
-                content: "### ";
-            }
-
-            h4::before {
-                content: "#### ";
-            }
-
-            h5::before {
-                content: "##### ";
-            }
-
-            h6::before {
-                content: "###### ";
+            .heading-anchor {
+                @apply text-sm mr-1;
+                color: $overlay1;
             }
         }
 
