@@ -95,26 +95,4 @@ const headings = [
             />
         </section>
     </article>
-    <aside
-        slot="right-side"
-        class="hidden md:block fixed left-1/2 ml-[calc(48rem/2+2rem)] mt-3 top-0 mr-3 min-w-[15rem]"
-    >
-        <ul class="border border-ctp-overlay1 rounded-md p-3">
-            {
-                headings
-                    .filter((heading) => heading.depth >= 1 && heading.depth < 5)
-                    .map((heading) => (
-                        <li class={`ml-${(heading.depth - 1) * 2}`}>
-                            <a
-                                href={`#${heading.slug}`}
-                                class="dark:ctp-mocha text-ctp-overlay1"
-                            >
-                                <span class="text-sm">#</span>
-                                {heading.text}
-                            </a>
-                        </li>
-                    ))
-            }
-        </ul>
-    </aside>
 </BaseLayout>
