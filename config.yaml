@@ -1,7 +1,8 @@
 baseurl: https://sorashi.github.io
 languageCode: en-us
 theme: hugo-theme-stack
-paginate: 5
+pagination:
+  pagerSize: 5
 title: Sorashi
 
 # Change it to your Disqus shortname before using
