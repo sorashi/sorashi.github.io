@@ -1,4 +1,4 @@
-baseurl: https://sorashi.github.io
+baseurl: https://sorashi.dev
 languageCode: en-us
 theme: hugo-theme-stack
 pagination:
