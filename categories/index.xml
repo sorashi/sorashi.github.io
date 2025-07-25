@@ -1,1 +1,467 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Sorashi</title><link>https://sorashi.github.io/categories/</link><description>Recent content in Categories on Sorashi</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://sorashi.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Japanese</title><link>https://sorashi.github.io/categories/japanese/</link><pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/categories/japanese/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Sorashi</title><link>https://sorashi.github.io/categories/</link><description>Recent content in Categories on Sorashi</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://sorashi.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>The .NET Drama of PR 22217</title><link>https://sorashi.github.io/net-drama/</link><pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/net-drama/</guid><description>&lt;p>On October 20th, the PR &lt;a class="link" href="https://github.com/dotnet/sdk/pull/22217" target="_blank" rel="noopener"
+>#22217&lt;/a> was
+created (and later merged) in the &lt;a class="link" href="https://github.com/dotnet/sdk" target="_blank" rel="noopener"
+>dotnet/sdk&lt;/a>
+repository. This change, named &lt;em>Remove Hot Reload support from dotnet watch&lt;/em>,
+removed this awaited feature from the dotnet CLI and left it available only in
+Visual Studio 2022. Note that this change was done a few days before .NET 6
+release (releasing on 2021-11-08), removing it from this version. The PR removed
+around 2,500 lines of code from the .NET SDK.&lt;/p>
+&lt;p>Microsoft explained their reasoning in a blog post called &lt;a class="link" href="https://devblogs.microsoft.com/dotnet/update-on-net-hot-reload-progress-and-visual-studio-2022-highlights/" target="_blank" rel="noopener"
+>Update on .NET Hot
+Reload progress and Visual Studio 2022
+Highlights&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>With these considerations, we&amp;rsquo;ve decided that starting with the upcoming .NET
+6 GA release, we will enable Hot Reload functionality only through Visual
+Studio 2022 so we can focus on providing the best experiences to the most
+users. [&amp;hellip;] To clarify, we are not releasing Hot Reload as a feature of the
+&lt;code>dotnet watch&lt;/code> tool.&lt;/p>&lt;/blockquote>
+&lt;p>This statement and removal resulted in a large backlash and discussion from the
+open-source .NET community. The Verge covers this story with information from
+the inside of Microsoft in their article called &lt;a class="link" href="https://www.theverge.com/2021/10/22/22740701/microsoft-dotnet-hot-reload-removal-decision-open-source" target="_blank" rel="noopener"
+>Microsoft angers the .NET open
+source community with a controversial
+decision&lt;/a>.
+The main complains were that the feature should keep cross-platform support and
+not limit it to Windows (and later Mac through VS for Mac).&lt;/p>
+&lt;p>One of the protesting developer created the PR
+&lt;a class="link" href="https://github.com/dotnet/sdk/pull/22262/" target="_blank" rel="noopener"
+>#22262&lt;/a> reverting the changes. This
+PR is one of the most (if not &lt;em>the&lt;/em> most) approved PR in the history of GitHub,
+accumulating 417 unique approving reviews with a total of 523 PR participants at
+the time of writing.&lt;/p>
+&lt;p>This PR was merged in around 29 hours&lt;/p>
+&lt;p>&lt;img src="../net-drama-merge.png" alt="PR merge" />&lt;/p>
+&lt;p>with a follow-up blog post (&lt;a class="link" href="https://devblogs.microsoft.com/dotnet/net-hot-reload-support-via-cli/" target="_blank" rel="noopener"
+>.NET Hot Reload Support via
+CLI&lt;/a>)
+from Microsoft apologizing about the change.&lt;/p>
+&lt;p>This decision was followed by another story from The Verge called &lt;a class="link" href="https://www.theverge.com/2021/10/23/22742282/microsoft-dotnet-hot-reload-u-turn-response" target="_blank" rel="noopener"
+>Microsoft
+reverses controversial .NET change after open source community
+outcry&lt;/a>.&lt;/p></description></item><item><title>Number of zeros at the end of a factorial in logarithmic time</title><link>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</link><pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/number-of-zeros-at-the-end-of-factorial-in-logarithmic-time/</guid><description>&lt;p>You might think that knowing the number of zeros that suffix the value of $n!$
+is useless. And you might be right. At least I haven&amp;rsquo;t thought of any use.&lt;/p>
+&lt;p>Even though, I want to leave this here, because I found this out while solving
+something else.&lt;/p>
+&lt;p>So the problem is:&lt;/p>
+&lt;p>&lt;em>Given $n$, return the maximum number of zeros, that suffix $n!$. For example
+for $n=5$, $n! = 15511210043330985984000000$, so the answer would be $6$.&lt;/em>&lt;/p>
+&lt;p>We could compute the value of the factorial and count the number of zeros. We&amp;rsquo;d
+get the result this way in $\mathcal O(n + \log (n!))$ time (compute $n!$ plus
+count the zeros), &lt;a class="link" href="https://math.stackexchange.com/questions/2152256/big-o-notation-on-the-log-factorial" target="_blank" rel="noopener"
+>which is&lt;/a> $\mathcal O(n\log (n))$.&lt;/p>
+&lt;p>Let&amp;rsquo;s use the following fact&lt;/p>
+&lt;p>&lt;em>The number of zeros at the end of a number $n$ is equivalent to the number of
+times $n$ can be evenly divided by ten.&lt;/em>&lt;/p>
+&lt;p>So an equivalent problem to the one given above is: How many 10s can you factor
+out of $n!$.&lt;/p>
+&lt;p>We could scan the numbers 1 through $n$ and find the number of 10s that get made
+when computing the factorial. For example, $2\cdot 5$ makes a ten, $10$ makes a
+ten, $15\cdot 4=60$ makes a ten, $20$ makes a ten, $25*8=200$ makes two tens!
+That&amp;rsquo;s 6 tens in total, the answer to the example of $25!$.&lt;/p>
+&lt;p>A pattern appears here. For each number $x$ in $(1\dots n)$, sum the number of
+times we can divide $x$ by 5, and that&amp;rsquo;s our result.&lt;/p>
+&lt;p>$$\sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{mod } 5^k)\right\}\cup {0}\right)$$&lt;/p>
+&lt;p>Why is that? Well, a ten is made from 2 and 5. Informally, there is so many 2s
+to pair with 5s, that &lt;strong>we can just count the 5s&lt;/strong>. 5 can be paired with 2. 10 can be paired with the two in 4. The five in 15 can be paired with the second two in 4. 20 can be paired with a two in 8. And so on.&lt;/p>
+&lt;p>More formally, let&amp;rsquo;s define&lt;/p>
+&lt;p>$$g(n, a):= \sum_{x=1}^n \max\left(\left\{k\in\mathbb N^+\mid x\equiv 0\ (\text{mod } a^k)\right\}\cup {0}\right),,$$&lt;/p>
+&lt;p>then for a given large $n$, it holds $g(n, 5)\leq g(n, 2)$, which can be easily
+seen. Generally $a&amp;gt;b \iff g(n,a)\leq g(n,b)$.&lt;/p>
+&lt;p>Now how do we compute $g(n, 5)$ efficiently? A straight-forward way is to go through each number and try each $k$, that would be $\mathcal O(n^2)$. With a more clever approach, I&amp;rsquo;m sure this can be made $\mathcal O(n)$.&lt;/p>
+&lt;p>But let&amp;rsquo;s think even smaller.&lt;/p>
+&lt;p>I propose&lt;/p>
+&lt;p>$$g(n, a) = \sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a^i}\rfloor,.$$&lt;/p>
+&lt;p>Why does this count the number of times we find the factor $a$ in the numbers
+from $1$ to $n$? Well, it takes into account all powers of $a$. First it divides
+by $a^1$, which finds how many $a$&amp;rsquo;s there are in $n$. That includes even
+numbers which contain $a\cdot a$ as a factor, or $a\cdot a \cdot a$, and so on.
+For each of these, it adds one to the sum.&lt;/p>
+&lt;p>Next, we divide $n$ by $a^2$. This finds the number of times $a\cdot a$ appear
+as a factor. It counts when $a\cdot a$ or $a\cdot a\cdot a\cdots$ appear, but
+not when $a$ appears alone. For each of these it adds one to the sum. Which is
+correct &amp;ndash; we already added one for the second $a$ that appears in $a\cdot a$.&lt;/p>
+&lt;p>This continues while $a^i\leq n$. Let&amp;rsquo;s see an example. For $g(25, 5)$, we get&lt;/p>
+&lt;p>$$ \lfloor\frac{25}{5}\rfloor+\lfloor\frac{25}{25}\rfloor=5+1=6,. $$&lt;/p>
+&lt;p>The first division counts a single five in $5, 10, 15, 20$ and $25$. The second division counts the second five in $25$.&lt;/p>
+&lt;p>Our original problem is the result of $g(n,5)$. This runs in $\mathcal O(\log
+n)$ time. Nice.&lt;/p>
+&lt;p>Now what&amp;rsquo;s interesting and is just my unproven funny informal small conjecture (which I plan to think about later)&lt;/p>
+&lt;p>$$\sum_{i=1}^{\lfloor \log_a n \rfloor}\lfloor \frac{n}{a^i}\rfloor=\lfloor \frac{n}{a-1}\rfloor -\xi(n, a),,$$&lt;/p>
+&lt;p>where $\xi\colon (\mathbb N\times \mathbb N)\to \mathbb N$ is an unknown function, with an average
+value of around 5, which is not a lot. That means we have a
+good approximation for $g(n,a)$. That one is for the engineers. Bye~&lt;/p>
+&lt;p>&lt;img src="fig1.svg" alt="Plot of xi function" />&lt;/p></description></item><item><title>Asus E200HA Arch Linux Installation Guide</title><link>https://sorashi.github.io/asus-e200ha-arch/</link><pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/asus-e200ha-arch/</guid><description>&lt;h2 id="foreword">Foreword&lt;/h2>
+&lt;p>Oh, the Asus E200HA! A small Intel Cherry Trail netbook with 32GB of internal memory and
+2 gigs of RAM. I bought one for its compact size and small weight. Boy, was
+it a mistake. It comes with Windows 10 pre-installed and Windows 10 sure likes
+huge updates and general littering of your drive. The device is literally unusable after a small while. That is not a huge
+deal, you can just install Linux, right? It wasn&amp;rsquo;t that easy. At the time I
+bought the device, Linux kernel hadn&amp;rsquo;t integrated drivers for its network card,
+audio card and SD card reader. Some people even reported they couldn&amp;rsquo;t get their touch-pad
+to work, or that the backlight control didn&amp;rsquo;t work. Intel Cherry Trail CPU series
+support was also stuttering, because of problems with power saving - the purpose
+of Cherry Trail processors.&lt;/p>
+&lt;p>Hopeless as it may seem, there are incredible people working on the Linux kernel
+every day and fighting against the powerful wave of proprietary devices that receive drivers only for Windows (some people suggest Windows may have contracts and does this intentionally so that people don&amp;rsquo;t use other systems, but that&amp;rsquo;s a conspiration-sounding statement). And they eventually managed to fix these problems (by version 5.3). But user-friendly
+Linux distributions do not update their kernel until it&amp;rsquo;s thoroughly tested. So
+there have been
+&lt;a class="link" href="https://github.com/Grippy98/Asus-E200HA-Linux-Post-Install-Script" target="_blank" rel="noopener"
+>attempts&lt;/a> at
+creating a script that would update the kernel and force some new drivers to be
+used, but I never managed to make audio work using the script.&lt;/p>
+&lt;p>When Ubuntu 19.04 came around, the required kernel version was built in and
+supported. So I tried again. Audio still didn&amp;rsquo;t work, but I &lt;a class="link" href="https://github.com/heikomat/linux/tree/cx2072x/cx2072x_fixes_and_manual" target="_blank" rel="noopener"
+>found out&lt;/a>
+that the system isn&amp;rsquo;t configured to use (or recognize?) the audio card. And so I finally managed to get audio working. Eventually I realized that Ubuntu is still too big of a system for this timid device. Furthermore, kernel 5.3 had some problems with the graphics chip that ships with Cherry Trail devices, making your screen freeze and forcing you to hard-reset.&lt;/p>
+&lt;p>And so I decided to install Arch. Because Arch lets you install just what you want and because Arch usually has bleeding-edge kernel. And since installing Arch is not completely user-friendly I decided to make a small guide (or rather a log) specifically for this device. I don&amp;rsquo;t guarantee it will work and I&amp;rsquo;m not responsible for any damages you may cause to your device. It&amp;rsquo;s actually just a record of what I did for a successful install at the time.&lt;/p>
+&lt;p>Good luck and have fun!&lt;/p>
+&lt;p>&lt;em>Warning: As of late February 2020 there seem to be screen freezing issues.&lt;/em>&lt;/p>
+&lt;p>Looks like &lt;strong>Linux Mint latest edition 20 Ulyana - Cinnamon 64&lt;/strong> works out of the box for this device! Thank you Badd Pitt for your &lt;a class="link" href="http://disq.us/p/2d7jp8j" target="_blank" rel="noopener"
+>comment&lt;/a>.&lt;/p>
+&lt;h2 id="booting">Booting&lt;/h2>
+&lt;p>I used Rufus on Windows to burn &lt;code>archlinux-2019.12.01-x86_64.iso&lt;/code> to a drive in ISO mode.&lt;/p>
+&lt;p>Start E200HA and press F1 or F2 repeatedly until you&amp;rsquo;re shown the BIOS menu. Move to boot options and specify the USB drive as the first option. Then save and exit.&lt;/p>
+&lt;h2 id="first-wi-fi-connection">First Wi-Fi connection&lt;/h2>
+&lt;p>I needed to connect to eduroam (a global Wi-Fi network for educational institutions), which uses WPA-EAP. If you have access to a classic Wi-Fi, use &lt;code>wifi-menu&lt;/code> to connect.&lt;/p>
+&lt;ul>
+&lt;li>To connect to eduroam, create &lt;code>wpa_supplicant&lt;/code> config file: &lt;code>vi wpa_supplicant.conf&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">ctrl_interface=/run/wpa_supplicant
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">update_config=1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># ^ these two lines may not be needed
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">network={
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssid=&amp;#34;eduroam&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> key_mgmt=WPA-EAP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eap=PEAP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> phase2=&amp;#34;none&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> identity=&amp;#34;*username*&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> password=&amp;#34;*password*&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>check if &lt;code>wlan0&lt;/code> interface exists: &lt;code>ip link&lt;/code>&lt;/li>
+&lt;li>see if you can connect to eduroam: &lt;code>wpa_supplicant -i wlan0 -c wpa_supplicant.conf&lt;/code>&lt;/li>
+&lt;li>cancel the process if the connection was successful; run it in background as a daemon: &lt;code>wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf&lt;/code>&lt;/li>
+&lt;li>&lt;code>dhcpcd&lt;/code> to get your ip&lt;/li>
+&lt;li>&lt;code>ping google.com&lt;/code> to check connection&lt;/li>
+&lt;/ul>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>Use &lt;code>cfdisk /dev/mmcblk0&lt;/code> to create (in this order)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">300M EFI Filesystem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1G Linux swap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rest Linux filesystem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkfs.fat -F32 /dev/mmcblk0p1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkswap /dev/mmcblk0p2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkfs.ext4 /dev/mmcblk0p3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/mmcblk0p3 /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">swapon /dev/mmcblk0p2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Edit mirrorlist to have your preferred mirrors at the top
+&lt;code>vi /etc/pacman.d/mirrorlist&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacstrap /mnt base base-devel linux linux-firmware
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">genfstab -U -p /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">arch-chroot /mnt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Choose a hostname&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> your_hostname &amp;gt; /etc/hostname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Uncomment &lt;code>en_US.UTF-8 UTF-8&lt;/code> and &lt;code>en_US ISO-8859-1&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S vim
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim /etc/locale.gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">locale_gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Find your zone in &lt;code>/usr/share/zoneinfo/&lt;/code> using &lt;code>ls&lt;/code> and then&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hwclock --systohc --utc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">useradd -mg users -G wheel -s /bin/bash your_username
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd your_username
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pacman -S dhcp dhcpcd wpa_supplicant dialog netctl sudo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim /etc/sudoers &lt;span class="c1"># uncomment %wheel ALL=(ALL) ALL&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now to the bootloader!&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S grub efibootmgr dosfstools os-prober mtools
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir /boot/EFI
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/mmcblk0p1 /boot/EFI
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-install --target&lt;span class="o">=&lt;/span>x86_64-efi --bootloader-id&lt;span class="o">=&lt;/span>grub_uefi --recheck
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">umount -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">telinit &lt;span class="m">6&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After reboot:
+Connect to wifi either using wifi-menu or create a profile in /etc/netctl then&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo ip link _ down &lt;span class="c1"># _ is your interface, find it using ip&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo netctl start profile_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo dhcpcd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Install xorg server&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo pacman -S xf86-video-intel xorg-server-xephyr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now install your desired display manager, desktop environment and terminal, for example&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S lightdm i3-gaps dmenu i3-status rxvt-unicode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl &lt;span class="nb">enable&lt;/span> lightdm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">reboot
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Congratulations! Now go have fun and make your system comfortable. Be sure to comment if you found a mistake, have problems or just want to add something.&lt;/p>
+&lt;hr>
+&lt;p>What I personally installed after that:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S yay git ranger
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yay powerline-fonts-git &lt;span class="c1"># then use &amp;#34;DejaVu Sans Mono for Powerline&amp;#34; font in your terminal&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">yay rxvt-unicode-pixbuf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I might add other things later 🙂&lt;/p></description></item><item><title>How to fix Facebook archive JSON encoding</title><link>https://sorashi.github.io/fix-facebook-json-archive-encoding/</link><pubDate>Fri, 13 Sep 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/fix-facebook-json-archive-encoding/</guid><description>&lt;p>Facebook has a great feature which allows you to download an archive of your data. This includes content of messages from Messenger, posts, photos and videos, comments etc.&lt;/p>
+&lt;p>This allows you to display interesting statistics if you can work with JSON in a programming language. For example, whom did you message the most in the last 30 days? Who of your friends writes the longest messages? Imagination is your only limit.&lt;/p>
+&lt;p>To request an archive of your messages follow these image clues (from Facebook settings):&lt;/p>
+&lt;p>&lt;img src="https://i.imgur.com/36BOBKr.png" alt="Image clue 1" />&lt;/p>
+&lt;p>&lt;img src="https://i.imgur.com/Uun4uJe.png" alt="Image clue 2" />&lt;/p>
+&lt;p>You might see a problem after you download your archive and load it in your script/program though. If you have any Unicode characters in your data Facebook&amp;rsquo;s JSON strings will get corrupted when you parse them. It took me longer than it should to find out what&amp;rsquo;s going on. And that&amp;rsquo;s why I write this article - in hope to help others who find themselves in this situation.&lt;/p>
+&lt;h2 id="whats-going-on">What&amp;rsquo;s going on&lt;/h2>
+&lt;p>Facebook apparently represents UTF-8 characters in a broken way. Instead of outputting one &lt;code>\u&lt;/code> escape sequence for each Unicode character, Facebook actually outputs two or more in their JSON strings. An example of a Unicode character in a Facebook JSON file is &lt;code>\u00c5\u0099&lt;/code>. This is supposed to be a single character &lt;code>\u0159&lt;/code> or Latin Small Letter R with Caron - &lt;code>ř&lt;/code>. So what&amp;rsquo;s going on? It&amp;rsquo;s simple - Facebook doesn&amp;rsquo;t understand Unicode as a single character, but rather as separate bytes. In our case the bytes &lt;code>c5 99&lt;/code> in hexadecimal.&lt;/p>
+&lt;p>The problem is that when Facebook puts &lt;code>\u00c5\u0099&lt;/code> in a JSON string, most JSON prasers understand that as two Unicode characters. That&amp;rsquo;s because the escape sequence &lt;code>\u00c5&lt;/code> is actually the Unicode code for &lt;code>Å&lt;/code> and &lt;code>\u0099&lt;/code> is a Unicode control character. &lt;code>Å&lt;/code> is represented as two bytes in a proper UTF-8 file - &lt;code>c3 85&lt;/code> in hexadecimal. Same for &lt;code>\u0099&lt;/code> - two bytes - &lt;code>c2 99&lt;/code>.&lt;/p>
+&lt;p>In other words Facebook meant to output two single bytes, but ended up outputting the Unicode characters with their respective Unicode numbers being the bytes&amp;rsquo; values in hexadecimal, which is actually four bytes in total. That is totally wrong and doesn&amp;rsquo;t make any sense at all! I hope Facebook realizes this soon and fixes it so others don&amp;rsquo;t have to enjoy this great experience of additional trouble.&lt;/p>
+&lt;p>So when Facebook says &lt;code>\u00c5\u0099&lt;/code> they actually mean two separate bytes - &lt;code>c5 99&lt;/code>. That is the byte sequence for the Unicode character &lt;code>\u0159&lt;/code> - &lt;code>ř&lt;/code>.&lt;/p>
+&lt;h2 id="how-to-fix-that">How to fix that&lt;/h2>
+&lt;p>Use Regex to find all &lt;code>\u00hh&lt;/code> sequences and replace them with the byte with the value of &lt;code>hh&lt;/code>. The regex:&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-regex" data-lang="regex">\\u00([a-f0-9]{2})
+&lt;/code>&lt;/pre>&lt;p>Here is a &lt;strong>Ruby&lt;/strong> script which fixes all JSON files in your message inbox. Then outputs the result.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="line">&lt;span class="cl">&lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;../messages/inbox&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="no">Dir&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;[\\/]$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/**/message_1.json&amp;#34;&lt;/span>&lt;span class="o">].&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">each&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="no">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="n">gsub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sr">/\\u00([a-f0-9]{2})/&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="o">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="vg">$1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">to_i&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">puts&lt;/span> &lt;span class="s2">&amp;#34;Done &lt;/span>&lt;span class="si">#{&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Snippet for &lt;strong>PHP&lt;/strong>, which fixes all occurrences in &lt;code>$your_input_text&lt;/code> and &lt;code>echo&lt;/code>es the result.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="nf">replace_with_byte&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nx">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">hexdec&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$match&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">echo&lt;/span> &lt;span class="nx">preg_replace_callback&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;/\\\\u00([a-f0-9]{2})/&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;replace_with_byte&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">$your_input_text&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Python&lt;/strong> version (might need some performance improvements):&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;This is some text with the letter &lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u00c5&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s2">u0099 inside&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">replaced&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s1">u00([a-f0-9]&lt;/span>&lt;span class="si">{2}&lt;/span>&lt;span class="s1">)&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="nb">chr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="mi">16&lt;/span>&lt;span class="p">)),&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">repr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">replaced&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># &amp;#39;This is some text with the letter Å\x99 inside&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">buffer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">ord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">replaced&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">bytes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">buffer&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># This is some text with the letter ř inside&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>(CZ) Lineární diofantické rovnice</title><link>https://sorashi.github.io/linear-diophantine-equations/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/linear-diophantine-equations/</guid><description>&lt;p>Diofantické rovnice jsou &lt;span class="hint" title="mající více neznámých, než rovností">podurčené&lt;/span> polynomiální rovnice, u kterých se hledá
+řešení v množině $\mathbb{Z}$.&lt;/p>
+&lt;p>Lineární diofantická rovnice je rovnice ve tvaru součtu dvou monomů prvního řádu:&lt;/p>
+&lt;p>$$ax+by=c\,.$$&lt;/p>
+&lt;p>Takovým rovnostem se také říká &lt;a class="link" href="https://cs.wikipedia.org/wiki/B%C3%A9zoutova_rovnost" target="_blank" rel="noopener"
+>Bézoutovy&lt;/a>. Lze je vyřešit pomocí &lt;a class="link" href="https://cs.wikipedia.org/wiki/Roz%C5%A1%C3%AD%C5%99en%C3%BD_Eukleid%C5%AFv_algoritmus" target="_blank" rel="noopener"
+>rozšířeného Euklidova algoritmu&lt;/a>.&lt;/p>
+&lt;p>K čemu se ale řešení takových rovnic hodí? Pojďme se podívat na jednu úlohu,
+která se objevila v matematickém testu pro čtvrtou třídu základní školy.&lt;/p>
+&lt;blockquote>
+&lt;p>Mimoni založili orchestr. Umí hrát jen na basu nebo kytaru. Jejich basy mají 5 strun a jejich kytary mají 6 strun. Celkem mají nástroje v jejich orchestru 39 strun. Kolik Mimoňů hraje v orchestru?&lt;/p>&lt;/blockquote>
+&lt;p>Po přečtení by měl být každý schopen převést slovní vyjádření do matematické notace&lt;/p>
+&lt;p>$$5x+6y=39\,.$$&lt;/p>
+&lt;p>Žáci čtvrté třídy většinou neznají rozšířený Euklidův algoritmus. Naštěstí jsou
+zde malé koeficienty a s trochou pokusu a omylu by měli přijít na to, že řešením
+je $[x;y]=[3;4]$, neboli Mimoňů hraje v orchestru 7.&lt;/p>
+&lt;p>Pojďme si ale ukázat, jak by vypadalo obecné řešení, které lze aplikovat na
+podobné úlohy pro jakákoli čísla $a, b, c\in \mathbb{Z}$.&lt;/p>
+&lt;p>&lt;a class="link" href="https://cs.wikipedia.org/wiki/B%C3%A9zoutova_rovnost" target="_blank" rel="noopener"
+>Bézoutova rovnost&lt;/a> říká,
+že:&lt;/p>
+&lt;p>&lt;em>Nechť $c:=gcd(x,y)$, potom:&lt;/em>&lt;/p>
+&lt;p>$$\forall x,y\in\mathbb{Z}\ \exists a,b\in\mathbb{Z}\colon ax+by=c\,.$$&lt;/p>
+&lt;p>Jelikož $gcd(5,6)=1$, naše rovnice má celočíselná řešení. Abychom je zjistili, musíme
+nejdříve nalézt řešení pro $5x+6y=gcd(5,6)=1$. K tomu lze využít &lt;a class="link" href="https://cs.wikipedia.org/wiki/Eukleid%C5%AFv_algoritmus" target="_blank" rel="noopener"
+>Euklidův algoritmus&lt;/a>.&lt;/p>
+&lt;ol>
+&lt;li>$6=5(1)+1$&lt;/li>
+&lt;li>$5=1(5)+0$&lt;/li>
+&lt;/ol>
+&lt;p>Zpětným dosazením zjistíme, že
+$5(-1)+6(1)=1$. U tohoto triviálního příkladu je to zřejmé, ale u složitějších verzí
+je zpětné dosazování delší. Toto dosazování je právě &lt;em>rozšířením&lt;/em> Euklidova algoritmu.&lt;/p>
+&lt;p>Nyní, když jsme nalezli řešení pro $5x+6y=1$, jednoduše vynásobíme celou rovnici tak,
+abychom na pravé straně dostali požadované $c$. V našem případě 39.&lt;/p>
+&lt;p>$$5(-39)+6(39)=39$$&lt;/p>
+&lt;p>Získali jsme tak jedno z řešení $[x_1;y_1]=[-39;39]\in K$. Všechna ostatní řešení mají
+následující tvar:&lt;/p>
+&lt;p>$$\bigg[x_1-r\frac{b}{gcd(a,b)}; y_1+r\frac{a}{gcd(a,b)}\bigg]\in K; r\in \mathbb{Z}\,,\\ [-39-6r;39+5r]\in K; r\in \mathbb{Z}\,.$$&lt;/p>
+&lt;p>Pro vyřešení původní úlohy musíme nalézt uspořádanou dvojici $[x;y]$ takovou, že $x&amp;gt;0\wedge y&amp;gt;0$. Toho lze jednoduše dosáhnout nerovnicemi.&lt;/p>
+&lt;p>$$-39-6r&amp;gt;0 \wedge 39+5r&amp;gt;0\,,\\ r&amp;lt;-\frac{13}{2} \wedge r&amp;gt;-\frac{39}{5}\,,\\ r&amp;lt;-6,5\wedge r&amp;gt;-7,8\,.$$&lt;/p>
+&lt;p>Jediné celé číslo vyhovující této nerovnici je $r=-7$. Po dosazení $r$ do vzorce dostáváme
+$[x;y]=[3;4]$.&lt;/p>
+&lt;hr>
+&lt;p>Protože se jedná o algoritmus, jeho manuální exekuce je náchylná na chyby a často také fádní. Mnohem výhodnější je implementovat pro tento účel skript. Níže můžete vidět mé řešení v Pythonu. Pokud máte nějaké nápady na jeho vylepšení, můžete
+navštívit &lt;a class="link" href="https://github.com/sorashi/linear-diophantine-equation-solver" target="_blank" rel="noopener"
+>tento repozitář&lt;/a> na GitHubu.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">q&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">//&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">y1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">q&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">x1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y1&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y1&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">gcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">24&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Linear diophantine equation input form ax+by=c&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="s2">&amp;#34;=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="s2">&amp;#34;abc&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">xgcd&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">g&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;There are no solutions&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">k&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">g&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y&lt;/span>&lt;span class="o">*=&lt;/span>&lt;span class="n">k&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=0:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="kc">True&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">r&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;r=&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Solution for r=&amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;:&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">diophantine_values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">r&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">y&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>A comprehensive list of Rikai extensions</title><link>https://sorashi.github.io/comprehensive-list-of-rikai-extensions/</link><pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate><guid>https://sorashi.github.io/comprehensive-list-of-rikai-extensions/</guid><description>&lt;p>There are so many rikai extensions that I got lost when I was trying to find my choice.
+I want this to be the go-to article for people who seek not only the full list of rikai
+extensions, but also the truth behind their origin.&lt;/p>
+&lt;p>We&amp;rsquo;ll begin with what you&amp;rsquo;re all here for:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th>Browser&lt;/th>
+&lt;th>Repository&lt;/th>
+&lt;th>Site&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>nazeka&lt;/td>
+&lt;td>&lt;a class="link" href="https://addons.mozilla.org/cs/firefox/addon/nazeka/" target="_blank" rel="noopener"
+>Firefox&lt;/a>, works on Android&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/wareya/nazeka" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>10ten Japanese Reader (formerly Rikaichamp)&lt;/td>
+&lt;td>&lt;a class="link" href="https://addons.mozilla.org/en-US/firefox/addon/10ten-ja-reader/" target="_blank" rel="noopener"
+>Firefox&lt;/a>, &lt;a class="link" href="https://chrome.google.com/webstore/detail/10ten-japanese-reader-rik/pnmaklegiibbioifkmfkgpfnmdehdfan" target="_blank" rel="noopener"
+>Chrome&lt;/a>, &lt;a class="link" href="https://apps.apple.com/app/10ten-japanese-reader/id1573540634" target="_blank" rel="noopener"
+>Safari, iOS, macOS&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/birchill/10ten-ja-reader" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://twitter.com/10tenstudy" target="_blank" rel="noopener"
+>Twitter&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>rikaichan&lt;/td>
+&lt;td>&lt;a class="link" href="https://chrome.google.com/webstore/detail/rikaichan/clidkjbfdlffpbbhlalnkifiehenkjaj?hl=en" target="_blank" rel="noopener"
+>Chrome&lt;/a> &amp;amp; &lt;a class="link" href="https://addons.mozilla.org/firefox/addon/rikaichan/" target="_blank" rel="noopener"
+>Firefox&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/Kalamandea/Rikaichan" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>rikaikun&lt;/td>
+&lt;td>&lt;a class="link" href="https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp?hl=en" target="_blank" rel="noopener"
+>Chrome&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/melink14/rikaikun" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>RikaiRebuilt&lt;/td>
+&lt;td>&lt;a class="link" href="https://chrome.google.com/webstore/detail/rikairebuilt/bhcfpccmjdpjejaahbblpnikkejnkfcj" target="_blank" rel="noopener"
+>Chrome&lt;/a> &amp;amp; &lt;a class="link" href="https://addons.mozilla.org/cs/firefox/addon/rikairebuilt/" target="_blank" rel="noopener"
+>Firefox&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/Garethp/RikaiRebuilt" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>None&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Rikaisama&lt;/td>
+&lt;td>&lt;a class="link" href="https://sourceforge.net/projects/rikaisama/files/" target="_blank" rel="noopener"
+>Firefox&lt;/a> (XPI, not published on Firefox addon site)&lt;/td>
+&lt;td>None&lt;/td>
+&lt;td>&lt;a class="link" href="http://rikaisama.sourceforge.net/" target="_blank" rel="noopener"
+>Yes&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>rikaiXUL&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;td>&lt;a class="link" href="http://rikaixul.mozdev.org/" target="_blank" rel="noopener"
+>mozdev&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Yomichan&lt;/td>
+&lt;td>&lt;a class="link" href="https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami" target="_blank" rel="noopener"
+>Chrome&lt;/a> &amp;amp; &lt;a class="link" href="https://addons.mozilla.org/en-US/firefox/addon/yomichan/" target="_blank" rel="noopener"
+>Firefox&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/FooSoft/yomichan" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/td>
+&lt;td>&lt;a class="link" href="https://foosoft.net/projects/yomichan/" target="_blank" rel="noopener"
+>Yes&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Now some information about some of them:&lt;/p>
+&lt;p>&lt;strong>nazeka&lt;/strong> is a rikai replacement with many interesting features and options, which are listed in the &lt;a class="link" href="https://github.com/wareya/nazeka/blob/master/readme.md" target="_blank" rel="noopener"
+>readme&lt;/a> of the repository. It also works in Firefox on Android.&lt;/p>
+&lt;p>&lt;strong>10ten Japanese Reader&lt;/strong> is a port of rikaikun, which is a port of rikaichan, which is a port of rikaiXUL. It&amp;rsquo;s very fast.&lt;/p>
+&lt;p>&lt;strong>rikaichan&lt;/strong> is a fork of rikaiXUL, which took over the development. Originally only for Firefox, it was eventually published for Chrome too.&lt;/p>
+&lt;p>&lt;strong>rikaikun&lt;/strong> (Chrome) started as a port of rikaichan to Chrome, when rikaichan
+wasn&amp;rsquo;t available for Chrome yet.&lt;/p>
+&lt;p>&lt;strong>RikaiRebuilt&lt;/strong> is a rewrite of Rikaisama for WebExtension API, which aims to keep the structure of the original extension.&lt;/p>
+&lt;p>&lt;strong>Rikaisama&lt;/strong> is a fork of rikachan with many new features and cutomization options, but it is no longer developed and not supported by Firefox anymore.&lt;/p>
+&lt;p>&lt;strong>rikaiXUL&lt;/strong> is an old Firefox add-on on which most of the rikai family members were
+based.&lt;/p>
+&lt;p>&lt;strong>Yomichan&lt;/strong> is not a fork, but rather a whole different extension which focuses
+not only on dictionaries, but also the learning side of things. It has a built
+in integration for Anki, which makes the experience for Anki users a breeze.&lt;/p>
+&lt;h3 id="how-can-i-decide-on-my-rikai-extension">How can I decide on my rikai extension?&lt;/h3>
+&lt;p>10ten Japanese Reader is the latest fork (deepest in the fork tree) with many performance
+improvements and an active development community. But you should definitely
+check out all the other choices, explore their features and decide which one
+has the best feel to it for you.&lt;/p>
+&lt;p>&lt;em>Do you know something I don&amp;rsquo;t? Do you want to make this more comprehensive? &lt;a class="link" href="https://github.com/sorashi/sorashi.github.io/edit/master/content/post/comprehensive-list-of-rikai-extensions.md" target="_blank" rel="noopener"
+>Edit&lt;/a> this page!&lt;/em>&lt;/p></description></item></channel></rss>

@@ -16,8 +16,7 @@ Highlights&lt;/a>.&lt;/p>
 6 GA release, we will enable Hot Reload functionality only through Visual
 Studio 2022 so we can focus on providing the best experiences to the most
 users. [&amp;hellip;] To clarify, we are not releasing Hot Reload as a feature of the
-&lt;code>dotnet watch&lt;/code> tool.&lt;/p>
-&lt;/blockquote>
+&lt;code>dotnet watch&lt;/code> tool.&lt;/p>&lt;/blockquote>
 &lt;p>This statement and removal resulted in a large backlash and discussion from the
 open-source .NET community. The Verge covers this story with information from
 the inside of Microsoft in their article called &lt;a class="link" href="https://www.theverge.com/2021/10/22/22740701/microsoft-dotnet-hot-reload-removal-decision-open-source" target="_blank" rel="noopener"
@@ -256,8 +255,7 @@ Connect to wifi either using wifi-menu or create a profile in /etc/netctl then&l
 &lt;p>K čemu se ale řešení takových rovnic hodí? Pojďme se podívat na jednu úlohu,
 která se objevila v matematickém testu pro čtvrtou třídu základní školy.&lt;/p>
 &lt;blockquote>
-&lt;p>Mimoni založili orchestr. Umí hrát jen na basu nebo kytaru. Jejich basy mají 5 strun a jejich kytary mají 6 strun. Celkem mají nástroje v jejich orchestru 39 strun. Kolik Mimoňů hraje v orchestru?&lt;/p>
-&lt;/blockquote>
+&lt;p>Mimoni založili orchestr. Umí hrát jen na basu nebo kytaru. Jejich basy mají 5 strun a jejich kytary mají 6 strun. Celkem mají nástroje v jejich orchestru 39 strun. Kolik Mimoňů hraje v orchestru?&lt;/p>&lt;/blockquote>
 &lt;p>Po přečtení by měl být každý schopen převést slovní vyjádření do matematické notace&lt;/p>
 &lt;p>$$5x+6y=39\,.$$&lt;/p>
 &lt;p>Žáci čtvrté třídy většinou neznají rozšířený Euklidův algoritmus. Naštěstí jsou
