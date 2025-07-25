@@ -1,7 +1,8 @@
 {{/* nope */}}
 {{ $repo := .Get 0 }}
 {{ $path := .Get 1 }}
-{{ $json := getJSON "https://api.github.com/repos/" $repo "/contents/" $path }}
+{{ $url := print "https://api.github.com/repos/" $repo "/contents/" $path }}
+{{ $json := (resources.GetRemote $url) | transform.Unmarshal }}
 {{ $code := $json.content | base64Decode }}
 {{ $lang := .Get 2 }}
 

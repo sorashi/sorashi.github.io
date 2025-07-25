@@ -9,7 +9,9 @@ title: Sorashi
 disqusShortname: Sorashi
 
 # GA Tracking ID
-googleAnalytics: UA-112058345-1
+services:
+  googleAnalytics:
+    id: UA-112058345-1
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn
