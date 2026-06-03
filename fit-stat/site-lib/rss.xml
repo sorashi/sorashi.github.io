@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>notes</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 03 Jun 2026 07:42:12 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 03 Jun 2026 07:42:08 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[NI-SPOL-13]]></title><description><![CDATA[
+druhy heuristických metod lokální - prozkoumávám sousedy konstruktivní - začne z triviální konfigurace
+iterativní - začne z nějakého (i neplatného) řešení
+dvojfázové - nejdřív najdu řešení, pak iteruji globální - dekompozice na menší instance téhož lokální heuristiky základní pojmy - stav, stavový prostor, akce, k-okolí, sousední stavy, vzdálenost (=nejkratší)
+heuristika je charakterizována reprezentací stavového prostoru, strategií pohybu v něm a a kdy končíme
+prohledávací prostor
+strategie pohybu ve stavovém prostoru některé heuristiky požadují: dostupnost, symetrii
+někdy jsou všechny stavy řešení
+když ne: buď se pohybujeme jen v řešeních
+nebo relaxujeme -- omezení převedeme na pokutu speciální strategie úplná -- navštíví všechny stavy, kromě těch, o kterých víme, že určitě nejsou řešení
+systematická - úplná, která navštíví každý stav nejvýše jednou DFS, BFS konkrétní metody - jednoduché rychlé akce, které nemění drasticky konfiguraci (postupný pohyb, ne skok) možnosti výběru souseda best-only - vybereme nejlepšího
+first improvement - vybereme prvního, který zlepšuje
+Kernighan-Lin - opakuji operátor (až do stop podmínky), z tohoto okolí vyberu nový stav strategie pohybu v prohledávacím prostoru vyber proměnnou, nastav proměnnou
+musíme mít možnost backtrackingu
+ořezávání - nejít do neperspektivních větví návrh heuristiky - white box, black box
+globální optimum - hodnota optimalizačního kritéria je nejlepší přes všechny stavy
+lokální optimum - jsem lepší než sousedi
+uváznutí v lokálním optimu - heuristika moc závisí na počátečním řešení únik - balancujeme: diverzifikace
+intenzifikace metody -okolí -- můžeme zvětšit uvažované okolí
+randomizované algoritmy -- spouštění z vícero stavů najednou
+backtracking -- podpora návratu
+přijmutí horšího řešení (simulované ochlazování)
+zpracování více stavů najednou (genetické algoritmy)
+restrikce operací (tabu search) ]]></description><link>fit-státnice/ni-spol-13.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-13.md</guid><pubDate>Tue, 02 Jun 2026 12:57:11 GMT</pubDate></item><item><title><![CDATA[NI-SPOL-14]]></title><description><![CDATA[
+jedinec (fenotyp) konfigurace
+genetická reprezentace (genotyp, chromozom) reprezentace konfigurace
+generace (populace) aktuální množina konfigurací
+mutace unární operátor
+křížení (rekombinace) binární operátor
+zdatnost (fitness) optimalizační kritérium
+konvergence - rozšíření kvalitní populace
+degenerace - rozšíření populace zakrnělé v lokálním minimu
+Obecně jsou to algoritmy inspirované evoluční biologií.
+Náhrada
+en bloc - potomci nahradí rodiče zcela
+s elitismem - nechám si pár dobrých rodičů
+soutěž - např. turnaj, vyberu ze všech novou generaci
+Druhy evolučních algoritmů
+genetické algoritmy
+genetické programování
+evoluční strategie
+evoluční programování genotyp je buď binární řetězec
+vektor proměnných
+permutace řetězce selekce převod zdatnosti na pnost výběru
+selekční tlak = pnost výběru nejlepšího jedince, tedy intezifikace
+výběrové mechanismy ruletový kolečko a přiřadím jim slice podle zdatnosti
+můžu pak zatočit anebo vygenerovat úhel a pak rovnoměrně krokovat
+selekční tlak lze řídit např. prahem turnajový vybereme náhodných a z nich nejlepšího, opakujeme dokud nenaplníme
+selekční tlak se řídí velikostí turnaje křížení jednobodové, dvoubodové - problém pořadí -&gt; prohodit bity
+uniformní
+PMX - křížení pro permutační problémy - nechci duplikované hodnoty -&gt; opravit mutace - koření - někteří mohou být mutovaní víckrát, někteří vůbec
+parametry náhrada
+velikost populace
+ukončení
+omezující podmínky (co s těmi, co je nesplňují) - např. trest smrti, oprava, relaxace, dekodéry, doménová reprezentace (nelze zakódovat chybnou konfiguraci) fast messy GA - z teorie stavebních bloků, identifikuje "dobré nápady"
+]]></description><link>fit-státnice/ni-spol-14.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-14.md</guid><pubDate>Tue, 02 Jun 2026 12:35:45 GMT</pubDate></item><item><title><![CDATA[NI-SPOL-12]]></title><description><![CDATA[
+jak hodnotíme (prakticky, teoreticky)
+co nás zajímá (složitost, kvalita, porozumění)
+metriky výstupu o algoritmu
+o implementaci vstupu (např. proměnných děleno klauzulí v 3-SAT)
+existují metriky, které neznáme -&gt; generování instancí, sběr instancí
+nad změřenými hodnotami metrik přes více instancí můžeme udělat statistiku srovnání dvou algoritmů A, B dle rozdělení
+dle dominance
+nebo nevíme -&gt; hlubší analýza vyhodnocení randomizovaných druhy random. algoritmů Monte Carlo - pevná doba běhu, random kvalita
+Las Vegas - pevná kvalita, random doba běhu
+Atlantic City - random (polynomiální) doba, random kvalita, obojí bounded, většinou 75% na jedné instanci zdroj variace je i algoritmus
+primární (přímo měřené, např. počet kroků) a sekundární metriky (odvozené z primárních, např. průměr) na sadě instancí zdroj variace je generátor instancí i algoritmus
+lze vzít existující instance (sady) pro eliminaci možnosti, že máme špatný generátor, ale tam neznáme zdroj variace robustnost - algoritmy mohou být závislé na vlastnostech vstupu, třeba pořadí zvolíme náhodnou perturbaci další možnosti iterativní síla - závislost na počátečním řešení (nejen na instanci) ]]></description><link>fit-státnice/ni-spol-12.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-12.md</guid><pubDate>Tue, 02 Jun 2026 12:18:47 GMT</pubDate></item><item><title><![CDATA[NI-SP-11]]></title><description><![CDATA[
+segmentation code segment
+data segment
+stack segment
+Linux nechce používat segmenty, ale je donucen, protože musí být minimálně user code, data a kernel code, data paging - může být více-úrovňový page table entry present/absent, dirty, accessed (kvůli swapu), další metadata, PFN, Read/Write, privilege both done by MMU
+TLB - translation look-aside buffer - cache pro překlad
+TLB hit, miss -- cache
+page fault -- stránka není vůbec načtena v RAM, např. jen ve swapu
+]]></description><link>fit-státnice/ni-sp-11.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-11.md</guid><pubDate>Tue, 02 Jun 2026 10:54:28 GMT</pubDate></item><item><title><![CDATA[NI-SP-10]]></title><description><![CDATA[
+procesy -- vlastní (virtuální) paměť, otevřené soubory, pending signals; uloženo v task list (doubly linked list) každý task má metadata
+stavy: ready, running, interruptible, uninterruptible, __traced, __stopped, dead (lze uvolnit), zombie (nelze uvlonit, rodič potřebuje moji mrtvolu) vlákna -- vlastní stack, vlastní PC, vlastní registry, sdílí paměť procesu
+na Linuxu je vlákno "lightweight process, lwp"
+stack a heap v kernelu, procesy mají virtuální adresní prostor, který odpovídá stejné struktuře
+cooperative/pre-emptive context-switching
+timeslice -- default většinou 10ms-100ms
+Linux Completely Fair Scheduler -- virtuální čas pro rozložení nad výkonem procesoru, používá red-black tree
+]]></description><link>fit-státnice/ni-sp-10.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-10.md</guid><pubDate>Tue, 02 Jun 2026 09:52:07 GMT</pubDate></item><item><title><![CDATA[Otázky]]></title><link>fit-státnice/otázky.html</link><guid isPermaLink="false">FIT Státnice/Otázky.md</guid><pubDate>Tue, 02 Jun 2026 09:18:13 GMT</pubDate></item><item><title><![CDATA[NI-SP-9]]></title><description><![CDATA[
+monolitický všechno spolu, no access protection, malý overhead mikrokernel izolace &amp; modularita (zemře služba pro síťovku -&gt; nezemře celý počítač), ale velký overhead (IPC mezi userspace službami a kernelem) dynamické moduly -- load bez restartu, nebo při kompilaci jinak by musel být kernel obří pro podporu všeho hardware ring 0 = kernel space, ring 3 = userspace
+syscall -- pro komunikaci mezi ring 0 a userspace userspace zavolá funkci write, do registru ze uloží parametry, context switch, kernel si vezme parametry a ze syscall table zjistí, co tomu odpovídá, zkontroluje permissions, dá odpověď do registru, context switch
+VDSO -- aby nebyly syscalls všude (overhead), uložíš syscall jako read-only do paměti a procesy si je mohou namapovat, tedy bez context switche lze volat
+na moderních systémech se na syscall upozorňuje interruptem ]]></description><link>fit-státnice/ni-sp-9.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-9.md</guid><pubDate>Tue, 02 Jun 2026 09:05:31 GMT</pubDate></item><item><title><![CDATA[NI-SP-19]]></title><description><![CDATA[
+monotónní framework je nad CFG a latticem, řeší se iterativně
+constraint-based pracuje nad AST a sadou rovnic, častěji se používá pro inter-procedurální, např. pointery
+may/must -- constraints sjednocení/průnik
+forward/backward -- používám predecessory/successory
+reaching definitions -- may, forward
+available expressions -- must, forward
+liveness -- may, backward
+very busy expressions -- must, backward
+Intra-procedural -- flow-sensitive, kde uvažujeme jedinou funkci.
+Inter-procedural -- flow-sensitive, kde uvažujeme celý program. context-insensitive -- CFG se splitne na function callech do dvou nodes (bind všech parametrů) -- volání a návrat (po volání), ale nevíme kam se vrátit (nevíme z kterého call site jsme přišli), protože každá funkce má jediný CFG, tedy nepřesné
+context-sensitive function inlining (naklonovat funkci pro každý call site) -- exploze. Lze zlepšit heuristikou. obě řeknou, zda vlastnost platí v bodě každého statementu (z rovnic pro constraints udělám , takže existuje fixed-point
+fix-point algoritmy naive x = (bot, bot, ..., bot)
+do { t = x x = f(x)
+} while(x != t) round-robin -- aplikuji po jedné a pak v používám už updatnuté , takže může skončit dříve ale stále vrací stejný výsledek chaotic iteration -- pokaždé vezmu náhodné , ale může trvat moc dlouho, ale může být míň práce v každé iteraci
+praktičtější -- worklist -- jako chaotic, ale využívám strukturu a tím chytřeji vybírám další do worklistu dávám jen dependence (protože já se změnil a oni na mě závisí) ]]></description><link>fit-státnice/ni-sp-19.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-19.md</guid><pubDate>Tue, 02 Jun 2026 07:50:03 GMT</pubDate></item><item><title><![CDATA[NI-SP-18]]></title><description><![CDATA[
+částečné uspořádání
+(least) upper bound, (greatest) lower bound
+join (merge) , meet lattice -- complete lattice (+ semi-lattice, má nebo ) -- powerset lattice, map lattice, (product lattice)
+height
+flat, lift funkce je monotónní nad , pokud zachovává a jsou monotónní
+Kleene's fixed-point theorem Pro complete lattice s konečnou výškou a monotónní funkci Existuje unikátní fixed-point: (z rovnic pro constraints udělám , takže existuje fixed-point
+fix-point algoritmy naive x = (bot, bot, ..., bot)
+do { t = x x = f(x)
+} while(x != t) round-robin -- aplikuji po jedné a pak v používám už updatnuté , takže může skončit dříve ale stále vrací stejný výsledek chaotic iteration -- pokaždé vezmu náhodné , ale může trvat moc dlouho, ale může být míň práce v každé iteraci
+praktičtější -- worklist -- jako chaotic, ale využívám strukturu a tím chytřeji vybírám další do worklistu dávám jen dependence (protože já se změnil a oni na mě závisí) Pro intervalovou analýzu má lattice nekonečnou výšku -&gt; fixpoint theorem nefunguje.
+Tarksiho věta říká, že alespoň existuje fixpoint, ale neříká, jak ho najít.
+Přidáme widening funkci , která "zhrubuje" informaci Potom děláme analýzu nad <img alt="Pasted image 20260601154734.png" src="attachments/pasted-image-20260601154734.png" target="_self" style="width: 450px; max-width: 100%;">
+např. pro intervaly (kterých by bylo nekonečně) si zvolím konečnou množinu "záchytných bodů" a interval na ně "zhrubím"
+tohle je konečnej complete lattice a pustím normální analýzu
+ale přestřelím, proto: Přidám narrowing. To je aplikace v původním (nekonečném) lattice. Vím, že už jsem v safe zóně, takže mohu aplikovat kolikrát chci a stále jsem sound. <br><img alt="Pasted image 20260601155715.png" src="attachments/pasted-image-20260601155715.png" target="_self" style="width: 450px; max-width: 100%;"> Better widening: , ten "zhrubuje" pouze abstraktní hodnoty, které jsou nestabilní ]]></description><link>fit-státnice/ni-sp-18.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-18.md</guid><pubDate>Tue, 02 Jun 2026 07:32:23 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260601155715]]></title><description><![CDATA[<img src="attachments/pasted-image-20260601155715.png" target="_self">]]></description><link>attachments/pasted-image-20260601155715.html</link><guid isPermaLink="false">attachments/Pasted image 20260601155715.png</guid><pubDate>Mon, 01 Jun 2026 13:57:15 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260601154734]]></title><description><![CDATA[<img src="attachments/pasted-image-20260601154734.png" target="_self">]]></description><link>attachments/pasted-image-20260601154734.html</link><guid isPermaLink="false">attachments/Pasted image 20260601154734.png</guid><pubDate>Mon, 01 Jun 2026 13:47:34 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[NI-SPOL-15]]></title><description><![CDATA[
+teplota = ochota diverzifikovat (přijmout zhoršující řešení)
+try(state): vybere náhodného souseda
+pokud je lepší, jdu do něj
+pokud ne, hodím si podle teploty a zhoršení (vždy kladné) random(0, 1) &lt; exp(-delta/T) pokud ano, vydám se do něj
+pokud ne, vrátím stejný stav (průzkum pokračuje ze stejného) to se dělá dokola do ekvilibria při stejné teplotě poté zchladíme dle schématu, většinou a většinou opakujeme, dokud jsme nezmrzli () rozvrh ochlazování počáteční teplota zvolím tak, aby přijetí zhoršujícího stavu měl zezačátku vyšší pnost přijetí lze zjistit samplováním ("znám hloubku lokálních optim") koeficient ochlazování equilibruim (počet kroků při jedné teplotě) např. vzhledem k velikosti instance lze upravovat za běhu dle počtu přijatých stavů frozen - počet kroků / teplota / stagnace ]]></description><link>fit-státnice/ni-spol-15.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-15.md</guid><pubDate>Mon, 01 Jun 2026 11:49:10 GMT</pubDate></item><item><title><![CDATA[NI-SPOL-11]]></title><description><![CDATA[
+definujeme kombinatorický problém
+co je instance a řešení problému
+typy problémů -- rozhodovací, konstruktivní, enumerační, početní
+deterministický Turingův stroj definice
+definice "DTS řeší rozhodovací problém" nedeterministický Turingův stroj
+exponenciální mezera
+třídy složitosti PSPACE
+EXPTIME, pozn. PSPACE EXPTIME, ale nevíme, zda se rovnají
+NP
+co-NP
+P vs NP
+hierarchie NPH
+NPC
+Cookova věta Dobré zprávy, pokud je problém v NP
+Špatné zprávy, pokud je problém v NPC
+Optimalizační problémy NPO
+PO NPC, optimalizační verze , pak (jsou polynomiálně Turing-ekvivalentní)
+dobré zprávy pro NPO
+špatné problémy APX, PTAS, FPTAS
+]]></description><link>fit-státnice/ni-spol-11.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-11.md</guid><pubDate>Mon, 01 Jun 2026 08:54:29 GMT</pubDate></item></channel></rss>
