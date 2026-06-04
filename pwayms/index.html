@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallel P-Way Merge Sort: Splitters by Rank Visualizer</title>
+  <meta name="description" content="An interactive visualization of the Splitters_by_Rank algorithm in parallel p-way merge sort, utilizing 3 threads and custom sorted subarrays.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-title-group">
+        <h1>Parallel Splitters by Rank</h1>
+        <p>Visualizing splitter selection in parallel p-way merge sort using 3 threads</p>
+      </div>
+      
+      <!-- Thread view toggles -->
+      <div class="view-tabs" id="viewTabs">
+        <button class="tab-btn active" data-view="all">Concurrent (All Threads)</button>
+        <button class="tab-btn" data-view="0">Thread 0 (Rank 0)</button>
+        <button class="tab-btn" data-view="1">Thread 1 (Rank 12)</button>
+        <button class="tab-btn" data-view="2">Thread 2 (Rank 24)</button>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <section class="glass-panel control-bar">
+      <div class="btn-group">
+        <button id="btnPlay" class="primary">
+          <span class="icon">▶</span> <span class="text">Play</span>
+        </button>
+        <button id="btnStepBack" disabled>
+          <span class="icon">◀</span> Step Back
+        </button>
+        <button id="btnStepForward">
+          Step Forward <span class="icon">▶</span>
+        </button>
+        <button id="btnReset">
+          ↻ Reset
+        </button>
+      </div>
+
+      <div class="slider-group">
+        <label for="speedSlider">Speed:</label>
+        <input type="range" id="speedSlider" min="100" max="2000" value="800" step="100">
+        <span id="speedVal">0.8s</span>
+      </div>
+
+      <div class="btn-group">
+        <button id="btnRunEpilogue" class="primary" style="display: none;">
+          ⚡ Run Merging Epilogue
+        </button>
+      </div>
+    </section>
+
+    <!-- Visualizer Core Layout -->
+    <main class="visualizer-body">
+      
+      <!-- Left Column: Visualizers for the threads -->
+      <section class="threads-container" id="threadsContainer">
+        <!-- Thread 0 Card -->
+        <div class="thread-card" id="threadCard-0" style="--thread-accent: var(--color-thread-0); --thread-glow: var(--color-thread-0-glow);">
+          <div class="thread-header">
+            <div class="thread-title">
+              <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--color-thread-0); box-shadow: 0 0 8px var(--color-thread-0);"></span>
+              Thread 0 (Rank 0)
+            </div>
+            <div class="thread-badge idle" id="threadBadge-0">Idle</div>
+          </div>
+          <div class="thread-info-pills" style="margin-bottom: 12px;">
+            <div class="pill">Bounds: <strong id="threadBounds-0">L[0,0,0], R[11,11,11]</strong></div>
+            <div class="pill">Pivot: <strong id="threadPivot-0">-</strong></div>
+            <div class="pill">Ranks: <strong id="threadRanks-0">m[-, -, -] = -</strong></div>
+          </div>
+          <div class="subarrays-wrapper" id="subarraysWrapper-0">
+            <!-- Dynamically generated rows for S0, S1, S2 will go here -->
+          </div>
+        </div>
+
+        <!-- Thread 1 Card -->
+        <div class="thread-card" id="threadCard-1" style="--thread-accent: var(--color-thread-1); --thread-glow: var(--color-thread-1-glow);">
+          <div class="thread-header">
+            <div class="thread-title">
+              <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--color-thread-1); box-shadow: 0 0 8px var(--color-thread-1);"></span>
+              Thread 1 (Rank 12)
+            </div>
+            <div class="thread-badge idle" id="threadBadge-1">Idle</div>
+          </div>
+          <div class="thread-info-pills" style="margin-bottom: 12px;">
+            <div class="pill">Bounds: <strong id="threadBounds-1">L[0,0,0], R[11,11,11]</strong></div>
+            <div class="pill">Pivot: <strong id="threadPivot-1">-</strong></div>
+            <div class="pill">Ranks: <strong id="threadRanks-1">m[-, -, -] = -</strong></div>
+          </div>
+          <div class="subarrays-wrapper" id="subarraysWrapper-1">
+            <!-- Dynamically generated rows for S0, S1, S2 will go here -->
+          </div>
+        </div>
+
+        <!-- Thread 2 Card -->
+        <div class="thread-card" id="threadCard-2" style="--thread-accent: var(--color-thread-2); --thread-glow: var(--color-thread-2-glow);">
+          <div class="thread-header">
+            <div class="thread-title">
+              <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--color-thread-2); box-shadow: 0 0 8px var(--color-thread-2);"></span>
+              Thread 2 (Rank 24)
+            </div>
+            <div class="thread-badge idle" id="threadBadge-2">Idle</div>
+          </div>
+          <div class="thread-info-pills" style="margin-bottom: 12px;">
+            <div class="pill">Bounds: <strong id="threadBounds-2">L[0,0,0], R[11,11,11]</strong></div>
+            <div class="pill">Pivot: <strong id="threadPivot-2">-</strong></div>
+            <div class="pill">Ranks: <strong id="threadRanks-2">m[-, -, -] = -</strong></div>
+          </div>
+          <div class="subarrays-wrapper" id="subarraysWrapper-2">
+            <!-- Dynamically generated rows for S0, S1, S2 will go here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Code and Log Panels -->
+      <section class="right-panel">
+        
+        <!-- Pseudocode Viewer -->
+        <div class="glass-panel code-panel">
+          <div class="panel-header">
+            <span>Algorithm Pseudocode</span>
+            <span class="panel-subtitle">Splitters_by_Rank(S, rank)</span>
+          </div>
+          <div class="code-container" id="codeContainer">
+            <div class="code-line" id="code-line-1"><span class="code-keyword">void</span> Splitters_by_Rank(<span class="code-type">int</span>** S, <span class="code-type">int</span> rank) {</div>
+            <div class="code-line" id="code-line-2">  <span class="code-type">int</span> L[p], R[p], m[p]; <span class="code-type">int</span> v;</div>
+            <div class="code-line" id="code-line-3">  <span class="code-keyword">for</span> (i = 0; i < p; i++) { L[i] = 0; R[i] = n/p-1; }</div>
+            <div class="code-line" id="code-line-4">  <span class="code-keyword">while</span> (there exists i such that L[i] < R[i]) {</div>
+            <div class="code-line" id="code-line-5">    v = Pickup_Random_Pivot(S, L, R);</div>
+            <div class="code-line" id="code-line-6">    <span class="code-keyword">for</span> (i = 0; i < p; i++)</div>
+            <div class="code-line" id="code-line-7">      m[i] = binarySearch(v, S[i]);</div>
+            <div class="code-line" id="code-line-8">    <span class="code-keyword">if</span> (m[0] + .. + m[p-1] >= rank)</div>
+            <div class="code-line" id="code-line-9">      R[0..p-1] = m[0..p-1]; <span class="code-comment">// narrow bounds from right</span></div>
+            <div class="code-line" id="code-line-10">    <span class="code-keyword">else</span></div>
+            <div class="code-line" id="code-line-11">      L[0..p-1] = m[0..p-1]; <span class="code-comment">// narrow bounds from left</span></div>
+            <div class="code-line" id="code-line-12">  }</div>
+            <div class="code-line" id="code-line-13">  <span class="code-keyword">return</span> L[0..p-1];</div>
+            <div class="code-line" id="code-line-14">}</div>
+          </div>
+        </div>
+
+        <!-- System Log Console -->
+        <div class="glass-panel log-panel">
+          <div class="panel-header">
+            <span>Execution Log</span>
+            <button id="btnClearLog" style="padding: 4px 8px; font-size: 0.75rem; background: transparent; border-color: rgba(255,255,255,0.1);">Clear</button>
+          </div>
+          <div class="log-container" id="logContainer">
+            <div class="log-entry"><span class="log-entry-time">[15:48:47]</span><span class="log-entry-system">Visualizer loaded. Ready to execute.</span></div>
+          </div>
+        </div>
+        
+      </section>
+    </main>
+
+    <!-- Customizer Panel -->
+    <section class="glass-panel customizer-panel">
+      <h2>Simulation Controls & Custom Data</h2>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">
+        You can customize the initial values of the three sorted subarrays. Keep them in sorted order.
+      </p>
+      
+      <div class="customizer-inputs">
+        <div class="input-group">
+          <label for="inputS0">Subarray S0 (n/3 elements):</label>
+          <input type="text" id="inputS0" value="2, 5, 8, 12, 16, 20, 24, 28, 33, 37, 40, 45">
+        </div>
+        <div class="input-group">
+          <label for="inputS1">Subarray S1 (n/3 elements):</label>
+          <input type="text" id="inputS1" value="1, 4, 7, 10, 15, 18, 22, 27, 31, 35, 39, 44">
+        </div>
+        <div class="input-group">
+          <label for="inputS2">Subarray S2 (n/3 elements):</label>
+          <input type="text" id="inputS2" value="3, 6, 9, 11, 14, 19, 21, 26, 30, 34, 38, 42">
+        </div>
+      </div>
+
+      <div class="customizer-inputs" style="margin-top: 12px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div class="input-group">
+          <label for="selectBS">Binary Search Behavior:</label>
+          <select id="selectBS" style="background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px; border-radius: 6px; font-size: 0.85rem; outline: none;">
+            <option value="strict" selected>Strict: Return index of first element &ge; v (Elements &lt; v)</option>
+            <option value="upperbound">Upper-Bound: Return index of first element &gt; v (Elements &le; v)</option>
+          </select>
+        </div>
+        
+        <div class="input-group">
+          <label for="selectStrategy">Bound Narrowing strategy:</label>
+          <select id="selectStrategy" style="background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px; border-radius: 6px; font-size: 0.85rem; outline: none;">
+            <option value="min_max" selected>Robust: Restrict bounds (R_i = min(R_i, m_i), L_i = max(L_i, m_i)) [Recommended]</option>
+            <option value="literal">Literal: Overwrite bounds (R = m, L = m) [Loops without exact match check]</option>
+          </select>
+        </div>
+
+        <div style="display: flex; align-items: flex-end; gap: 10px;">
+          <button id="btnApplyData" class="primary" style="width: 100%; justify-content: center;">Apply Data & Restart</button>
+          <button id="btnRandomize" style="width: 100%; justify-content: center;">🎲 Randomize Arrays</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Epilogue Panel (Hidden until complete) -->
+    <section class="glass-panel epilogue-panel" id="epiloguePanel">
+      <h2>Visualizing the Merge Epilogue</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px;">
+        Now that the 3 threads have resolved their splitter indices, they have successfully divided the 3 sorted subarrays into 3 independent, balanced chunks. 
+        Each thread $k$ merges the elements between splitters $L^{(k)}$ and $L^{(k+1)}$ in parallel, requiring zero cross-thread communication!
+      </p>
+
+      <div style="margin-top: 16px;">
+        <h3>Splitter Mappings:</h3>
+        <div style="display: flex; gap: 24px; font-size: 0.9rem; margin-top: 8px; flex-wrap: wrap;">
+          <div class="pill" style="border-color: var(--color-thread-0);">
+            Thread 0 start: <strong>[0, 0, 0]</strong> (Rank 0) &rarr; end: <strong id="epiSplit-0">[-]</strong> (Rank 12)
+          </div>
+          <div class="pill" style="border-color: var(--color-thread-1);">
+            Thread 1 start: <strong id="epiSplit-1">[-]</strong> (Rank 12) &rarr; end: <strong id="epiSplit-2">[-]</strong> (Rank 24)
+          </div>
+          <div class="pill" style="border-color: var(--color-thread-2);">
+            Thread 2 start: <strong id="epiSplit-3">[-]</strong> (Rank 24) &rarr; end: <strong id="epiSplit-4">[-]</strong> (Rank 36)
+          </div>
+        </div>
+      </div>
+
+      <!-- Partition visualization bar -->
+      <div class="partition-bar" id="partitionBar">
+        <div class="partition-segment t0" style="width: 33.3%;">Thread 0 (12 items)</div>
+        <div class="partition-segment t1" style="width: 33.3%;">Thread 1 (12 items)</div>
+        <div class="partition-segment t2" style="width: 33.3%;">Thread 2 (12 items)</div>
+      </div>
+
+      <!-- Parallel Merging Columns -->
+      <div class="merging-grids">
+        <div class="merging-column c0">
+          <h4>Thread 0 Merging</h4>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px;">Inputs: S0[0..s0], S1[0..s1], S2[0..s2]</p>
+          <div class="mini-array-cells" id="mergingCells-0"></div>
+        </div>
+        <div class="merging-column c1">
+          <h4>Thread 1 Merging</h4>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px;">Inputs: S0[s0..e0], S1[s1..e1], S2[s2..e2]</p>
+          <div class="mini-array-cells" id="mergingCells-1"></div>
+        </div>
+        <div class="merging-column c2">
+          <h4>Thread 2 Merging</h4>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 8px;">Inputs: S0[e0..], S1[e1..], S2[e2..]</p>
+          <div class="mini-array-cells" id="mergingCells-2"></div>
+        </div>
+      </div>
+
+      <!-- Final Sorted Output -->
+      <div class="final-sorted-wrapper">
+        <h3>Final Sorted Array (Concatenation of Parallel Merges)</h3>
+        <div class="final-array-cells" id="finalArrayCells"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
