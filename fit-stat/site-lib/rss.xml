@@ -1,7 +1,69 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 03 Jun 2026 15:09:54 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 03 Jun 2026 15:09:51 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[NI-SP-2]]></title><description><![CDATA[
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 04 Jun 2026 14:31:16 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 04 Jun 2026 14:31:13 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[NI-SPOL-18]]></title><description><![CDATA[
+inter-komunikátory
+intra-komunikátory
+operace 2-bodové / kolektivní
+blokující / neblokující
+základní 2-bodové (blokující)
+- MPI_Send(*buf, count, type, dest, tag, comm)
+- MPI_Recv(*buf, count, type, source, tag, comm, status) -- status má číslo zdrojového procesu a tag (protože můžeme dát ANY_TAG, ANY_SOURCE)
+- Bsend, Ssend, Rsend -- buffered, synchronous, ready
+neblokující MPI_Isend, Ibsend, Issend, Irsend TODO kolektivní mapování matic na procesy proužkově / šachovnicově
+blokově / cyklicky / blokově-cyklicky MMM Cannonův systolický algoritmus -- paměťově optimální rotuje nad toroidy, řádky doleva (wrap-around), sloupce nahoru (wrap-around) Foxův alg. -- nerotuji (broadcastuji po řádcích), rotuji mocninná metoda řešíme iterativně násobením matice vektorem a normováním
+každý proces potřebuje celý vektor (AAB, AllGather) ]]></description><link>fit-státnice/ni-spol-18.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-18.md</guid><pubDate>Thu, 04 Jun 2026 13:36:23 GMT</pubDate></item><item><title><![CDATA[Otázky]]></title><link>fit-státnice/otázky.html</link><guid isPermaLink="false">FIT Státnice/Otázky.md</guid><pubDate>Thu, 04 Jun 2026 12:34:55 GMT</pubDate></item><item><title><![CDATA[NI-SPOL-17]]></title><description><![CDATA[
+na jednom uzlu (operačním systému) nad jednou sdílenou pamětí
+fork-join model -- master vlákno
+v OpenMP označujeme oblasti, které se budou provádět paralelně
+direktivy, např. #pragma openmp parallel private(x1, x2) shared(s3) num_threads(5) knihovní funkce klauzule: shared, private, firstprivate, default(shared|none), reduction(op:seznam) -- op in {+, *, -, &amp;, ^, |, &amp;&amp;, ||}
+threadprivate(seznam) -- hodnoty proměnných jsou vázány na id vlákna napříč bloky se stejným thread count
+datový paralelizmus -- paralelizace cyklů pro nezávislé iterace (negarantované pořadí) schedule static (default chunk size je )
+dynamic (default chunk size je 1) "prosím, dej mi práci"
+guided -- dynamic, ale když už není dost, dělí se rovnoměrně mezi vlákna
+runtime -- environment variable OMP_SCHEDULE
+auto -- kompilátor nebo runtime to zvolí samo lastprivate v paralelním cyklu zaručuje, že "sekvenčně" poslední iterace volí hodnotu funkční paralelismus -- vytvoří tasky #pragma omp task
+taskwait čeká na skončení předchozích
+if(podminka) -- je-li true, pak se vytvoří task, jinak se provede rovnou
+final(vyraz) -- je-li true, pak nová úloha bude finální, další se nevytváří
+#pragma omp single -- provedeno jen jedním threadem synchronizace barrier
+master
+single -- jakékoli vlákno, ale provede se jednou
+critical -- kritická sekce (pouze jedno vlákno, ostatní čekají)
+atomic -- read/write/update (read-modify-write, i+=1)/capture (read-modify-read-write my_ptr = ptr; ptr += BLOCK_SIZE)
+flush()
+taskwait algoritmy násobení polynomů C[i+j]=A[i]*B[j]
+vnější cyklus <img alt="Pasted image 20260604112357.png" src="attachments/pasted-image-20260604112357.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+zapisování do musí být atomicky vnitřní cyklus <br><img alt="Pasted image 20260604112430.png" src="attachments/pasted-image-20260604112430.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+falešné sdílení, nevyhnutelné
+implicitní bariéra rozdělit rovnoměrně <br><img alt="Pasted image 20260604112536.png" src="attachments/pasted-image-20260604112536.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+výše statické rovnoměrné
+lépe staticky dle velikosti cache / počet procesorů
+<br><img alt="Pasted image 20260604112211.png" src="attachments/pasted-image-20260604112211.png" referrerpolicy="no-referrer" target="_self" style="width: 450px; max-width: 100%;"> násobení matic MVM s += A[i][k] * B[k][j]
+C[i][j] = s
+vnější () cyklus <br><img alt="Pasted image 20260604113822.png" src="attachments/pasted-image-20260604113822.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+pouze jedna bariéra
+disjunktní oblasti vnitřní () cyklus blokově <br><img alt="Pasted image 20260604113958.png" src="attachments/pasted-image-20260604113958.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+pro dostatečně velké není falešné sdílení cyklicky <br><img alt="Pasted image 20260604114019.png" src="attachments/pasted-image-20260604114019.png" referrerpolicy="no-referrer" target="_self" style="width: 350px; max-width: 100%;">
+falešné sdílení vnitřní () cyklus paralelní redukce součtu
+bariéry dominují násobení řídké matice vektorem SpMVM COO -- velmi neefektivní, atomic update a nevyváženost, falešné sdílení
+CSR v row-indices mám prefixový součet -&gt; vyvažuji počet prvků, aby byl co nejblíž , lze binárním vyhledáváním řazení QuickSort Lomuto (pivot začíná vlevo)
+lepší Hoare MergeSort 2-cestné slučování -- ta matice
+-cestné slučování -- ten algoritmus hledání splitterů (L, R, m) ]]></description><link>fit-státnice/ni-spol-17.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-17.md</guid><pubDate>Thu, 04 Jun 2026 12:22:34 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604114019]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604114019.png" target="_self">]]></description><link>attachments/pasted-image-20260604114019.html</link><guid isPermaLink="false">attachments/Pasted image 20260604114019.png</guid><pubDate>Thu, 04 Jun 2026 09:40:19 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604113958]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604113958.png" target="_self">]]></description><link>attachments/pasted-image-20260604113958.html</link><guid isPermaLink="false">attachments/Pasted image 20260604113958.png</guid><pubDate>Thu, 04 Jun 2026 09:39:58 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604113822]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604113822.png" target="_self">]]></description><link>attachments/pasted-image-20260604113822.html</link><guid isPermaLink="false">attachments/Pasted image 20260604113822.png</guid><pubDate>Thu, 04 Jun 2026 09:38:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604112536]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604112536.png" target="_self">]]></description><link>attachments/pasted-image-20260604112536.html</link><guid isPermaLink="false">attachments/Pasted image 20260604112536.png</guid><pubDate>Thu, 04 Jun 2026 09:25:36 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604112430]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604112430.png" target="_self">]]></description><link>attachments/pasted-image-20260604112430.html</link><guid isPermaLink="false">attachments/Pasted image 20260604112430.png</guid><pubDate>Thu, 04 Jun 2026 09:24:30 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604112357]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604112357.png" target="_self">]]></description><link>attachments/pasted-image-20260604112357.html</link><guid isPermaLink="false">attachments/Pasted image 20260604112357.png</guid><pubDate>Thu, 04 Jun 2026 09:23:57 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260604112211]]></title><description><![CDATA[<img src="attachments/pasted-image-20260604112211.png" target="_self">]]></description><link>attachments/pasted-image-20260604112211.html</link><guid isPermaLink="false">attachments/Pasted image 20260604112211.png</guid><pubDate>Thu, 04 Jun 2026 09:22:11 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[NI-SPOL-16]]></title><description><![CDATA[
+PRAM -- procesorů, každý s vlastní pamětí, sdílená paměť buněk, každý procesor může do buňky přistoupit v , konflikty musí být explicitně ošetřeny operace R, L, W
+jednotkový model -- každá operace trvá čas 1
+globální model -- L trvá čas 1, R/W trvají konstantní ošetření konfliktů EREW, CREW, CRCW
+priority CRCW
+arbitrary CRCW
+common CRCW společné hodiny APRAM procesory pracují asynchronně
+explicitní synchronizace bariérou
+přístup do sdílené paměti není čas 1 lokální: 1
+global R/W: 1 po sobě jdoucích global R/W: bariéra: , v praxi nebo APRAM výpočet -- posloupnost fázi oddělených bariérou
+implementace bariéry centrální čítač: binární redukční strom: výkonnostní měřítka sekvenční , , paralelní čas -- čas od začátku do konce posledního procesoru; výpočetní + komunikační čas
+paralelní cena platí cenová optimalita dohromady tedy cenově optimální paralelní zrychlení platí nebo je lineární, pokud , což je vzhledem k definici superlineární zrychlení -- může nastat s anomálií
+paralelní efektivnost je to zrychlení na jádro, nechť konstanta . Je konstantně efektivní, pokud , neboli cenová optimalita lineární zrychlení konstantní efektivnost Amdahlův zákon sekvenční podíl paralelizovaný podíl mějme paralelizováno pro pevné pomocí vláken
+pak tedy nezávisle na nemůže přesáhnout tedy po jisté hranici nemá smysl zvyšovat Gustafsonův zákon s rostoucím máme zvyšovat inherentně sekvenční část pak trvá nezávisle na , inher. par. část bude lineárně škálovat s pak škálovatelnost -- schopnost par. alg. držet par. optimalitu, pokud rostou či klesají
+silná škálovatelnost -- schopnost pro fixní dosáhnout lineárního zrychlení s rostoucím , neboli měří rychlost poklesu efektivnosti, pokud roste a se nemění jak rychle klesá užitečnost každého procesoru, když přidávám procesory nad stejnou práci slabá škálovatelnost -- jak se mění pro fixní , neboli měří růst , tž. s rostoucím zůstává efektivnost stejná jak zvyšovat práci, aby jejich užitečnost zůstala stejná izoefektivní funkce -- dána konstanta je asymptoticky minimální fce tž. (tedy říká min. , které na to hodit) -&gt; Gustafson je asymptoticky max. fce tž. (tedy kolik max na to hodit) -&gt; Amdahl ]]></description><link>fit-státnice/ni-spol-16.html</link><guid isPermaLink="false">FIT Státnice/NI-SPOL-16.md</guid><pubDate>Thu, 04 Jun 2026 08:13:48 GMT</pubDate></item><item><title><![CDATA[NI-SP-2]]></title><description><![CDATA[
 padding
 new int(42) -- alokuje storage a vytvoří objekt. Pak delete.
-::operator new(4) -- nekonstruuje objekt, jen vytvoří objekt. Pak ::operator delete.
+::operator new(sizeof(int)) -- nekonstruuje objekt, jen vytvoří objekt. Pak ::operator delete.
 new (ptr) int(42); -- placement new -- vytvoří objekt v existujícím storage. Pak p-&gt;~int(); explicitní destrukce (storage bude dál existovat).
 std::launder(ptr) -- compiler barrier, řekne "zahoď své assumptions o tomto pointeru", např. předtím byl ve storage const int a compiler počítá, že může hodnotu číst z registru, ne z paměti
 inicializace a destrukce int a; -- default-init, hodnota neurčena
@@ -11,14 +73,26 @@ int d(5); -- direct-init
 int e {5}; -- list-init -- zabraňuje zužujícím konverzím
 pořadí inicializace členských proměnných odpovídá pořadí deklarace
 destruktor -- neměly by vyhazovat výjimky (existují případy, kdy by se výjimka nedala obsloužit), zavolá se automaticky při konci životnosti objektu
-RAII Short-string optimization]]></description><link>fit-státnice/ni-sp-2.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-2.md</guid><pubDate>Wed, 03 Jun 2026 15:04:14 GMT</pubDate></item><item><title><![CDATA[NI-SP-1]]></title><description><![CDATA[ nedefinované chování úleva pro compiler, aby mohl dělat optimizace, nemusím držet tolik assumptions
+RAII triviálně kopírovatelné typy -- jeho kopírování (a přesun) je ekvivalentní kopírování bajtů triv. copy/move constructor
+triv. operátor přiřazení
+triv. destruktor triv. znamená = default (automaticky)
+copy semantics Buffer(const Buffer&amp; other) -- copy constructor, deep copy
+Buffer&amp; operator=(Buffer other) -- musí fungovat i při sebe-přiřazení -- lze použít copy-and-swap idiom move semantics -- po přesunutí je původní objekt v nespecifikovaném, ale validním stavu; dovoluje "ukrást" vnitřní zdroje Buffer(Buffer&amp;&amp; other) noexcept
+Buffer&amp; operator=(Buffer&amp;&amp; other) noexcept pravidlo pěti -- pokud třída implementuje jakoukoli z následujících, měla by definovat (nebo =delete, =default) všechny ostatní destructor
+copy constructor
+copy assignment
+move constructor
+move assignment emplace sémantika -- přímo zkonstruovat objekt ve storage; eliminuje copy/move; realizace pomocí perfect forwarding a variadických šablon template &lt;typename T, typename... Ts&gt;
+T* construct_at(void *ptr, Ts&amp;&amp;... params) {
+return new (ptr) T(std::forward&lt;Ts&gt;(params)...);
+} Short-string optimization]]></description><link>fit-státnice/ni-sp-2.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-2.md</guid><pubDate>Thu, 04 Jun 2026 07:18:06 GMT</pubDate></item><item><title><![CDATA[NI-SP-1]]></title><description><![CDATA[ nedefinované chování úleva pro compiler, aby mohl dělat optimizace, nemusím držet tolik assumptions
 nebezpečnost je v nepřenositelnosti -- "it runs on my machine"
 užitečnost je v tom, že když programátor ví, že podmínky jsou splněny, může použít kód, který je uvažuje např. vec.at() vs vec[i] definované chování -- zajišťuje stejné pozorovatelné chování na každém konkrétním systému definované pouze, pokud jsou dodržené podmínky (určené standardem)
 v případě porušení podmínek není chování definováno
 konkrétní implementace C++ může některé nedefinované chování definovat hodnotové kategorie každý výraz má typ (což nemůže být reference!) a hodnotovou kategorii
 lvalues -- adresovatelné výrazy řetězcové literály
 prvky polí
-... ravlues -- ostatní neřetězcové literály (false, 1, nullptr) každý výraz je buď rvalue nebo lvalue (ale ne obojí) druhy referencí nekonstantní lvalue reference (&amp;int) -- prakticky mohou být navázány jen na existující objekty referencovaného typu
+... rvalues -- ostatní neřetězcové literály (false, 1, nullptr) každý výraz je buď rvalue nebo lvalue (ale ne obojí) druhy referencí nekonstantní lvalue reference (&amp;int) -- prakticky mohou být navázány jen na existující objekty referencovaného typu
 nekonstantní rvalue (&amp;&amp;int) -- buď na existující objekty typu (pokud je výraz rvalue), nebo na dočasné objekty typu
 konstantní lvalue -- stejné jako &amp;&amp;int, ale výraz může být lvalue i rvalue, ale nemůžu upravovat
 konstantní rvalue -- zřídka používané, out of scope statický polymorfismus -- šablony umožňuje psát kód, který funguje pro různé typy
@@ -30,11 +104,12 @@ T = int&amp; -&gt; T&amp; je int&amp;
 T = int&amp;&amp; -&gt; T&amp; je int&amp; T&amp;&amp; T = int -&gt; T&amp;&amp; je int&amp;&amp;
 T = int&amp; -&gt; T&amp;&amp; je int&amp;
 T = int&amp;&amp; -&gt; T&amp;&amp; je int&amp;&amp; perfect forwarding -- používá se na emplace sémantiku template &lt;typename T, typename... Ts&gt;
-T* construct_at(void *ptr, Ts&amp;&amp;... params) { return new (ptr) T(std::forward&lt;Ts&gt;(params)...);
+T* construct_at(void *ptr, Ts&amp;&amp;... params) {
+return new (ptr) T(std::forward&lt;Ts&gt;(params)...);
 } dynamický polymorfismus každá třída s virtuálními funkcemi má vtable
 každý objekt má ukazatel na vtable
 při volání funkce se udělá lookup vptr -&gt; vtable -&gt; funkce
-výhody nemusím znát typ za běhu -- pluginy nevýhody nelze inlinovat, optimizovat ]]></description><link>fit-státnice/ni-sp-1.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-1.md</guid><pubDate>Wed, 03 Jun 2026 14:10:49 GMT</pubDate></item><item><title><![CDATA[Otázky]]></title><link>fit-státnice/otázky.html</link><guid isPermaLink="false">FIT Státnice/Otázky.md</guid><pubDate>Wed, 03 Jun 2026 12:48:41 GMT</pubDate></item><item><title><![CDATA[NI-SP-8]]></title><description><![CDATA[
+výhody nemusím znát typ za běhu -- pluginy nevýhody nelze inlinovat, optimizovat ]]></description><link>fit-státnice/ni-sp-1.html</link><guid isPermaLink="false">FIT Státnice/NI-SP-1.md</guid><pubDate>Thu, 04 Jun 2026 07:17:52 GMT</pubDate></item><item><title><![CDATA[NI-SP-8]]></title><description><![CDATA[
 kombinuje constraints sebrané z konkrétního běhu programu se symbolickou exekucí
 symbolický má cest -&gt; exploze
 proto vezmu random vstup a spustím na něm program, sleduji konkrétní cestu, pak invertuji nějakou podmínku, zeptám se SMT jaký musí být vstup, abych se vydal tou druhou cestou, rerun = concolic
