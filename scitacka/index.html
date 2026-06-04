@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPS: Paralelní sčítačka s predikcí přenosu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <span class="icon">⚡</span>
+        <span data-translate="app_title">Paralelní binární sčítačka s predikcí přenosu (PPS)</span>
+      </h1>
+      <div class="lang-switch">
+        <button id="btn-cz" class="lang-btn active">CZ</button>
+        <button id="btn-en" class="lang-btn">EN</button>
+      </div>
+    </header>
+
+    <div class="app-grid">
+      <!-- Left Panel: Controls and Settings -->
+      <div class="card">
+        <div>
+          <h2 class="card-title" data-translate="settings_title">Konfigurace</h2>
+          
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="select-bits" data-translate="label_bits">Počet bitů (n)</label>
+            <select id="select-bits">
+              <option value="3">3 bity (PPS velikost 4)</option>
+              <option value="7" selected>7 bitů (PPS velikost 8)</option>
+              <option value="8">8 bitů (PPS velikost 9 / 16)</option>
+              <option value="15">15 bitů (PPS velikost 16)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="select-adder" data-translate="label_adder">Typ prefixové sítě</label>
+            <select id="select-adder">
+              <option value="kogge-stone" selected>Kogge-Stone (KSA)</option>
+              <option value="sklansky">Sklansky Adder</option>
+              <option value="brent-kung">Brent-Kung (BKA)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="binary-input-container">
+          <h2 class="card-title" data-translate="inputs_title">Vstupní čísla</h2>
+          
+          <!-- Binary Row X -->
+          <div class="binary-row">
+            <span class="binary-label">X</span>
+            <div id="bit-cells-x" class="bit-cells"></div>
+            <span id="dec-val-x" class="decimal-display">X = 43</span>
+          </div>
+
+          <!-- Binary Row Y -->
+          <div class="binary-row">
+            <span class="binary-label" style="color: var(--color-x-y);">Y</span>
+            <div id="bit-cells-y" class="bit-cells"></div>
+            <span id="dec-val-y" class="decimal-display">Y = 25</span>
+          </div>
+
+          <div class="info-grid" style="margin-top: 0.25rem;">
+            <div class="form-group">
+              <label for="dec-input-x" data-translate="label_dec_x">Decimal X</label>
+              <input type="text" id="dec-input-x" value="43">
+            </div>
+            <div class="form-group">
+              <label for="dec-input-y" data-translate="label_dec_y">Decimal Y</label>
+              <input type="text" id="dec-input-y" value="25">
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-controls">
+          <h2 class="card-title" data-translate="controls_title">Simulace</h2>
+          
+          <div class="control-buttons">
+            <button id="btn-prev" class="btn" title="Krok zpět" data-translate-title="title_prev">◀</button>
+            <button id="btn-play" class="btn primary" title="Spustit / Pozastavit" data-translate-title="title_play">▶</button>
+            <button id="btn-next" class="btn" title="Krok vpřed" data-translate-title="title_next">▶</button>
+            <button id="btn-reset" class="btn" title="Resetovat" data-translate-title="title_reset">🔄</button>
+          </div>
+
+          <div class="speed-slider">
+            <span data-translate="label_speed">Rychlost:</span>
+            <input type="range" id="slider-speed" min="200" max="2500" value="1000" step="100" style="direction: rtl;">
+            <span id="speed-display">1.0s</span>
+          </div>
+
+          <div class="stage-dots" id="stage-dots-container"></div>
+        </div>
+
+        <div>
+          <h2 class="card-title" data-translate="operator_title">Operátor ⊙</h2>
+          <div class="info-grid" style="margin-top: 0.5rem;">
+            <table class="info-table">
+              <thead>
+                <tr>
+                  <th>L ⊙ R</th>
+                  <th>s</th>
+                  <th>p</th>
+                  <th>g</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>s</th>
+                  <td class="val-s">s</td>
+                  <td class="val-s">s</td>
+                  <td class="val-s">s</td>
+                </tr>
+                <tr>
+                  <th>p</th>
+                  <td class="val-s">s</td>
+                  <td class="val-p">p</td>
+                  <td class="val-g">g</td>
+                </tr>
+                <tr>
+                  <th>g</th>
+                  <td class="val-g">g</td>
+                  <td class="val-g">g</td>
+                  <td class="val-g">g</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div style="font-size: 0.8rem; display: flex; flex-direction: column; justify-content: center; gap: 0.4rem;">
+              <div><strong>g</strong> (generate) = <span style="color:var(--color-g); font-weight:bold;">1 + 1</span></div>
+              <div><strong>s</strong> (stop) = <span style="color:var(--color-s); font-weight:bold;">0 + 0</span></div>
+              <div><strong>p</strong> (propagate) = <span style="color:var(--color-p); font-weight:bold;">0+1 / 1+0</span></div>
+              <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;" data-translate="operator_desc">
+                Operátor ⊙ je asociativní. Umožňuje paralelní výpočet přenosů.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: SVG Canvas -->
+      <div class="card viz-card">
+        <h2 class="card-title" id="viz-card-subtitle" data-translate="prefix_tree_title">Prefixová síť přenosů (Parallel Prefix Network)</h2>
+        
+        <div class="canvas-container" id="canvas-container">
+          <svg id="prefix-svg" width="800" height="420" viewBox="0 0 800 420">
+            <!-- Dynamic elements go here -->
+          </svg>
+          <div id="tooltip" class="tooltip"></div>
+        </div>
+
+        <div class="explanation-panel" id="explanation-panel">
+          <h4 id="explanation-title">Krok 0: Inicializace</h4>
+          <p id="explanation-body">Vítejte ve vizualizaci! Kliknutím na tlačítko Play nebo Krok vpřed zahájíte výpočet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Panel: Slide layout -->
+    <div class="slide-panel">
+      <!-- X row -->
+      <div class="slide-row x-y">
+        <div class="slide-row-label x-y">X:</div>
+        <div class="slide-cells" id="slide-cells-x"></div>
+      </div>
+
+      <!-- Y row -->
+      <div class="slide-row x-y">
+        <div class="slide-row-label x-y">Y:</div>
+        <div class="slide-cells" id="slide-cells-y"></div>
+      </div>
+
+      <div class="slide-divider"></div>
+
+      <!-- B row -->
+      <div class="slide-row b-bprime">
+        <div class="slide-row-label b-bprime" title="Initial carry-generate/propagate status">B:</div>
+        <div class="slide-cells" id="slide-cells-b"></div>
+      </div>
+
+      <!-- B' row -->
+      <div class="slide-row b-bprime">
+        <div class="slide-row-label b-bprime" title="Prefix carry-generate/propagate status">B':</div>
+        <div class="slide-cells" id="slide-cells-bprime"></div>
+      </div>
+
+      <!-- C row -->
+      <div class="slide-row c">
+        <div class="slide-row-label c" title="Carries">C:</div>
+        <div class="slide-cells" id="slide-cells-c"></div>
+      </div>
+
+      <div class="slide-divider"></div>
+
+      <!-- Z row -->
+      <div class="slide-row z">
+        <div class="slide-row-label z" title="Final Sum">Z:</div>
+        <div class="slide-cells" id="slide-cells-z"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
