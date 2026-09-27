@@ -1,0 +1,15 @@
+/* Stylesheet specific for IE */
+
+.edge {
+	width: 0; 
+	height: 100%; 
+	display: inline-block; 
+	vertical-align: middle;
+} 
+
+.container {
+	text-align: center; 
+	width: 100%; 
+	display: inline-block; 
+	vertical-align: middle;
+}
